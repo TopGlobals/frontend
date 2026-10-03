@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './shared/presentation/views/home.vue';
 import alertsRoutes from './alerts/presentation/alerts-routes.js';
 import analyticsRoutes from './analytics/presentation/analytics-routes.js';
 import historyRoutes from './history/presentation/history-routes.js';
@@ -12,12 +11,9 @@ import iamRoutes from "./iam/presentation/iam-routes.js";
 import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 */
 
-/*const about = () => import('./shared/presentation/views/about.vue');*/
-/*const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');*/
+const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');
 
 const routes = [
-  { path: '/home', name: 'home', component: Home, meta: { title: 'Home' } },
-  /*{ path: '/about',           name: 'about',      component: about,       meta: { title: 'About' } },*/
   { path: '/alerts', name: 'alerts', children: alertsRoutes },
   { path: '/analytics', name: 'analytics', children: analyticsRoutes },
   { path: '/history', name: 'history', children: historyRoutes },
@@ -25,8 +21,13 @@ const routes = [
   { path: '/profiles', name: 'profiles', children: profilesRoutes },
   { path: '/reports', name: 'reports', children: reportsRoutes },
   /*{ path: '/iam',             name: 'iam',        children: iamRoutes },*/
-  { path: '/', redirect: '/home' },
-  /*{ path: '/:pathMatch(.*)*', name: 'not-found', component: pageNotFound, meta: { title: 'Page Not Found' } }*/
+  { path: '/', redirect: '/analytics' },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: pageNotFound,
+    meta: { title: 'Page Not Found' },
+  },
 ];
 
 const router = createRouter({
@@ -36,7 +37,7 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   console.log(`Navigating from ${from.name} to ${to.name}`);
-  let baseTitle = 'ACME Learning Center';
+  let baseTitle = 'CryoVigil';
   document.title = `${baseTitle} - ${to.meta['title']}`;
   // When IAM is implemented, use:
   // return authenticationGuard(to, from);
