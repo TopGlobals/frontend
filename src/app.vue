@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import Layout from './shared/presentation/components/layout.vue';
+</script>
 
 <template>
-  <h1>Title</h1>
+  <layout />
 </template>
