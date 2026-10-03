@@ -1,0 +1,32 @@
+{
+  "layout": {
+    "brand": {
+      "name": "CryoVigil",
+      "subtext": "TOP-GLOBALS"
+    },
+    "menu": {
+      "sections": {
+        "main": "Main Menu",
+        "system": "System"
+      },
+      "items": {
+        "analytics": "Dashboard",
+        "laboratories": "Laboratories",
+        "history": "History",
+        "alerts": "Alerts",
+        "reports": "Reports",
+        "profiles": "Settings"
+      }
+    },
+    "profile": {
+      "role": "Head Researcher",
+      "logout": "Logout"
+    }
+  },
+  "alerts": {},
+  "analytics": {},
+  "history": {},
+  "laboratories": {},
+  "profiles": {},
+  "reports": {}
+}
