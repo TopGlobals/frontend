@@ -1,436 +1,517 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import LanguageSwitcher from './language-switcher.vue';
 import { useI18n } from 'vue-i18n';
-
-/*
-// IAM and Profile Stores - Commented out until implementation
-import { useProfileStore } from "../../../profiles/application/profile.store.js";
-import { useIamStore } from "../../../iam/application/iam.store.js";
-
-const profileStore = useProfileStore();
-const iamStore = useIamStore();
-const currentUser = computed(() => iamStore.currentUser);
-*/
+import LanguageSwitcher from './language-switcher.vue';
 
 const { t } = useI18n();
 const route = useRoute();
+const router = useRouter();
+const search = ref(typeof route.query.search === 'string' ? route.query.search : '');
 
-// Mapped directly to the provided router.js paths
 const mainMenuItems = [
   { label: 'layout.menu.items.analytics', to: '/analytics', icon: 'pi pi-th-large' },
-  { label: 'layout.menu.items.laboratories', to: '/laboratories', icon: 'pi pi-desktop' },
+  { label: 'layout.menu.items.laboratories', to: '/laboratories', icon: 'laboratory' },
   { label: 'layout.menu.items.history', to: '/history', icon: 'pi pi-history' },
   { label: 'layout.menu.items.alerts', to: '/alerts', icon: 'pi pi-bell' },
-  { label: 'layout.menu.items.reports', to: '/reports', icon: 'pi pi-chart-line' },
+  { label: 'layout.menu.items.reports', to: '/reports', icon: 'pi pi-chart-bar' },
 ];
 
-const systemMenuItems = [
-  { label: 'layout.menu.items.profiles', to: '/profiles', icon: 'pi pi-cog' },
-];
+const systemMenuItems = [{ label: 'layout.menu.items.profiles', to: '/profiles', icon: 'pi pi-cog' }];
 
-// Dynamically extracts the title from the current route
 const pageTitle = computed(() => {
-  const routeName = String(route.name).toLowerCase();
+  if (route.meta.titleKey) return t(route.meta.titleKey);
+  if (route.meta.title) return route.meta.title;
+  const routeName = String(route.name ?? '').toLowerCase();
   return t(`layout.menu.items.${routeName}`);
 });
 
-const handleLogout = () => {
-  /*
-	// Execute IAM sign out when implemented
-	iamStore.signOut();
-	*/
-};
+const pageSubtitle = computed(() =>
+  route.meta.subtitleKey ? t(route.meta.subtitleKey) : (route.meta.subtitle ?? ''),
+);
+
+watch(
+  () => route.query.search,
+  (value) => {
+    search.value = typeof value === 'string' ? value : '';
+  },
+);
+
+watch(search, (value) => {
+  const query = { ...route.query, search: value || undefined };
+  router.replace({ query });
+});
 </script>
 
 <template>
   <div class="app-layout">
-    <aside class="sidebar-container">
+    <aside class="sidebar">
       <div class="sidebar-top">
-        <div class="brand-wrapper">
-          <div class="brand-logo-placeholder">
-            <i class="pi pi-box brand-icon" />
-          </div>
-          <div class="brand-text">
-            {{ t('layout.brand.name') }}<br /><span class="brand-subtext">{{
-              t('layout.brand.subtext')
-            }}</span>
-          </div>
-        </div>
+        <router-link
+          class="brand"
+          to="/analytics"
+        >
+          <span class="brand-mark"><i
+            class="pi pi-box"
+            aria-hidden="true"
+          /></span>
+          <span class="brand-copy">
+            <strong>{{ t('layout.brand.name') }}</strong>
+            <small>{{ t('layout.brand.subtext') }}</small>
+          </span>
+        </router-link>
 
-        <nav class="sidebar-nav">
-          <p class="nav-section-title">{{ t('layout.menu.sections.main') }}</p>
+        <nav aria-label="Main navigation">
+          <p class="nav-heading">
+            {{ t('layout.menu.sections.main') }}
+          </p>
           <ul class="nav-list">
-            <li v-for="item in mainMenuItems" :key="item.to">
-              <router-link :to="item.to" class="nav-item" active-class="nav-item-active">
-                <div class="nav-item-content">
-                  <i :class="item.icon" class="nav-icon"></i>
-                  <span>{{ t(item.label) }}</span>
-                </div>
+            <li
+              v-for="item in mainMenuItems"
+              :key="item.to"
+            >
+              <router-link
+                :to="item.to"
+                class="nav-item"
+                active-class="nav-item-active"
+              >
+                <svg
+                  v-if="item.icon === 'laboratory'"
+                  class="nav-icon laboratory-icon"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M7 2.5h6M8.5 2.5v5L3.7 14.7a1.7 1.7 0 0 0 1.5 2.5h9.6a1.7 1.7 0 0 0 1.5-2.5L11.5 7.5v-5M6 13h8"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <i
+                  v-else
+                  :class="item.icon"
+                  aria-hidden="true"
+                />
+                <span>{{ t(item.label) }}</span>
+                <span
+                  v-if="item.to === '/alerts'"
+                  class="alert-count"
+                >3</span>
               </router-link>
             </li>
           </ul>
 
-          <p class="nav-section-title system-title">{{ t('layout.menu.sections.system') }}</p>
+          <p class="nav-heading system-heading">
+            {{ t('layout.menu.sections.system') }}
+          </p>
           <ul class="nav-list">
-            <li v-for="item in systemMenuItems" :key="item.to">
-              <router-link :to="item.to" class="nav-item" active-class="nav-item-active">
-                <div class="nav-item-content">
-                  <i :class="item.icon" class="nav-icon"></i>
-                  <span>{{ t(item.label) }}</span>
-                </div>
+            <li
+              v-for="item in systemMenuItems"
+              :key="item.to"
+            >
+              <router-link
+                :to="item.to"
+                class="nav-item"
+                active-class="nav-item-active"
+              >
+                <i
+                  :class="item.icon"
+                  aria-hidden="true"
+                />
+                <span>{{ t(item.label) }}</span>
               </router-link>
             </li>
           </ul>
         </nav>
       </div>
 
-      <div class="sidebar-bottom">
-        <!-- Hardcoded User Profile for layout testing -->
+      <div class="sidebar-footer">
+        <section
+          class="help-card"
+          aria-label="Help"
+        >
+          <strong>{{ t('layout.help.title') }}</strong>
+          <p>{{ t('layout.help.description') }}</p>
+          <a href="mailto:support@topglobals.com">{{ t('layout.help.documentation') }}</a>
+        </section>
         <div class="user-profile">
-          <div class="user-info">
-            <img
-              src="https://via.placeholder.com/40x40/10B981/FFFFFF?text=AV"
-              alt="Dr. Alex Vance"
-              class="user-avatar"
+          <span
+            class="avatar"
+            aria-hidden="true"
+          >AV</span>
+          <span class="user-copy">
+            <strong>Dr. Alex Vance</strong>
+            <small>{{ t('layout.profile.role') }}</small>
+          </span>
+          <button
+            class="logout-button"
+            type="button"
+            aria-label="Log out"
+          >
+            <i
+              class="pi pi-sign-out"
+              aria-hidden="true"
             />
-            <div class="user-details">
-              <span class="user-name">Dr. Alex Vance</span>
-              <span class="user-role">{{ t('layout.profile.role') }}</span>
-            </div>
-          </div>
-          <pv-button
-            icon="pi pi-sign-out"
-            class="logout-btn"
-            text
-            rounded
-            @click="handleLogout"
-            aria-label="Logout"
-          />
+          </button>
         </div>
       </div>
     </aside>
 
-    <!-- Main Content Area -->
     <div class="main-wrapper">
       <header class="top-bar">
         <div class="header-titles">
-          <h1 class="page-title">{{ pageTitle }}</h1>
+          <h1>{{ pageTitle }}</h1>
+          <p v-if="pageSubtitle">
+            {{ pageSubtitle }}
+          </p>
         </div>
-
-        <div class="header-actions">
+        <div class="header-tools">
+          <label class="search-box">
+            <i
+              class="pi pi-search"
+              aria-hidden="true"
+            />
+            <input
+              v-model="search"
+              type="search"
+              :aria-label="t('layout.search.label')"
+              :placeholder="t('layout.search.placeholder')"
+            >
+          </label>
           <LanguageSwitcher />
         </div>
       </header>
 
       <main class="content-area">
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
+        <router-view />
       </main>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* App Layout Container */
 .app-layout {
   display: flex;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  background-color: #f9fafb;
-  font-family: var(
-    --font-family,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif
-  );
+  min-height: 100vh;
+  background: #f7f9fc;
 }
 
-/* Sidebar Structural Styles */
-.sidebar-container {
-  width: 280px;
+.sidebar {
+  position: sticky;
+  top: 0;
   display: flex;
+  flex: 0 0 256px;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #ffffff;
-  border-right: 1px solid #e5e7eb;
+  width: 256px;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #e6ebf2;
 }
 
-.sidebar-top {
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 80px;
+  padding: 0 24px;
+  color: #111c32;
+  text-decoration: none;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.brand-mark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: #fff;
+  background: #08a67e;
+  border-radius: 13px;
+  box-shadow: 0 3px 7px #08a67e33;
+  font-size: 19px;
+}
+
+.brand-copy,
+.user-copy {
   display: flex;
   flex-direction: column;
 }
 
-.brand-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1.5rem;
+.brand-copy strong {
+  font-size: 19px;
+  line-height: 1.1;
 }
 
-.brand-logo-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background-color: #10b981;
-  border-radius: 6px;
-  color: white;
-}
-
-.brand-icon {
-  font-size: 1.2rem;
-}
-
-.brand-text {
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.2;
-  color: #111827;
-}
-
-.brand-subtext {
-  font-size: 0.65rem;
-  color: #10b981;
-  text-transform: uppercase;
+.brand-copy small {
+  margin-top: 4px;
+  color: #009b77;
+  font-size: 10px;
   letter-spacing: 0.05em;
 }
 
-/* Navigation Styles */
-.sidebar-nav {
-  padding: 0 1rem;
+nav {
+  padding: 18px 16px;
 }
 
-.nav-section-title {
-  font-size: 0.75rem;
+.nav-heading {
+  margin: 11px 12px 14px;
+  color: #8a9ab3;
+  font-size: 10px;
   font-weight: 700;
-  color: #9ca3af;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
-  padding-left: 0.75rem;
 }
 
-.system-title {
-  margin-top: 1.5rem;
+.system-heading {
+  margin-top: 30px;
 }
 
 .nav-list {
-  list-style: none;
+  display: grid;
+  gap: 4px;
   padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  list-style: none;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
+  gap: 13px;
+  min-height: 44px;
+  padding: 0 13px;
+  color: #40516c;
+  border: 1px solid transparent;
+  border-radius: 12px;
   text-decoration: none;
-  color: #4b5563;
-  transition: all 0.2s ease;
 }
 
-.nav-item:hover {
-  background-color: #ecfdf5;
-  color: #059669;
+.nav-item > i {
+  width: 17px;
+  color: #8da0bb;
+  font-size: 16px;
 }
 
+.nav-item .laboratory-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  color: #8da0bb;
+}
+
+.nav-item:hover,
 .nav-item-active {
-  background-color: #ecfdf5;
-  color: #059669;
-  font-weight: 600;
+  color: #008b68;
+  background: #eafbf4;
+  border-color: #c5f4df;
 }
 
-.nav-item-content {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.nav-item-active > i,
+.nav-item:hover > i {
+  color: #008b68;
 }
 
-.nav-icon {
-  font-size: 1.125rem;
+.nav-item-active .laboratory-icon,
+.nav-item:hover .laboratory-icon {
+  color: #008b68;
 }
 
-.nav-badge {
-  background-color: #fee2e2;
-  color: #dc2626;
-  border-radius: 9999px;
-  padding: 0.125rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
+.alert-count {
+  min-width: 24px;
+  margin-left: auto;
+  color: #f43f5e;
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: 999px;
+  font-size: 11px;
+  text-align: center;
 }
 
-/* Bottom Sidebar Styles */
-.sidebar-bottom {
-  padding: 1rem;
+.sidebar-footer {
+  padding: 16px;
 }
 
-.support-card {
-  background-color: #059669;
-  color: #ffffff;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.help-card {
+  padding: 16px;
+  color: white;
+  background: linear-gradient(135deg, #079f79, #138d75);
+  border-radius: 15px;
+  box-shadow: 0 5px 12px #00785f26;
 }
 
-.support-title {
-  margin: 0 0 0.25rem 0;
-  font-size: 0.875rem;
-  font-weight: 700;
+.help-card strong {
+  font-size: 13px;
 }
 
-.support-desc {
-  margin: 0 0 1rem 0;
-  font-size: 0.75rem;
-  opacity: 0.9;
-  line-height: 1.4;
+.help-card p {
+  margin: 8px 0 12px;
+  color: #e2fff6;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
-.support-btn {
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
-  border: none !important;
-  padding: 0.5rem !important;
-  font-size: 0.875rem !important;
-  transition: background-color 0.2s !important;
-}
-
-.support-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3) !important;
+.help-card a {
+  display: block;
+  padding: 8px;
+  color: #fff;
+  background: #ffffff26;
+  border: 1px solid #ffffff55;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s ease;
+  gap: 9px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #edf0f5;
 }
 
-.user-profile:hover {
-  background-color: #f3f4f6;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.user-avatar {
-  width: 40px;
-  height: 40px;
+.avatar {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: #087e64;
+  background: #d8f4e8;
+  border: 2px solid #fff;
   border-radius: 50%;
-  border: 1px solid #e5e7eb;
-  object-fit: cover;
-}
-
-.user-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  font-size: 0.875rem;
+  box-shadow: 0 0 0 1px #b5ead3;
+  font-size: 11px;
   font-weight: 700;
-  color: #111827;
 }
 
-.user-role {
-  font-size: 0.75rem;
-  color: #6b7280;
+.user-copy strong {
+  font-size: 11px;
 }
 
-.logout-btn {
-  color: #ef4444 !important;
+.user-copy small {
+  color: #8b9ab1;
+  font-size: 10px;
 }
 
-.logout-btn:hover {
-  background-color: #fee2e2 !important;
+.logout-button {
+  margin-left: auto;
+  padding: 7px;
+  color: #f43f5e;
+  background: transparent;
+  border: 0;
 }
 
-/* Main Content Wrapper */
 .main-wrapper {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   min-width: 0;
 }
 
-/* Top Bar Styles */
 .top-bar {
-  height: 80px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  min-height: 80px;
+  padding: 12px 32px;
+  background: #fff;
+  border-bottom: 1px solid #e6ebf2;
 }
 
-.page-title {
+.header-titles h1 {
   margin: 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #111827;
+  color: #101b31;
+  font-size: 20px;
+  line-height: 1.25;
 }
 
-.page-subtitle {
-  margin: 0.25rem 0 0 0;
-  font-size: 0.875rem;
-  color: #6b7280;
+.header-titles p {
+  margin: 3px 0 0;
+  color: #6a7d99;
+  font-size: 12px;
 }
 
-.header-actions {
+.header-tools {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 14px;
 }
 
-/* Content Area */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(288px, 36vw);
+  height: 39px;
+  padding: 0 13px;
+  color: #8da0bb;
+  background: #f8fafc;
+  border: 1px solid #dfe6ef;
+  border-radius: 13px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  color: #263650;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: 13px;
+}
+
+.search-box input::placeholder {
+  color: #98a8bf;
+}
+
 .content-area {
   flex: 1;
-  overflow-y: auto;
-  padding: 2rem;
+  padding: 24px 32px 40px;
 }
 
-/* Router Transitions */
-.fade-enter-active,
-.fade-leave-active {
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+@media (max-width: 900px) {
+  .sidebar {
+    flex-basis: 220px;
+    width: 220px;
+  }
+
+  .content-area {
+    padding: 20px;
+  }
 }
 
-.fade-enter-from {
-  opacity: 0;
-  transform: translateY(10px);
-}
+@media (max-width: 680px) {
+  .sidebar {
+    display: none;
+  }
 
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
+  .top-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .header-tools {
+    width: 100%;
+  }
+
+  .search-box {
+    flex: 1;
+    width: auto;
+  }
+
+  .content-area {
+    padding: 16px;
+  }
 }
 </style>
