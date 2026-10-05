@@ -36,7 +36,11 @@ const useLaboratoriesStore = defineStore('laboratories', () => {
     return laboratory;
   }
 
-  return { laboratories, addLaboratory };
+  function removeLaboratory(id) {
+    laboratories.value = laboratories.value.filter((laboratory) => laboratory.id !== id);
+  }
+
+  return { laboratories, addLaboratory, removeLaboratory };
 });
 
 export default useLaboratoriesStore;

@@ -2,10 +2,12 @@
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { useConfirm } from 'primevue';
 import useLaboratoriesStore from '../../application/laboratories.store.js';
 
 const route = useRoute();
 const { t } = useI18n();
+const confirm = useConfirm();
 const laboratoriesStore = useLaboratoriesStore();
 const page = ref(1);
 const pageSize = 9;
@@ -74,6 +76,18 @@ watch([statusFilter, locationFilter, searchTerm], () => {
 
 function setPage(nextPage) {
   page.value = Math.min(Math.max(nextPage, 1), pageCount.value);
+}
+
+function confirmDelete(laboratory) {
+  confirm.require({
+    header: t('laboratories.panel.deleteHeader'),
+    message: t('laboratories.panel.deleteConfirmation', { name: laboratory.name }),
+    icon: 'pi pi-exclamation-triangle',
+    acceptLabel: t('laboratories.panel.delete'),
+    rejectLabel: t('laboratories.panel.cancel'),
+    acceptClass: 'p-button-danger',
+    accept: () => laboratoriesStore.removeLaboratory(laboratory.id),
+  });
 }
 </script>
 
@@ -225,16 +239,30 @@ function setPage(nextPage) {
 
         <footer class="card-footer">
           <span :class="{ 'critical-message': lab.status === 'critical' }">{{ labUpdated(lab) }}</span>
-          <details class="details-disclosure">
-            <summary>{{ t('laboratories.panel.viewDetails') }} <span aria-hidden="true">→</span></summary>
-            <p><strong>{{ t('laboratories.panel.laboratoryId') }}:</strong> {{ lab.code }}</p>
-            <p>
-              <strong>{{ t('laboratories.panel.airQualityDetails') }}:</strong> {{ lab.airQuality ?? t('laboratories.panel.noData') }}<template v-if="lab.airQuality !== null">
-                {{ t('laboratories.panel.aqi') }}
-              </template>
-            </p>
-            <p><strong>{{ t('laboratories.panel.unknownDetections') }}:</strong> {{ lab.unknown ?? t('laboratories.panel.noData') }}</p>
-          </details>
+          <div class="card-actions">
+            <details class="details-disclosure">
+              <summary>{{ t('laboratories.panel.viewDetails') }} <span aria-hidden="true">→</span></summary>
+              <p><strong>{{ t('laboratories.panel.laboratoryId') }}:</strong> {{ lab.code }}</p>
+              <p>
+                <strong>{{ t('laboratories.panel.airQualityDetails') }}:</strong> {{ lab.airQuality ?? t('laboratories.panel.noData') }}<template v-if="lab.airQuality !== null">
+                  {{ t('laboratories.panel.aqi') }}
+                </template>
+              </p>
+              <p><strong>{{ t('laboratories.panel.unknownDetections') }}:</strong> {{ lab.unknown ?? t('laboratories.panel.noData') }}</p>
+            </details>
+            <button
+              class="delete-button"
+              type="button"
+              :aria-label="t('laboratories.panel.deleteAriaLabel', { name: lab.name })"
+              @click="confirmDelete(lab)"
+            >
+              <i
+                class="pi pi-trash"
+                aria-hidden="true"
+              />
+              {{ t('laboratories.panel.delete') }}
+            </button>
+          </div>
         </footer>
       </article>
     </div>
@@ -294,6 +322,7 @@ function setPage(nextPage) {
       </nav>
     </footer>
   </section>
+  <pv-confirm-dialog />
 </template>
 
 <style scoped>
@@ -615,6 +644,29 @@ function setPage(nextPage) {
 
 .card-footer .critical-message {
   color: #f33253;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.delete-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 0;
+  color: #e23b56;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  color: #b91c38;
 }
 
 .details-disclosure {
