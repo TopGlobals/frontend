@@ -17,7 +17,7 @@ const mainMenuItems = [
   { label: 'layout.menu.items.reports', to: '/reports', icon: 'pi pi-chart-bar' },
 ];
 
-const systemMenuItems = [{ label: 'layout.menu.items.profiles', to: '/profiles', icon: 'pi pi-cog' }];
+const systemMenuItems = [{ label: 'layout.menu.items.settings', to: '/settings', icon: 'pi pi-cog' }];
 
 const pageTitle = computed(() => {
   if (route.meta.titleKey) return t(route.meta.titleKey);
