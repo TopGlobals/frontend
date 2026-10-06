@@ -96,10 +96,6 @@ watch(search, (value) => {
                   aria-hidden="true"
                 />
                 <span>{{ t(item.label) }}</span>
-                <span
-                  v-if="item.to === '/alerts'"
-                  class="alert-count"
-                >3</span>
               </router-link>
             </li>
           </ul>
