@@ -299,11 +299,6 @@ nav {
 }
 
 .nav-item:hover,
-.nav-item-active {
-  color: #008b68;
-  background: #eafbf4;
-  border-color: #c5f4df;
-}
 
 .nav-item-active > i,
 .nav-item:hover > i {
@@ -313,17 +308,6 @@ nav {
 .nav-item-active .laboratory-icon,
 .nav-item:hover .laboratory-icon {
   color: #008b68;
-}
-
-.alert-count {
-  min-width: 24px;
-  margin-left: auto;
-  color: #f43f5e;
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
-  border-radius: 999px;
-  font-size: 11px;
-  text-align: center;
 }
 
 .sidebar-footer {

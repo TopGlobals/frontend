@@ -21,19 +21,9 @@ defineProps({
 
 <template>
   <section class="panel">
-    <header
-      class="section-heading"
-      :class="{ 'section-heading-icon': icon }"
-    >
-      <span
-        v-if="icon"
-        class="section-icon"
-        :class="iconClass"
-      >
-        <i
-          :class="icon"
-          aria-hidden="true"
-        />
+    <header class="section-heading" :class="{ 'section-heading-icon': icon }">
+      <span v-if="icon" class="section-icon" :class="iconClass">
+        <i :class="icon" aria-hidden="true" />
       </span>
       <div>
         <h2>{{ title }}</h2>
@@ -82,17 +72,5 @@ defineProps({
   place-items: center;
   border: 1px solid;
   border-radius: 12px;
-}
-
-.section-icon-warning {
-  color: #f08a00;
-  background: #fffbeb;
-  border-color: #fde7a2;
-}
-
-.section-icon-notification {
-  color: #f08a00;
-  background: #fffbeb;
-  border-color: #fde7a2;
 }
 </style>
