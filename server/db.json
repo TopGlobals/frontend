@@ -1,5 +1,482 @@
 {
-  "alerts": [],
+  "alerts": [
+    {
+      "id": "6e8c1618-0a00-53ec-ac76-cdb71c5a1979",
+      "code": "ALT-20261005-001",
+      "title": "Temperature above safe range",
+      "message": "Vaccine refrigerator R-02 is reading 9.6 °C, 1.6 °C above its 8.0 °C limit. The compressor has not restarted after the last defrost cycle.",
+      "severity": "critical",
+      "status": "raised",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Vaccine Storage Room",
+      "storageUnitName": "Vaccine refrigerator R-02",
+      "sensorCode": "TS-204",
+      "readingCelsius": 9.6,
+      "safeMinCelsius": 2.0,
+      "safeMaxCelsius": 8.0,
+      "raisedAt": "2026-10-05T17:38:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": 6.8
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": 7.1
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": 7.5
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": 7.9
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": 8.4
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": 9.0
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": 9.6
+        }
+      ]
+    },
+    {
+      "id": "45ffdab0-fc01-57e8-b447-e2383f0d4619",
+      "code": "ALT-20261005-002",
+      "title": "Ultra-low freezer warming",
+      "message": "Freezer F-01 is at -64.2 °C, above its -70.0 °C limit. It stores plasma and DNA samples from the biobank collection.",
+      "severity": "critical",
+      "status": "raised",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Biobank B2",
+      "storageUnitName": "Ultra-low freezer F-01",
+      "sensorCode": "TS-118",
+      "readingCelsius": -64.2,
+      "safeMinCelsius": -86.0,
+      "safeMaxCelsius": -70.0,
+      "raisedAt": "2026-10-05T17:22:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": -72.4
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": -71.1
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": -69.6
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": -68.3
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": -66.9
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": -65.5
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": -64.2
+        }
+      ]
+    },
+    {
+      "id": "06a55f99-a06b-5252-a13a-44e34458e137",
+      "code": "ALT-20261005-003",
+      "title": "Temperature below safe range",
+      "message": "Reagent refrigerator R-07 dropped to 0.8 °C. Enzyme kits stored at 2 to 8 °C can lose activity if they freeze.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Clinical Biochemistry Lab",
+      "storageUnitName": "Reagent refrigerator R-07",
+      "sensorCode": "TS-311",
+      "readingCelsius": 0.8,
+      "safeMinCelsius": 2.0,
+      "safeMaxCelsius": 8.0,
+      "raisedAt": "2026-10-05T16:56:00Z",
+      "acknowledgedAt": "2026-10-05T17:03:00Z",
+      "acknowledgedBy": "Lucía Ramos",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [
+        {
+          "description": "Raised the thermostat set point from 2 °C to 5 °C and moved the enzyme kits to the upper shelf.",
+          "technicianName": "Lucía Ramos",
+          "takenAt": "2026-10-05T17:09:00Z"
+        }
+      ],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": 1.2
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": 0.9
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": 0.8
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": 1.0
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": 1.3
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": 1.7
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": 2.1
+        }
+      ]
+    },
+    {
+      "id": "35a04632-0538-5a97-bcdf-607b6fff95ad",
+      "code": "ALT-20261005-004",
+      "title": "Temperature rising toward limit",
+      "message": "Blood bank refrigerator R-03 has risen 0.5 °C per hour and is projected to exceed 6.0 °C in less than 2 hours. Check the cooling system.",
+      "severity": "warning",
+      "status": "raised",
+      "sourceType": "preventive-trend",
+      "laboratoryName": "Clinical Biochemistry Lab",
+      "storageUnitName": "Blood bank refrigerator R-03",
+      "sensorCode": "TS-207",
+      "readingCelsius": 5.4,
+      "safeMinCelsius": 2.0,
+      "safeMaxCelsius": 6.0,
+      "raisedAt": "2026-10-05T15:54:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": 5.15
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": 5.2
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": 5.24
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": 5.28
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": 5.32
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": 5.36
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": 5.4
+        }
+      ]
+    },
+    {
+      "id": "92bb4edd-7659-5f08-9e42-1a0e60ed215b",
+      "code": "ALT-20261005-005",
+      "title": "Freezer temperature drifting",
+      "message": "Freezer F-04 has warmed steadily for 3 hours and is 1.2 °C from its -15.0 °C limit. The door seal may be worn.",
+      "severity": "warning",
+      "status": "acknowledged",
+      "sourceType": "preventive-trend",
+      "laboratoryName": "Microbiology Lab",
+      "storageUnitName": "Freezer F-04",
+      "sensorCode": "TS-412",
+      "readingCelsius": -16.2,
+      "safeMinCelsius": -25.0,
+      "safeMaxCelsius": -15.0,
+      "raisedAt": "2026-10-05T14:29:00Z",
+      "acknowledgedAt": "2026-10-05T14:54:00Z",
+      "acknowledgedBy": "Diego Salas",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": -16.8
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": -16.7
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": -16.6
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": -16.5
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": -16.4
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": -16.3
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": -16.2
+        }
+      ]
+    },
+    {
+      "id": "8381fd28-cec5-5357-88c5-77562759116e",
+      "code": "ALT-20261005-006",
+      "title": "Sensor calibration due",
+      "message": "The calibration certificate of sensor TS-305 expires in 3 days. Schedule a calibration to keep its readings valid for audits.",
+      "severity": "info",
+      "status": "raised",
+      "sourceType": "calibration-due",
+      "laboratoryName": "Clinical Biochemistry Lab",
+      "storageUnitName": "Sample refrigerator R-09",
+      "sensorCode": "TS-305",
+      "readingCelsius": null,
+      "safeMinCelsius": null,
+      "safeMaxCelsius": null,
+      "raisedAt": "2026-10-05T13:44:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": []
+    },
+    {
+      "id": "30adfe2b-f5bc-5aa4-bcdc-6d4e0acbf489",
+      "code": "ALT-20261005-007",
+      "title": "Temperature back within range",
+      "message": "Vaccine refrigerator R-01 returned to 4.9 °C after the scheduled defrost cycle and has been stable for 30 minutes.",
+      "severity": "info",
+      "status": "closed",
+      "sourceType": "thermal-status-normalized",
+      "laboratoryName": "Vaccine Storage Room",
+      "storageUnitName": "Vaccine refrigerator R-01",
+      "sensorCode": "TS-201",
+      "readingCelsius": 4.9,
+      "safeMinCelsius": 2.0,
+      "safeMaxCelsius": 8.0,
+      "raisedAt": "2026-10-05T14:44:00Z",
+      "acknowledgedAt": "2026-10-05T15:44:00Z",
+      "acknowledgedBy": "Ana Torres",
+      "resolvedAt": "2026-10-05T15:44:00Z",
+      "resolvedBy": "Ana Torres",
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T14:14:00Z",
+          "valueCelsius": 7.6
+        },
+        {
+          "takenAt": "2026-10-05T14:19:00Z",
+          "valueCelsius": 7.0
+        },
+        {
+          "takenAt": "2026-10-05T14:24:00Z",
+          "valueCelsius": 6.3
+        },
+        {
+          "takenAt": "2026-10-05T14:29:00Z",
+          "valueCelsius": 5.8
+        },
+        {
+          "takenAt": "2026-10-05T14:34:00Z",
+          "valueCelsius": 5.4
+        },
+        {
+          "takenAt": "2026-10-05T14:39:00Z",
+          "valueCelsius": 5.1
+        },
+        {
+          "takenAt": "2026-10-05T14:44:00Z",
+          "valueCelsius": 4.9
+        }
+      ]
+    },
+    {
+      "id": "8614afe8-004d-5565-8688-5af3bdb53aed",
+      "code": "ALT-20261005-008",
+      "title": "Cold room temperature excursion",
+      "message": "Cold room CR-1 reached 10.4 °C, above its 8.0 °C limit, while the door was held open during a vaccine delivery.",
+      "severity": "critical",
+      "status": "closed",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Vaccine Storage Room",
+      "storageUnitName": "Cold room CR-1",
+      "sensorCode": "TS-220",
+      "readingCelsius": 10.4,
+      "safeMinCelsius": 2.0,
+      "safeMaxCelsius": 8.0,
+      "raisedAt": "2026-10-05T12:44:00Z",
+      "acknowledgedAt": "2026-10-05T12:52:00Z",
+      "acknowledgedBy": "Lucía Ramos",
+      "resolvedAt": "2026-10-05T13:34:00Z",
+      "resolvedBy": "Lucía Ramos",
+      "correctiveActions": [
+        {
+          "description": "Moved vaccine lots 2291 and 2292 to backup refrigerator R-05 and replaced the door gasket of CR-1.",
+          "technicianName": "Lucía Ramos",
+          "takenAt": "2026-10-05T13:32:00Z"
+        }
+      ],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T13:04:00Z",
+          "valueCelsius": 10.4
+        },
+        {
+          "takenAt": "2026-10-05T13:09:00Z",
+          "valueCelsius": 9.8
+        },
+        {
+          "takenAt": "2026-10-05T13:14:00Z",
+          "valueCelsius": 9.1
+        },
+        {
+          "takenAt": "2026-10-05T13:19:00Z",
+          "valueCelsius": 8.5
+        },
+        {
+          "takenAt": "2026-10-05T13:24:00Z",
+          "valueCelsius": 7.9
+        },
+        {
+          "takenAt": "2026-10-05T13:29:00Z",
+          "valueCelsius": 7.2
+        },
+        {
+          "takenAt": "2026-10-05T13:34:00Z",
+          "valueCelsius": 6.6
+        }
+      ]
+    },
+    {
+      "id": "e02cce52-7ec3-5079-bd4a-dbe57dc5302f",
+      "code": "ALT-20261005-009",
+      "title": "Temperature rising toward limit",
+      "message": "Plasma freezer F-02 was projected to exceed -25.0 °C within 2 hours.",
+      "severity": "warning",
+      "status": "closed",
+      "sourceType": "preventive-trend",
+      "laboratoryName": "Biobank B2",
+      "storageUnitName": "Plasma freezer F-02",
+      "sensorCode": "TS-131",
+      "readingCelsius": -27.1,
+      "safeMinCelsius": -40.0,
+      "safeMaxCelsius": -25.0,
+      "raisedAt": "2026-10-04T14:44:00Z",
+      "acknowledgedAt": "2026-10-04T15:04:00Z",
+      "acknowledgedBy": "Diego Salas",
+      "resolvedAt": "2026-10-04T16:44:00Z",
+      "resolvedBy": "Diego Salas",
+      "correctiveActions": [
+        {
+          "description": "Defrosted the evaporator coil. Temperature stable at -32 °C.",
+          "technicianName": "Diego Salas",
+          "takenAt": "2026-10-04T16:39:00Z"
+        }
+      ],
+      "readings": [
+        {
+          "takenAt": "2026-10-04T16:14:00Z",
+          "valueCelsius": -27.1
+        },
+        {
+          "takenAt": "2026-10-04T16:19:00Z",
+          "valueCelsius": -28.3
+        },
+        {
+          "takenAt": "2026-10-04T16:24:00Z",
+          "valueCelsius": -29.5
+        },
+        {
+          "takenAt": "2026-10-04T16:29:00Z",
+          "valueCelsius": -30.6
+        },
+        {
+          "takenAt": "2026-10-04T16:34:00Z",
+          "valueCelsius": -31.4
+        },
+        {
+          "takenAt": "2026-10-04T16:39:00Z",
+          "valueCelsius": -31.9
+        },
+        {
+          "takenAt": "2026-10-04T16:44:00Z",
+          "valueCelsius": -32.0
+        }
+      ]
+    },
+    {
+      "id": "e92f7ee9-9b92-59f9-ad23-f4eb7282ab3b",
+      "code": "ALT-20261005-010",
+      "title": "Sensor calibration due",
+      "message": "The calibration certificate of sensor TS-118 was about to expire.",
+      "severity": "info",
+      "status": "closed",
+      "sourceType": "calibration-due",
+      "laboratoryName": "Biobank B2",
+      "storageUnitName": "Ultra-low freezer F-01",
+      "sensorCode": "TS-118",
+      "readingCelsius": null,
+      "safeMinCelsius": null,
+      "safeMaxCelsius": null,
+      "raisedAt": "2026-09-29T17:44:00Z",
+      "acknowledgedAt": "2026-09-30T17:44:00Z",
+      "acknowledgedBy": "Ana Torres",
+      "resolvedAt": "2026-09-30T17:44:00Z",
+      "resolvedBy": "Ana Torres",
+      "correctiveActions": [
+        {
+          "description": "Sensor recalibrated by the vendor. Certificate valid until next October.",
+          "technicianName": "Ana Torres",
+          "takenAt": "2026-09-30T17:44:00Z"
+        }
+      ],
+      "readings": []
+    }
+  ],
   "analytics": [],
   "history": [],
   "laboratories": [],
