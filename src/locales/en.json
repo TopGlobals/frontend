@@ -81,13 +81,15 @@
       "thermal-excursion": "Thermal excursion",
       "preventive-trend": "Preventive trend",
       "thermal-status-normalized": "Temperature back in range",
-      "calibration-due": "Calibration due"
+      "calibration-due": "Calibration due",
+      "manual-report": "Reported by staff"
     },
     "actions": {
       "viewDetails": "View details",
       "acknowledge": "Acknowledge",
       "resolve": "Resolve",
-      "markResolved": "Mark as resolved"
+      "markResolved": "Mark as resolved",
+      "addAlert": "Add alert"
     },
     "list": {
       "heading": "Alert list",
@@ -150,6 +152,31 @@
       "cancel": "Cancel",
       "confirm": "Confirm resolution"
     },
+    "createDialog": {
+      "title": "Add alert",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Example: Freezer F-03 door left open",
+      "titleError": "Enter a title for the alert.",
+      "severityLabel": "Severity",
+      "severityPlaceholder": "Select the severity",
+      "severityError": "Select how urgent the alert is.",
+      "severityHint": {
+        "critical": "Needs immediate action. It escalates if no one acknowledges it within {minutes} min.",
+        "warning": "Needs attention soon, before it becomes critical.",
+        "info": "For awareness only. No action is needed."
+      },
+      "laboratoryLabel": "Laboratory",
+      "laboratoryPlaceholder": "Select or type a laboratory",
+      "laboratoryError": "Select the laboratory where it happened.",
+      "messageLabel": "Details",
+      "messagePlaceholder": "Describe what happened, where, and anything the team should know.",
+      "messageError": "Enter at least {min} characters describing the alert.",
+      "counter": "{count}/{max}",
+      "ongoingLabel": "Is it still ongoing?",
+      "resolvedHint": "It will be saved as resolved by you, with these details as the resolution note.",
+      "cancel": "Cancel",
+      "confirm": "Add alert"
+    },
     "toast": {
       "acknowledgedTitle": "Alert acknowledged",
       "acknowledgedDetail": "You are now handling \"{title}\". Escalation stopped.",
@@ -159,7 +186,10 @@
       "already-acknowledged": "{name} is already handling this alert.",
       "already-closed": "{name} already resolved this alert.",
       "corrective-action-required": "Describe the corrective action before resolving a critical alert.",
-      "networkError": "The change could not be saved. Check your connection and try again."
+      "networkError": "The change could not be saved. Check your connection and try again.",
+      "createdTitle": "Alert added",
+      "createdDetail": "\"{title}\" was added to the alert feed.",
+      "notCreatedTitle": "Alert not added"
     },
     "time": {
       "justNow": "just now",

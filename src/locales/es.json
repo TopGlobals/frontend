@@ -81,13 +81,15 @@
       "thermal-excursion": "Excursión térmica",
       "preventive-trend": "Tendencia preventiva",
       "thermal-status-normalized": "Temperatura de vuelta en rango",
-      "calibration-due": "Calibración pendiente"
+      "calibration-due": "Calibración pendiente",
+      "manual-report": "Reportada por el personal"
     },
     "actions": {
       "viewDetails": "Ver detalles",
       "acknowledge": "Atender",
       "resolve": "Resolver",
-      "markResolved": "Marcar como resuelta"
+      "markResolved": "Marcar como resuelta",
+      "addAlert": "Agregar alerta"
     },
     "list": {
       "heading": "Lista de alertas",
@@ -150,6 +152,31 @@
       "cancel": "Cancelar",
       "confirm": "Confirmar resolución"
     },
+    "createDialog": {
+      "title": "Agregar alerta",
+      "titleLabel": "Título",
+      "titlePlaceholder": "Ejemplo: Puerta del congelador F-03 abierta",
+      "titleError": "Ingrese un título para la alerta.",
+      "severityLabel": "Severidad",
+      "severityPlaceholder": "Seleccione la severidad",
+      "severityError": "Seleccione qué tan urgente es la alerta.",
+      "severityHint": {
+        "critical": "Requiere acción inmediata. Se escala si nadie la atiende en {minutes} min.",
+        "warning": "Requiere atención pronto, antes de que se vuelva crítica.",
+        "info": "Solo informativa. No requiere ninguna acción."
+      },
+      "laboratoryLabel": "Laboratorio",
+      "laboratoryPlaceholder": "Seleccione o escriba un laboratorio",
+      "laboratoryError": "Seleccione el laboratorio donde ocurrió.",
+      "messageLabel": "Detalles",
+      "messagePlaceholder": "Describa qué ocurrió, dónde y lo que el equipo debe saber.",
+      "messageError": "Ingrese al menos {min} caracteres que describan la alerta.",
+      "counter": "{count}/{max}",
+      "ongoingLabel": "¿Sigue en curso?",
+      "resolvedHint": "Se guardará como resuelta por usted, con estos detalles como nota de resolución.",
+      "cancel": "Cancelar",
+      "confirm": "Agregar alerta"
+    },
     "toast": {
       "acknowledgedTitle": "Alerta atendida",
       "acknowledgedDetail": "Ahora usted atiende \"{title}\". Se detuvo el escalamiento.",
@@ -159,7 +186,10 @@
       "already-acknowledged": "{name} ya está atendiendo esta alerta.",
       "already-closed": "{name} ya resolvió esta alerta.",
       "corrective-action-required": "Describa la acción correctiva antes de resolver una alerta crítica.",
-      "networkError": "No se pudo guardar el cambio. Revise su conexión e intente de nuevo."
+      "networkError": "No se pudo guardar el cambio. Revise su conexión e intente de nuevo.",
+      "createdTitle": "Alerta agregada",
+      "createdDetail": "\"{title}\" se agregó al listado de alertas.",
+      "notCreatedTitle": "Alerta no agregada"
     },
     "time": {
       "justNow": "justo ahora",
