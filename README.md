@@ -208,17 +208,17 @@ npm run lint
 
 Optional mock backend:
 
-The project includes a mock data structure under `server/` and an API base endpoint pattern for consumption via environment configuration. If you want to run a local mock API, expose the backend on a URL such as:
+The Laboratories page loads, creates, and deletes records through JSON Server, which writes them to `server/db.json`. Start the mock API and frontend in separate terminals:
 
 ```bash
-VITE_CRYOVIGIL_PLATFORM_API_URL=http://localhost:5000/api/v1
+npx json-server server/db.json --port 3000
 ```
-
-Then serve the mock data with a tool such as JSON Server:
 
 ```bash
-npx json-server server/db.json --routes server/routes.json --port 5000
+npm run dev
 ```
+
+The frontend uses `http://localhost:3000` by default, matching JSON Server's resource endpoints. Override it with `VITE_CRYOVIGIL_PLATFORM_API_URL` if the mock API is hosted elsewhere.
 
 ## License
 
