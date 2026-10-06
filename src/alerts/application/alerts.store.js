@@ -9,7 +9,7 @@ import { computed, ref } from 'vue';
 import { AlertsApi } from '../infrastructure/alerts-api.js';
 import { AlertAssembler } from '../infrastructure/alert.assembler.js';
 import { AlertSeverity } from '../domain/model/alert-severity.enum.js';
-import { AlertTransitionError } from '../domain/model/alert.entity.js';
+import { Alert, AlertTransitionError } from '../domain/model/alert.entity.js';
 
 const alertsApi = new AlertsApi();
 
@@ -139,6 +139,44 @@ const useAlertsStore = defineStore('alerts', () => {
     });
   }
 
+  /**
+   * Builds the next sequential alert code of the day (e.g. ALT-20261005-004).
+   * @param {Date} now - Time of the report.
+   * @returns {string} Unused alert code.
+   */
+  function nextAlertCode(now) {
+    const day = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+      .map((part) => String(part).padStart(2, '0'))
+      .join('');
+    const prefix = `ALT-${day}-`;
+    const lastNumber = alerts.value
+      .filter((alert) => alert.code?.startsWith(prefix))
+      .reduce((max, alert) => Math.max(max, Number(alert.code.slice(prefix.length)) || 0), 0);
+    return `${prefix}${String(lastNumber + 1).padStart(3, '0')}`;
+  }
+
+  /**
+   * Registers an alert reported manually by the current user.
+   * @param {Object} draft - Title, message, severity, laboratoryName and ongoing flag.
+   * @returns {Promise<import('../domain/model/alert.entity.js').Alert>} Created alert.
+   * @throws {AlertTransitionError} When a resolved critical alert has no valid note.
+   */
+  function createAlert(draft) {
+    const now = new Date();
+    return Promise.resolve()
+      .then(() => Alert.report({ ...draft, code: nextAlertCode(now) }, currentUser.fullName, now))
+      .then((alert) => {
+        const resource = AlertAssembler.toResourceFromEntity(alert);
+        delete resource.id; // The server assigns the identifier.
+        return alertsApi.createAlert(resource);
+      })
+      .then((response) => {
+        const created = AlertAssembler.toEntityFromResource(response.data);
+        alerts.value.push(created);
+        return created;
+      });
+  }
+
   return {
     alerts,
     errors,
@@ -151,6 +189,7 @@ const useAlertsStore = defineStore('alerts', () => {
     getAlertById,
     acknowledgeAlert,
     resolveAlert,
+    createAlert,
   };
 });
 
