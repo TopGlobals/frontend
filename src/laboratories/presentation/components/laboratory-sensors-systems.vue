@@ -13,7 +13,7 @@ const emit = defineEmits(['update:modelValue']);
 const { t } = useI18n();
 
 const sensors = [
-  { key: 'temperature', icon: 'pi pi-thermometer' },
+  { key: 'temperature', icon: 'pi pi-gauge' },
   { key: 'airQuality', icon: 'pi pi-wifi' },
   { key: 'aiDetection', icon: 'pi pi-microchip-ai' },
   { key: 'airConditioning', icon: 'pi pi-sun' },

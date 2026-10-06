@@ -192,7 +192,7 @@ async function saveLaboratory() {
         <article class="threshold-card threshold-temperature">
           <header class="threshold-title">
             <span class="threshold-icon"><i
-              class="pi pi-thermometer"
+              class="pi pi-gauge"
               aria-hidden="true"
             /></span>
             <div>
@@ -345,12 +345,12 @@ async function saveLaboratory() {
             <small>{{ t('laboratories.create.pushDescription') }}</small>
           </span>
         </label>
-        <label class="notification-card critical-option">
+        <label class="notification-card">
           <input
             v-model="notifications.criticalOnly"
             type="checkbox"
           >
-          <span class="notification-icon icon-warning"><i
+          <span class="notification-icon icon-blue"><i
             class="pi pi-exclamation-triangle"
             aria-hidden="true"
           /></span>
@@ -680,16 +680,6 @@ async function saveLaboratory() {
 .icon-orange {
   color: #f08a00;
   background: #fffbeb;
-}
-
-.critical-option {
-  background: #fffdfa;
-  border-color: #ffce52;
-}
-
-.icon-warning {
-  color: #d97706;
-  background: #fff3c4;
 }
 
 @media (max-width: 1180px) {
