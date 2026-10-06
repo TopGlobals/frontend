@@ -1,4 +1,5 @@
 import { AlertSeverity, AlertSeverityRank } from './alert-severity.enum.js';
+import { AlertSourceType } from './alert-source-type.enum.js';
 import { AlertStatus } from './alert-status.enum.js';
 import { CorrectiveAction } from './corrective-action.entity.js';
 
@@ -33,6 +34,45 @@ export class AlertTransitionError extends Error {
  * @class Alert
  */
 export class Alert {
+  /** Maximum length of the title of a reported alert. */
+  static MAX_TITLE_LENGTH = 80;
+
+  /** Minimum length of the details of a reported alert. */
+  static MIN_MESSAGE_LENGTH = CorrectiveAction.MIN_DESCRIPTION_LENGTH;
+
+  /** Maximum length of the details of a reported alert. */
+  static MAX_MESSAGE_LENGTH = CorrectiveAction.MAX_DESCRIPTION_LENGTH;
+
+  /**
+   * Creates an alert reported manually by laboratory staff.
+   * When the situation is no longer ongoing, the alert is recorded as resolved by the
+   * reporter, with the reported details as the resolution note.
+   * @param {Object} draft - Data entered in the report form.
+   * @param {string} draft.code - Code assigned to the new alert.
+   * @param {string} draft.title - Short summary of the alert.
+   * @param {string} draft.message - What was observed.
+   * @param {string} draft.severity - One of AlertSeverity.
+   * @param {string} draft.laboratoryName - Laboratory where it happened.
+   * @param {boolean} draft.ongoing - Whether the situation is still happening.
+   * @param {string} userName - Person reporting the alert.
+   * @param {Date} now - Time of the report.
+   * @returns {Alert} Reported alert.
+   * @throws {AlertTransitionError} When a resolved critical alert has no valid note.
+   */
+  static report({ code, title, message, severity, laboratoryName, ongoing }, userName, now) {
+    const alert = new Alert({
+      code,
+      title: title.trim(),
+      message: message.trim(),
+      severity,
+      laboratoryName: laboratoryName.trim(),
+      sourceType: AlertSourceType.MANUAL_REPORT,
+      raisedAt: now,
+    });
+    if (!ongoing) alert.resolve(alert.message, userName, now);
+    return alert;
+  }
+
   /**
    * @param {Object} params - Entity attributes.
    * @param {?string} [params.id=null] - Alert identifier.
