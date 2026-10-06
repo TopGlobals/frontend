@@ -263,7 +263,7 @@ function confirmDelete(laboratory) {
           <span :class="{ 'critical-message': lab.status === 'critical' }">{{ labUpdated(lab) }}</span>
           <div class="card-actions">
             <details class="details-disclosure">
-              <summary>{{ t('laboratories.panel.viewDetails') }} <span aria-hidden="true">→</span></summary>
+              <summary>{{ t('laboratories.panel.viewDetails') }}</summary>
               <p><strong>{{ t('laboratories.panel.laboratoryId') }}:</strong> {{ lab.code }}</p>
               <p>
                 <strong>{{ t('laboratories.panel.airQualityDetails') }}:</strong> {{ lab.airQuality ?? t('laboratories.panel.noData') }}<template v-if="lab.airQuality !== null">
@@ -272,6 +272,17 @@ function confirmDelete(laboratory) {
               </p>
               <p><strong>{{ t('laboratories.panel.unknownDetections') }}:</strong> {{ lab.unknown ?? t('laboratories.panel.noData') }}</p>
             </details>
+            <router-link
+              class="edit-button"
+              :to="`/laboratories/${encodeURIComponent(lab.id)}/edit`"
+              :aria-label="t('laboratories.panel.editAriaLabel', { name: lab.name })"
+            >
+              <i
+                class="pi pi-pencil"
+                aria-hidden="true"
+              />
+              {{ t('laboratories.panel.edit') }}
+            </router-link>
             <button
               class="delete-button"
               type="button"
@@ -694,6 +705,16 @@ function confirmDelete(laboratory) {
   font: inherit;
   font-size: 11px;
   cursor: pointer;
+}
+
+.edit-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #008f6b;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .delete-button:hover {
