@@ -338,7 +338,7 @@
       "passwordRequirement": "Password must be 8+ characters",
       "passwordTooShort": "Password must be at least 8 characters.",
       "passwordMismatch": "The new passwords do not match.",
-      "passwordSaved": "Password updated.",
+      "passwordSaved": "Password update simulated; authentication is not connected in this frontend.",
       "updatePassword": "Update Password",
       "twoFactorTitle": "Two-Factor Authentication (2FA)",
       "twoFactorDescription": "Add an extra layer of security to your account by requiring more than just a password to log in.",

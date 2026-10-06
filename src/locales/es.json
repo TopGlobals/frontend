@@ -338,7 +338,7 @@
       "passwordRequirement": "La contraseña debe tener al menos 8 caracteres",
       "passwordTooShort": "La contraseña debe tener al menos 8 caracteres.",
       "passwordMismatch": "Las nuevas contraseñas no coinciden.",
-      "passwordSaved": "Se actualizó la contraseña.",
+      "passwordSaved": "Cambio de contraseña simulado; la autenticación no está conectada en esta interfaz.",
       "updatePassword": "Actualizar contraseña",
       "twoFactorTitle": "Autenticación de dos factores (2FA)",
       "twoFactorDescription": "Añada una capa adicional de seguridad al requerir algo más que una contraseña para iniciar sesión.",
