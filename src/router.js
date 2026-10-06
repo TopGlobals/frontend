@@ -11,7 +11,6 @@ import settingsRoutes from './settings/presentation/settings-routes.js';
 import iamRoutes from "./iam/presentation/iam-routes.js";
 import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 */
-
 const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');
 
 const routes = [
