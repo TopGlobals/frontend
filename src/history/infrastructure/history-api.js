@@ -80,7 +80,6 @@ const mockHistoryData = [
     created_at: getIsoStringWithTime(yesterday, 22, 15),
   },
 ];
-
 export const HistoryApi = {
   async getEvents() {
     try {

@@ -10,4 +10,5 @@ export const HistoryResource = {
   actions_logged: [],
   chart_data: [],
   created_at: '',
+
 };
