@@ -2,11 +2,13 @@
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import useSettingsStore from '../../../settings/application/settings.store.js';
 import LanguageSwitcher from './language-switcher.vue';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
+const settingsStore = useSettingsStore();
 const search = ref(typeof route.query.search === 'string' ? route.query.search : '');
 
 const mainMenuItems = [
@@ -17,7 +19,9 @@ const mainMenuItems = [
   { label: 'layout.menu.items.reports', to: '/reports', icon: 'pi pi-chart-bar' },
 ];
 
-const systemMenuItems = [{ label: 'layout.menu.items.settings', to: '/settings', icon: 'pi pi-cog' }];
+const systemMenuItems = [
+  { label: 'layout.menu.items.settings', to: '/settings', icon: 'pi pi-cog' },
+];
 
 const pageTitle = computed(() => {
   if (route.meta.titleKey) return t(route.meta.titleKey);
@@ -27,14 +31,14 @@ const pageTitle = computed(() => {
 });
 
 const pageSubtitle = computed(() =>
-  route.meta.subtitleKey ? t(route.meta.subtitleKey) : (route.meta.subtitle ?? ''),
+  route.meta.subtitleKey ? t(route.meta.subtitleKey) : (route.meta.subtitle ?? '')
 );
 
 watch(
   () => route.query.search,
   (value) => {
     search.value = typeof value === 'string' ? value : '';
-  },
+  }
 );
 
 watch(search, (value) => {
@@ -134,16 +138,12 @@ watch(search, (value) => {
           <a href="mailto:support@topglobals.com">{{ t('layout.help.documentation') }}</a>
         </section>
         <div class="user-profile">
-          <span
-            class="avatar"
-            aria-hidden="true"
-          >AV</span>
           <span class="user-copy">
-            <strong>Dr. Alex Vance</strong>
+            <strong>{{ settingsStore.profile.name }}</strong>
             <small>{{ t('layout.profile.role') }}</small>
           </span>
           <button
-            class="logout-button"
+            class="cryo-button cryo-button-link cryo-button-danger cryo-button-icon logout-button"
             type="button"
             aria-label="Log out"
           >
@@ -299,7 +299,6 @@ nav {
 }
 
 .nav-item:hover,
-
 .nav-item-active > i,
 .nav-item:hover > i {
   color: #008b68;
@@ -354,20 +353,6 @@ nav {
   border-top: 1px solid #edf0f5;
 }
 
-.avatar {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  color: #087e64;
-  background: #d8f4e8;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px #b5ead3;
-  font-size: 11px;
-  font-weight: 700;
-}
-
 .user-copy strong {
   font-size: 11px;
 }
@@ -379,10 +364,6 @@ nav {
 
 .logout-button {
   margin-left: auto;
-  padding: 7px;
-  color: #f43f5e;
-  background: transparent;
-  border: 0;
 }
 
 .main-wrapper {
