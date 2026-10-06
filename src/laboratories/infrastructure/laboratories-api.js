@@ -1,20 +1,25 @@
 import { BaseApi } from '../../shared/infrastructure/base-api.js';
-import { Laboratory } from '../domain/model/laboratory.js';
+import { LaboratoriesAssembler } from './laboratories-assembler.js';
 
 const http = new BaseApi().http;
 const collectionPath = '/laboratories';
 
 const laboratoriesApi = {
   async getAll() {
-    const { data } = await http.get(collectionPath);
-    if (!Array.isArray(data)) {
-      throw new TypeError('Laboratory API response must be an array.');
-    }
-    return data.map((laboratory) => Laboratory.fromJSON(laboratory));
+    const response = await http.get(collectionPath);
+    return LaboratoriesAssembler.toEntitiesFromResponse(response);
+  },
+  async getById(id) {
+    const response = await http.get(`${collectionPath}/${encodeURIComponent(id)}`);
+    return LaboratoriesAssembler.toEntityFromResponse(response);
   },
   async create(laboratory) {
-    const { data } = await http.post(collectionPath, laboratory);
-    return Laboratory.fromJSON(data);
+    const response = await http.post(collectionPath, laboratory);
+    return LaboratoriesAssembler.toEntityFromResponse(response);
+  },
+  async update(id, laboratory) {
+    const response = await http.put(`${collectionPath}/${encodeURIComponent(id)}`, laboratory);
+    return LaboratoriesAssembler.toEntityFromResponse(response);
   },
   async remove(id) {
     await http.delete(`${collectionPath}/${encodeURIComponent(id)}`);

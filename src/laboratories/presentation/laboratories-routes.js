@@ -17,6 +17,15 @@ const laboratoriesRoutes = [
       subtitleKey: 'laboratories.create.subtitle',
     },
   },
+  {
+    path: '/laboratories/:id/edit',
+    name: 'LaboratoryEdit',
+    component: () => import('./views/laboratory-create.vue'),
+    meta: {
+      titleKey: 'laboratories.create.editTitle',
+      subtitleKey: 'laboratories.create.editSubtitle',
+    },
+  },
 ];
 
 export default laboratoriesRoutes;

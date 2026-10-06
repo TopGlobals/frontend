@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { Laboratory } from '../../domain/model/laboratory.js';
 import LaboratoryFormSection from '../components/laboratory-form-section.vue';
@@ -8,8 +9,12 @@ import LaboratorySensorsSystems from '../components/laboratory-sensors-systems.v
 import useLaboratoriesStore from '../../application/laboratories.store.js';
 
 const { t } = useI18n();
+const route = useRoute();
 const router = useRouter();
 const laboratoriesStore = useLaboratoriesStore();
+const laboratoryId = typeof route.params.id === 'string' ? route.params.id : null;
+const loading = ref(false);
+const laboratoryLoaded = ref(!laboratoryId);
 const form = reactive({
   name: '',
   code: '',
@@ -29,11 +34,47 @@ const form = reactive({
 const sensorStates = ref(Laboratory.defaultSensors());
 const notifications = reactive({ email: true, sms: true, push: false, criticalOnly: true });
 const saveError = ref(false);
+const loadError = ref(false);
+
+function populateForm(laboratory) {
+  form.name = laboratory.name;
+  form.code = laboratory.code;
+  form.building = laboratory.building;
+  form.floor = laboratory.floor;
+  form.room = laboratory.room;
+  form.type = laboratory.type;
+  form.description = laboratory.description;
+  form.temperatureMin = laboratory.temperatureMin;
+  form.temperatureMax = laboratory.temperatureMax;
+  form.co2Max = laboratory.co2Max;
+  form.gasSensitivity = laboratory.gasSensitivity;
+  form.vibrationMax = laboratory.vibrationMax;
+  form.escalation = laboratory.escalation;
+  sensorStates.value = { ...laboratory.sensors };
+  notifications.email = laboratory.notifications.email;
+  notifications.sms = laboratory.notifications.sms;
+  notifications.push = laboratory.notifications.push;
+  notifications.criticalOnly = laboratory.notifications.criticalOnly;
+}
+
+onMounted(async () => {
+  if (!laboratoryId) return;
+  loading.value = true;
+  try {
+    const laboratory = await laboratoriesStore.getLaboratory(laboratoryId);
+    populateForm(laboratory);
+    laboratoryLoaded.value = true;
+  } catch {
+    loadError.value = true;
+  } finally {
+    loading.value = false;
+  }
+});
 
 async function saveLaboratory() {
   saveError.value = false;
   try {
-    await laboratoriesStore.addLaboratory({
+    const details = {
       name: form.name.trim(),
       code: form.code.trim(),
       building: form.building,
@@ -49,7 +90,12 @@ async function saveLaboratory() {
       escalation: form.escalation,
       sensors: { ...sensorStates.value },
       notifications: { ...notifications },
-    });
+    };
+    if (laboratoryId) {
+      await laboratoriesStore.updateLaboratory(laboratoryId, details);
+    } else {
+      await laboratoriesStore.addLaboratory(details);
+    }
     await router.push('/laboratories');
   } catch {
     saveError.value = true;
@@ -74,7 +120,7 @@ async function saveLaboratory() {
           class="pi pi-angle-right"
           aria-hidden="true"
         />
-        <span>{{ t('laboratories.create.breadcrumbCurrent') }}</span>
+        <span>{{ t(laboratoryId ? 'laboratories.create.editBreadcrumbCurrent' : 'laboratories.create.breadcrumbCurrent') }}</span>
       </nav>
       <div class="toolbar-actions">
         <button
@@ -91,15 +137,24 @@ async function saveLaboratory() {
         <button
           class="button button-primary"
           type="submit"
+          :disabled="loading || !laboratoryLoaded"
         >
           <i
             class="pi pi-save"
             aria-hidden="true"
           />
-          {{ t('laboratories.create.save') }}
+          {{ t(laboratoryId ? 'laboratories.create.update' : 'laboratories.create.save') }}
         </button>
       </div>
     </div>
+
+    <p
+      v-if="loadError"
+      class="error-message"
+      role="alert"
+    >
+      {{ t('laboratories.create.loadError') }}
+    </p>
 
     <p
       v-if="saveError"
