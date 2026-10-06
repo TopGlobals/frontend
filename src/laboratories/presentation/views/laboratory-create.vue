@@ -2,49 +2,14 @@
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { Laboratory } from '../../domain/model/laboratory.js';
+import LaboratoryFormSection from '../components/laboratory-form-section.vue';
+import LaboratorySensorsSystems from '../components/laboratory-sensors-systems.vue';
 import useLaboratoriesStore from '../../application/laboratories.store.js';
 
 const { t } = useI18n();
 const router = useRouter();
 const laboratoriesStore = useLaboratoriesStore();
-const sensors = [
-  {
-    key: 'temperature',
-    icon: 'pi pi-thermometer',
-    enabled: true,
-  },
-  {
-    key: 'airQuality',
-    icon: 'pi pi-wifi',
-    enabled: true,
-  },
-  {
-    key: 'aiDetection',
-    icon: 'pi pi-microchip-ai',
-    enabled: true,
-  },
-  {
-    key: 'ventilation',
-    icon: 'pi pi-sitemap',
-    enabled: false,
-  },
-  {
-    key: 'airConditioning',
-    icon: 'pi pi-sun',
-    enabled: false,
-  },
-  {
-    key: 'vibration',
-    icon: 'pi pi-wave-pulse',
-    enabled: false,
-  },
-  {
-    key: 'lighting',
-    icon: 'pi pi-lightbulb',
-    enabled: false,
-  },
-];
-
 const form = reactive({
   name: '',
   code: '',
@@ -61,32 +26,34 @@ const form = reactive({
   escalation: 'stopActivity',
 });
 
-const sensorStates = reactive(Object.fromEntries(sensors.map(({ key, enabled }) => [key, enabled])));
+const sensorStates = ref(Laboratory.defaultSensors());
 const notifications = reactive({ email: true, sms: true, push: false, criticalOnly: true });
-const saved = ref(false);
-
-const sensorName = (sensor) => t(`laboratories.create.sensors.${sensor.key}`);
-const sensorDescription = (sensor) => t(`laboratories.create.sensors.${sensor.key}Description`);
+const saveError = ref(false);
 
 async function saveLaboratory() {
-  laboratoriesStore.addLaboratory({
-    name: form.name.trim(),
-    code: form.code.trim(),
-    building: form.building,
-    floor: form.floor,
-    room: form.room.trim(),
-    type: form.type,
-    description: form.description.trim(),
-    temperatureMin: form.temperatureMin,
-    temperatureMax: form.temperatureMax,
-    co2Max: form.co2Max,
-    gasSensitivity: form.gasSensitivity,
-    vibrationMax: form.vibrationMax,
-    escalation: form.escalation,
-    sensors: { ...sensorStates },
-    notifications: { ...notifications },
-  });
-  await router.push('/laboratories');
+  saveError.value = false;
+  try {
+    await laboratoriesStore.addLaboratory({
+      name: form.name.trim(),
+      code: form.code.trim(),
+      building: form.building,
+      floor: form.floor,
+      room: form.room.trim(),
+      type: form.type,
+      description: form.description.trim(),
+      temperatureMin: form.temperatureMin,
+      temperatureMax: form.temperatureMax,
+      co2Max: form.co2Max,
+      gasSensitivity: form.gasSensitivity,
+      vibrationMax: form.vibrationMax,
+      escalation: form.escalation,
+      sensors: { ...sensorStates.value },
+      notifications: { ...notifications },
+    });
+    await router.push('/laboratories');
+  } catch {
+    saveError.value = true;
+  }
 }
 </script>
 
@@ -94,7 +61,6 @@ async function saveLaboratory() {
   <form
     class="laboratory-form"
     @submit.prevent="saveLaboratory"
-    @input="saved = false"
   >
     <div class="form-toolbar">
       <nav
@@ -136,18 +102,17 @@ async function saveLaboratory() {
     </div>
 
     <p
-      v-if="saved"
-      class="success-message"
-      role="status"
+      v-if="saveError"
+      class="error-message"
+      role="alert"
     >
-      {{ t('laboratories.create.saveSuccess') }}
+      {{ t('laboratories.create.saveError') }}
     </p>
 
-    <section class="panel">
-      <header class="section-heading">
-        <h2>{{ t('laboratories.create.basicTitle') }}</h2>
-        <p>{{ t('laboratories.create.basicDescription') }}</p>
-      </header>
+    <LaboratoryFormSection
+      :title="t('laboratories.create.basicTitle')"
+      :description="t('laboratories.create.basicDescription')"
+    >
       <div class="field-grid">
         <label class="field">
           <span>{{ t('laboratories.create.laboratoryName') }} <b>*</b></span>
@@ -213,64 +178,16 @@ async function saveLaboratory() {
           />
         </label>
       </div>
-    </section>
+    </LaboratoryFormSection>
 
-    <section class="panel">
-      <header class="section-heading">
-        <h2>{{ t('laboratories.create.sensorsTitle') }}</h2>
-        <p>{{ t('laboratories.create.sensorsDescription') }}</p>
-      </header>
-      <div class="sensor-grid">
-        <article
-          v-for="sensor in sensors"
-          :key="sensor.key"
-          class="sensor-card"
-          :class="{ 'sensor-card-active': sensorStates[sensor.key] }"
-        >
-          <div class="sensor-card-top">
-            <span
-              class="icon-tile"
-              :class="{ 'icon-tile-active': sensorStates[sensor.key] }"
-            >
-              <i
-                :class="sensor.icon"
-                aria-hidden="true"
-              />
-            </span>
-            <label
-              class="switch"
-              :aria-label="t('laboratories.create.enableSensor', { name: sensorName(sensor) })"
-            >
-              <input
-                v-model="sensorStates[sensor.key]"
-                type="checkbox"
-              >
-              <span />
-            </label>
-          </div>
-          <h3>{{ sensorName(sensor) }}</h3>
-          <p>{{ sensorDescription(sensor) }}</p>
-          <span
-            class="status-pill"
-            :class="{ 'status-pill-active': sensorStates[sensor.key] }"
-          >
-            {{ sensorStates[sensor.key] ? t('laboratories.create.active') : t('laboratories.create.inactive') }}
-          </span>
-        </article>
-      </div>
-    </section>
+    <LaboratorySensorsSystems v-model="sensorStates" />
 
-    <section class="panel">
-      <header class="section-heading section-heading-icon">
-        <span class="section-icon section-icon-warning"><i
-          class="pi pi-shield"
-          aria-hidden="true"
-        /></span>
-        <div>
-          <h2>{{ t('laboratories.create.thresholdsTitle') }}</h2>
-          <p>{{ t('laboratories.create.thresholdsDescription') }}</p>
-        </div>
-      </header>
+    <LaboratoryFormSection
+      :title="t('laboratories.create.thresholdsTitle')"
+      :description="t('laboratories.create.thresholdsDescription')"
+      icon="pi pi-shield"
+      icon-class="section-icon-warning"
+    >
       <div class="threshold-grid">
         <article class="threshold-card threshold-temperature">
           <header class="threshold-title">
@@ -377,19 +294,14 @@ async function saveLaboratory() {
           </p>
         </article>
       </div>
-    </section>
+    </LaboratoryFormSection>
 
-    <section class="panel">
-      <header class="section-heading section-heading-icon">
-        <span class="section-icon section-icon-notification"><i
-          class="pi pi-bell"
-          aria-hidden="true"
-        /></span>
-        <div>
-          <h2>{{ t('laboratories.create.notificationsTitle') }}</h2>
-          <p>{{ t('laboratories.create.notificationsDescription') }}</p>
-        </div>
-      </header>
+    <LaboratoryFormSection
+      :title="t('laboratories.create.notificationsTitle')"
+      :description="t('laboratories.create.notificationsDescription')"
+      icon="pi pi-bell"
+      icon-class="section-icon-notification"
+    >
       <div class="notification-grid">
         <label class="notification-card">
           <input
@@ -448,7 +360,7 @@ async function saveLaboratory() {
           </span>
         </label>
       </div>
-    </section>
+    </LaboratoryFormSection>
   </form>
 </template>
 
@@ -528,55 +440,13 @@ async function saveLaboratory() {
   border-radius: 10px;
 }
 
-.panel {
-  padding: 24px;
-  background: #fff;
-  border: 1px solid #e2e9f2;
-  border-radius: 17px;
-}
-
-.section-heading {
-  margin-bottom: 20px;
-}
-
-.section-heading h2 {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.3;
-}
-
-.section-heading p {
-  margin: 2px 0 0;
-  color: #71839d;
-  font-size: 12px;
-}
-
-.section-heading-icon {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.section-icon {
-  display: grid;
-  width: 33px;
-  height: 33px;
-  flex: 0 0 auto;
-  place-items: center;
-  border: 1px solid;
-  border-radius: 12px;
-}
-
-.section-icon-warning {
-  color: #f08a00;
-  background: #fffbeb;
-  border-color: #fde7a2;
-}
-
-.section-icon-notification {
-  color: #f08a00;
-  background: #fffbeb;
-  border-color: #fde7a2;
+.error-message {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  color: #a12d35;
+  background: #fff1f1;
+  border: 1px solid #f3c3c6;
+  border-radius: 10px;
 }
 
 .field-grid {
@@ -641,32 +511,6 @@ async function saveLaboratory() {
   grid-column: 1 / -1;
 }
 
-.sensor-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.sensor-card {
-  min-height: 181px;
-  padding: 16px;
-  border: 1px solid #dfe7f0;
-  border-radius: 16px;
-}
-
-.sensor-card-active {
-  background: #fbfffd;
-  border-color: #8aefc4;
-}
-
-.sensor-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.icon-tile,
 .threshold-icon,
 .notification-icon {
   display: grid;
@@ -675,92 +519,9 @@ async function saveLaboratory() {
   border-radius: 12px;
 }
 
-.icon-tile {
-  width: 36px;
-  height: 36px;
-  color: #6d809c;
-  background: #f0f4f8;
-}
-
-.icon-tile-active {
-  color: #fff;
-  background: #079d75;
-}
-
-.switch {
-  position: relative;
-  display: inline-flex;
-  width: 44px;
-  height: 24px;
-}
-
-.switch input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
-.switch span {
-  width: 44px;
-  height: 24px;
-  background: #e1e7ef;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.switch span::after {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin: 2px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px #1b2c451f;
-  content: '';
-  transition: transform 0.15s ease;
-}
-
-.switch input:checked + span {
-  background: #079d75;
-}
-
-.switch input:checked + span::after {
-  transform: translateX(20px);
-}
-
-.switch input:focus-visible + span {
-  outline: 3px solid #079d7540;
-  outline-offset: 2px;
-}
-
-.sensor-card h3,
 .threshold-title h3 {
   margin: 0;
   font-size: 14px;
-}
-
-.sensor-card > p {
-  min-height: 36px;
-  margin: 5px 0 12px;
-  color: #6d809b;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-.status-pill {
-  display: inline-flex;
-  padding: 5px 11px;
-  color: #627590;
-  background: #f0f4f8;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.status-pill-active {
-  color: #00805f;
-  background: #d0f8e7;
 }
 
 .threshold-grid {
@@ -932,7 +693,6 @@ async function saveLaboratory() {
 }
 
 @media (max-width: 1180px) {
-  .sensor-grid,
   .notification-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

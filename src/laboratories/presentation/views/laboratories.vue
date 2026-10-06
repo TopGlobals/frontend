@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useConfirm } from 'primevue';
@@ -14,6 +14,7 @@ const pageSize = 9;
 const statusFilter = ref('all');
 const locationFilter = ref('all');
 const viewMode = ref('grid');
+const requestError = ref('');
 
 const statusOptions = ['all', 'pending', 'ok', 'warning', 'critical'];
 const statusLabel = (status) => t(`laboratories.panel.${status}`);
@@ -41,6 +42,13 @@ const searchTerm = computed(() => {
 });
 
 const laboratories = computed(() => laboratoriesStore.laboratories);
+onMounted(async () => {
+  try {
+    await laboratoriesStore.loadLaboratories();
+  } catch {
+    requestError.value = t('laboratories.panel.loadError');
+  }
+});
 const locations = computed(() => {
   const uniqueLocations = new Map();
   laboratories.value.forEach((lab) => {
@@ -86,7 +94,14 @@ function confirmDelete(laboratory) {
     acceptLabel: t('laboratories.panel.delete'),
     rejectLabel: t('laboratories.panel.cancel'),
     acceptClass: 'p-button-danger',
-    accept: () => laboratoriesStore.removeLaboratory(laboratory.id),
+    accept: async () => {
+      requestError.value = '';
+      try {
+        await laboratoriesStore.removeLaboratory(laboratory.id);
+      } catch {
+        requestError.value = t('laboratories.panel.deleteError');
+      }
+    },
   });
 }
 </script>
@@ -96,6 +111,13 @@ function confirmDelete(laboratory) {
     class="laboratories-page"
     :aria-label="t('laboratories.panel.title')"
   >
+    <p
+      v-if="requestError"
+      class="error-message"
+      role="alert"
+    >
+      {{ requestError }}
+    </p>
     <div class="toolbar">
       <strong class="lab-count">{{ t('laboratories.panel.count', { count: filteredLaboratories.length }) }}</strong>
       <div class="toolbar-controls">
@@ -326,6 +348,15 @@ function confirmDelete(laboratory) {
 </template>
 
 <style scoped>
+.error-message {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  color: #a12d35;
+  background: #fff1f1;
+  border: 1px solid #f3c3c6;
+  border-radius: 10px;
+}
+
 .laboratories-page {
   max-width: 1440px;
   margin: 0 auto;

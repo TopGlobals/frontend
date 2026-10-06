@@ -1,46 +1,28 @@
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
-
-const storageKey = 'cryovigil.laboratories';
-
-function loadLaboratories() {
-  const savedLaboratories = localStorage.getItem(storageKey);
-  if (!savedLaboratories) return [];
-
-  const parsedLaboratories = JSON.parse(savedLaboratories);
-  if (!Array.isArray(parsedLaboratories)) {
-    throw new TypeError('Saved laboratory data must be an array.');
-  }
-  return parsedLaboratories;
-}
+import { ref } from 'vue';
+import { Laboratory } from '../domain/model/laboratory.js';
+import laboratoriesApi from '../infrastructure/laboratories-api.js';
 
 const useLaboratoriesStore = defineStore('laboratories', () => {
-  const laboratories = ref(loadLaboratories());
+  const laboratories = ref([]);
 
-  watch(
-    laboratories,
-    (value) => localStorage.setItem(storageKey, JSON.stringify(value)),
-    { deep: true },
-  );
-
-  function addLaboratory(details) {
-    const laboratory = {
-      ...details,
-      id: crypto.randomUUID(),
-      status: 'pending',
-      temperature: null,
-      airQuality: null,
-      unknown: null,
-    };
-    laboratories.value.unshift(laboratory);
-    return laboratory;
+  async function loadLaboratories() {
+    laboratories.value = await laboratoriesApi.getAll();
   }
 
-  function removeLaboratory(id) {
+  async function addLaboratory(details) {
+    const laboratory = Laboratory.create(details);
+    const savedLaboratory = await laboratoriesApi.create(laboratory);
+    laboratories.value.unshift(savedLaboratory);
+    return savedLaboratory;
+  }
+
+  async function removeLaboratory(id) {
+    await laboratoriesApi.remove(id);
     laboratories.value = laboratories.value.filter((laboratory) => laboratory.id !== id);
   }
 
-  return { laboratories, addLaboratory, removeLaboratory };
+  return { laboratories, loadLaboratories, addLaboratory, removeLaboratory };
 });
 
 export default useLaboratoriesStore;
