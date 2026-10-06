@@ -1,20 +1,32 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import useSettingsStore from '../../application/settings.store.js';
 
 const { t } = useI18n();
+const settingsStore = useSettingsStore();
 const showGeneralSettings = ref(false);
 const showProfileEditor = ref(false);
-const region = ref('Europe/Zurich');
-const temperatureUnit = ref('Celsius');
-const profileName = ref('Dr. Alex Vance');
-const profileEmail = ref('alex.vance@topglobals.com');
-
+const profileDraft = reactive({ name: '', email: '' });
 const settingsCards = [
   { key: 'sensors', icon: 'pi pi-wifi', to: '/settings/sensors' },
   { key: 'notifications', icon: 'pi pi-bell', to: '/settings/notifications' },
   { key: 'security', icon: 'pi pi-lock', to: '/settings/security' },
 ];
+
+function openProfileEditor() {
+  profileDraft.name = settingsStore.profile.name;
+  profileDraft.email = settingsStore.profile.email;
+  showProfileEditor.value = true;
+}
+
+function saveProfile() {
+  settingsStore.updateProfile({
+    name: profileDraft.name.trim(),
+    email: profileDraft.email.trim(),
+  });
+  showProfileEditor.value = false;
+}
 </script>
 
 <template>
@@ -31,7 +43,7 @@ const settingsCards = [
         </div>
         <p>{{ t('settings.general.description') }}</p>
         <button
-          class="primary-button details-button"
+          class="cryo-button cryo-button-primary details-button"
           type="button"
           @click="showGeneralSettings = true"
         >
@@ -40,19 +52,13 @@ const settingsCards = [
       </article>
 
       <article class="panel profile-card">
-        <div
-          class="profile-avatar"
-          aria-hidden="true"
-        >
-          AV
-        </div>
-        <h2>Dr. Alex Vance</h2>
+        <h2>{{ settingsStore.profile.name }}</h2>
         <strong>{{ t('settings.profile.role') }}</strong>
         <p>{{ t('settings.profile.description') }}</p>
         <button
-          class="outline-button"
+          class="cryo-button cryo-button-secondary cryo-button-block"
           type="button"
-          @click="showProfileEditor = true"
+          @click="openProfileEditor"
         >
           {{ t('settings.profile.edit') }}
         </button>
@@ -75,8 +81,11 @@ const settingsCards = [
         </div>
         <p>{{ t(`settings.sections.${card.key}.description`) }}</p>
         <span
-          class="card-action"
-          :class="{ 'primary-button': card.key === 'sensors', 'outline-button': card.key !== 'sensors' }"
+          class="card-action cryo-button cryo-button-block"
+          :class="{
+            'cryo-button-primary': card.key === 'sensors',
+            'cryo-button-secondary': card.key !== 'sensors',
+          }"
         >
           {{ t(`settings.sections.${card.key}.action`) }}
         </span>
@@ -97,7 +106,7 @@ const settingsCards = [
         <div class="modal-heading">
           <h2>{{ t('settings.general.title') }}</h2>
           <button
-            class="close-button"
+            class="cryo-button cryo-button-link cryo-button-icon close-button"
             type="button"
             :aria-label="t('settings.general.close')"
             @click="showGeneralSettings = false"
@@ -108,7 +117,7 @@ const settingsCards = [
         <p>{{ t('settings.general.description') }}</p>
         <label>
           {{ t('settings.general.region') }}
-          <select v-model="region">
+          <select v-model="settingsStore.general.region">
             <option>Europe/Zurich</option>
             <option>America/New_York</option>
             <option>Asia/Tokyo</option>
@@ -116,13 +125,13 @@ const settingsCards = [
         </label>
         <label>
           {{ t('settings.general.temperatureUnit') }}
-          <select v-model="temperatureUnit">
+          <select v-model="settingsStore.general.temperatureUnit">
             <option>Celsius</option>
             <option>Fahrenheit</option>
           </select>
         </label>
         <button
-          class="primary-button modal-save"
+          class="cryo-button cryo-button-primary cryo-button-block modal-save"
           type="button"
           @click="showGeneralSettings = false"
         >
@@ -138,12 +147,12 @@ const settingsCards = [
     >
       <form
         class="general-modal"
-        @submit.prevent="showProfileEditor = false"
+        @submit.prevent="saveProfile"
       >
         <div class="modal-heading">
           <h2>{{ t('settings.profile.edit') }}</h2>
           <button
-            class="close-button"
+            class="cryo-button cryo-button-link cryo-button-icon close-button"
             type="button"
             :aria-label="t('settings.general.close')"
             @click="showProfileEditor = false"
@@ -154,19 +163,21 @@ const settingsCards = [
         <label>
           {{ t('settings.profile.name') }}
           <input
-            v-model="profileName"
+            v-model.trim="profileDraft.name"
             type="text"
+            required
           >
         </label>
         <label>
           {{ t('settings.profile.email') }}
           <input
-            v-model="profileEmail"
+            v-model.trim="profileDraft.email"
             type="email"
+            required
           >
         </label>
         <button
-          class="primary-button modal-save"
+          class="cryo-button cryo-button-primary cryo-button-block modal-save"
           type="submit"
         >
           {{ t('settings.profile.save') }}
@@ -253,43 +264,6 @@ const settingsCards = [
   line-height: 1.7;
 }
 
-.primary-button,
-.outline-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 39px;
-  padding: 0 18px;
-  border-radius: 11px;
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.primary-button {
-  color: #fff;
-  background: #079d75;
-  border: 1px solid #079d75;
-}
-
-.primary-button:hover {
-  color: #fff;
-  background: #078665;
-}
-
-.outline-button {
-  color: #263650;
-  background: #fff;
-  border: 1px solid #cbd7e6;
-}
-
-.outline-button:hover {
-  color: #008b68;
-  border-color: #00a879;
-}
-
 .details-button {
   position: absolute;
   right: 28px;
@@ -306,21 +280,8 @@ const settingsCards = [
   text-align: center;
 }
 
-.profile-avatar {
-  display: grid;
-  width: 72px;
-  height: 72px;
-  place-items: center;
-  color: #078b69;
-  background: linear-gradient(145deg, #dcf8eb, #b6ead4);
-  border: 4px solid #e8fcf3;
-  border-radius: 19px;
-  font-size: 20px;
-  font-weight: 700;
-}
-
 .profile-card h2 {
-  margin: 9px 0 0;
+  margin: 0;
   font-size: 15px;
 }
 
@@ -337,11 +298,6 @@ const settingsCards = [
   color: #6d809b;
   font-size: 11px;
   line-height: 1.6;
-}
-
-.profile-card .outline-button {
-  width: 100%;
-  min-height: 38px;
 }
 
 .settings-card-grid {
@@ -382,11 +338,6 @@ const settingsCards = [
   line-height: 1.7;
 }
 
-.settings-card .card-action {
-  width: 100%;
-  min-height: 38px;
-}
-
 .modal-backdrop {
   position: fixed;
   z-index: 200;
@@ -417,9 +368,6 @@ const settingsCards = [
 }
 
 .close-button {
-  color: #687b95;
-  background: none;
-  border: 0;
   font-size: 24px;
 }
 

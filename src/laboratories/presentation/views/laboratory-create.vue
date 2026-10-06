@@ -124,7 +124,7 @@ async function saveLaboratory() {
       </nav>
       <div class="toolbar-actions">
         <button
-          class="button button-secondary"
+          class="cryo-button cryo-button-secondary cryo-button-compact"
           type="button"
           @click="$router.push('/laboratories')"
         >
@@ -135,7 +135,7 @@ async function saveLaboratory() {
           {{ t('laboratories.create.cancel') }}
         </button>
         <button
-          class="button button-primary"
+          class="cryo-button cryo-button-primary cryo-button-compact"
           type="submit"
           :disabled="loading || !laboratoryLoaded"
         >
@@ -456,34 +456,6 @@ async function saveLaboratory() {
 
 .breadcrumb > i {
   color: #91a2ba;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  min-height: 38px;
-  padding: 0 16px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  font: inherit;
-  font-weight: 600;
-}
-
-.button-secondary {
-  color: #354762;
-  background: #fff;
-  border-color: #dce4ef;
-}
-
-.button-primary {
-  color: #fff;
-  background: #079d75;
-}
-
-.button-primary:hover {
-  background: #078665;
 }
 
 .error-message {
