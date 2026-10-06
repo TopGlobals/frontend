@@ -18,6 +18,7 @@ const sourceIcons = {
   [AlertSourceType.PREVENTIVE_TREND]: 'pi pi-chart-line',
   [AlertSourceType.THERMAL_STATUS_NORMALIZED]: 'pi pi-check-circle',
   [AlertSourceType.CALIBRATION_DUE]: 'pi pi-wrench',
+  [AlertSourceType.MANUAL_REPORT]: 'pi pi-user-edit',
 };
 
 /** PrimeVue Tag severities styled by the CryoVigil design tokens in style.css. */
