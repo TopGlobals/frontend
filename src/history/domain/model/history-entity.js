@@ -22,7 +22,6 @@ export class HistoryEntity {
     this.isResolved = isResolved;
     this.actionsTakenKeys = actionsTakenKeys || [];
   }
-
   static fromResource(resource) {
     return new HistoryEntity({
       id: resource.id,

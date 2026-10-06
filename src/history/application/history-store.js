@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import { HistoryApi } from '../infrastructure/history-api.js';
-
 export const useHistoryStore = defineStore('history', {
   state: () => ({
     events: [],
