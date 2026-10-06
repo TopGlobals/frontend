@@ -13,6 +13,7 @@ import AlertFiltersBar from '../components/alert-filters-bar.vue';
 import AlertCard from '../components/alert-card.vue';
 import AlertDetailPanel from '../components/alert-detail-panel.vue';
 import ResolveAlertDialog from '../components/resolve-alert-dialog.vue';
+import CreateAlertDialog from '../components/create-alert-dialog.vue';
 
 const REFRESH_INTERVAL_MS = 30000;
 const DAY_IN_MS = 86400000;
@@ -41,6 +42,8 @@ const busyId = ref(null);
 const resolveTarget = ref(null);
 const resolveVisible = ref(false);
 const resolving = ref(false);
+const createVisible = ref(false);
+const creating = ref(false);
 const detailPanel = ref(null);
 const isWide = ref(true);
 let lastTrigger = null;
@@ -276,6 +279,30 @@ function confirmResolve(description) {
     });
 }
 
+/**
+ * Registers an alert reported manually from the creation dialog.
+ * @param {Object} draft - Title, message, severity, laboratoryName and ongoing flag.
+ */
+function confirmCreate(draft) {
+  creating.value = true;
+  store
+    .createAlert(draft)
+    .then((created) => {
+      createVisible.value = false;
+      notify(
+        'success',
+        t('alerts.toast.createdTitle'),
+        t('alerts.toast.createdDetail', { title: created.title })
+      );
+    })
+    .catch(() =>
+      notify('error', t('alerts.toast.notCreatedTitle'), t('alerts.toast.networkError'))
+    )
+    .finally(() => {
+      creating.value = false;
+    });
+}
+
 /* ---------- Loading and live refresh ---------- */
 
 /** Reloads the feed; on wide screens selects the most urgent alert the first time. */
@@ -351,32 +378,40 @@ onBeforeUnmount(() => {
           {{ t('alerts.list.searchingFor', { term: route.query.search }) }}
         </span>
       </p>
-      <p class="sync">
-        <span
-          v-if="refreshFailed"
-          class="sync-warning"
-          role="status"
-        >
-          <i
-            class="pi pi-exclamation-triangle"
-            aria-hidden="true"
+      <div class="list-tools">
+        <p class="sync">
+          <span
+            v-if="refreshFailed"
+            class="sync-warning"
+            role="status"
+          >
+            <i
+              class="pi pi-exclamation-triangle"
+              aria-hidden="true"
+            />
+            {{ t('alerts.list.refreshFailed', { time: formatClock(lastUpdatedAt) }) }}
+          </span>
+          <span v-else-if="lastUpdatedAt">
+            {{ t('alerts.list.updatedAt', { time: formatClock(lastUpdatedAt) }) }}
+          </span>
+          <pv-button
+            icon="pi pi-refresh"
+            severity="secondary"
+            text
+            rounded
+            size="small"
+            :loading="loading && alertsLoaded"
+            :aria-label="t('alerts.list.refresh')"
+            @click="refresh"
           />
-          {{ t('alerts.list.refreshFailed', { time: formatClock(lastUpdatedAt) }) }}
-        </span>
-        <span v-else-if="lastUpdatedAt">
-          {{ t('alerts.list.updatedAt', { time: formatClock(lastUpdatedAt) }) }}
-        </span>
+        </p>
         <pv-button
-          icon="pi pi-refresh"
-          severity="secondary"
-          text
-          rounded
+          :label="t('alerts.actions.addAlert')"
+          icon="pi pi-plus"
           size="small"
-          :loading="loading && alertsLoaded"
-          :aria-label="t('alerts.list.refresh')"
-          @click="refresh"
+          @click="createVisible = true"
         />
-      </p>
+      </div>
     </div>
 
     <div
@@ -509,6 +544,12 @@ onBeforeUnmount(() => {
       :submitting="resolving"
       @confirm="confirmResolve"
     />
+    <create-alert-dialog
+      v-model:visible="createVisible"
+      :laboratories="laboratories"
+      :submitting="creating"
+      @confirm="confirmCreate"
+    />
     <pv-toast
       :group="TOAST_GROUP"
       position="top-right"
@@ -543,6 +584,13 @@ onBeforeUnmount(() => {
 .results strong {
   color: var(--cryo-text);
   font-weight: 600;
+}
+
+.list-tools {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
 }
 
 .sync {
