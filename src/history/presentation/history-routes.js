@@ -1,5 +1,4 @@
 import HistoryView from './views/history-view.vue';
-
 export const historyRoutes = [
   {
     path: '/history',

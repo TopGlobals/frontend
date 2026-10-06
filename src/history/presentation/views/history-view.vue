@@ -5,7 +5,6 @@
         <h1>{{ $t('history.title') }}</h1>
         <p>{{ $t('history.subtitle') }}</p>
       </div>
-
       <HistoryKpiSummary />
 
       <HistoryFilterBar @filter-change="handleFilterChange" />
