@@ -220,6 +220,8 @@ npm run dev
 
 The frontend uses `http://localhost:3000` by default, matching JSON Server's resource endpoints. Override it with `VITE_CRYOVIGIL_PLATFORM_API_URL` if the mock API is hosted elsewhere.
 
+Settings are frontend-only mock preferences stored in browser local storage. Profile, sensor, and preference changes persist in that browser; password and authentication actions are demonstrations and are not connected to an authentication service.
+
 ## License
 
 The repository currently contains a blank `LICENSE.md` placeholder, so no explicit license is assigned yet. Before public distribution or external reuse, the team should add an appropriate OSI-approved license, such as MIT or Apache 2.0.
