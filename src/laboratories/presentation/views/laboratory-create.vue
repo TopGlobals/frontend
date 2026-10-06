@@ -192,7 +192,7 @@ async function saveLaboratory() {
         <article class="threshold-card threshold-temperature">
           <header class="threshold-title">
             <span class="threshold-icon"><i
-              class="pi pi-thermometer"
+              class="pi pi-gauge"
               aria-hidden="true"
             /></span>
             <div>
@@ -345,12 +345,12 @@ async function saveLaboratory() {
             <small>{{ t('laboratories.create.pushDescription') }}</small>
           </span>
         </label>
-        <label class="notification-card critical-option">
+        <label class="notification-card">
           <input
             v-model="notifications.criticalOnly"
             type="checkbox"
           >
-          <span class="notification-icon icon-warning"><i
+          <span class="notification-icon icon-blue"><i
             class="pi pi-exclamation-triangle"
             aria-hidden="true"
           /></span>
@@ -429,15 +429,6 @@ async function saveLaboratory() {
 
 .button-primary:hover {
   background: #078665;
-}
-
-.success-message {
-  margin: -8px 0;
-  padding: 10px 14px;
-  color: #067451;
-  background: #eafbf4;
-  border: 1px solid #b6efd8;
-  border-radius: 10px;
 }
 
 .error-message {
@@ -682,16 +673,6 @@ async function saveLaboratory() {
   background: #fffbeb;
 }
 
-.critical-option {
-  background: #fffdfa;
-  border-color: #ffce52;
-}
-
-.icon-warning {
-  color: #d97706;
-  background: #fff3c4;
-}
-
 @media (max-width: 1180px) {
   .notification-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -719,12 +700,7 @@ async function saveLaboratory() {
     grid-template-columns: 1fr 1fr;
   }
 
-  .panel {
-    padding: 18px;
-  }
-
   .field-grid,
-  .sensor-grid,
   .notification-grid {
     grid-template-columns: 1fr;
   }
