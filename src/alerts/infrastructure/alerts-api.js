@@ -40,6 +40,15 @@ export class AlertsApi extends BaseApi {
   }
 
   /**
+   * Creates an alert resource.
+   * @param {Object} resource - Alert resource payload without id.
+   * @returns {Promise<import('axios').AxiosResponse>} Promise resolving to the created alert.
+   */
+  createAlert(resource) {
+    return this.#alertsEndpoint.create(resource);
+  }
+
+  /**
    * Updates an alert resource.
    * @param {Object} resource - Alert resource payload (must include id).
    * @returns {Promise<import('axios').AxiosResponse>} Promise resolving to the updated alert.
