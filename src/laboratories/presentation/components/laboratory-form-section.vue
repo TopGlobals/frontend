@@ -73,4 +73,10 @@ defineProps({
   border: 1px solid;
   border-radius: 12px;
 }
+
+@media (max-width: 560px) {
+  .panel {
+    padding: 18px;
+  }
+}
 </style>

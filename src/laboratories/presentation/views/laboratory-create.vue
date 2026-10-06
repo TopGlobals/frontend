@@ -431,15 +431,6 @@ async function saveLaboratory() {
   background: #078665;
 }
 
-.success-message {
-  margin: -8px 0;
-  padding: 10px 14px;
-  color: #067451;
-  background: #eafbf4;
-  border: 1px solid #b6efd8;
-  border-radius: 10px;
-}
-
 .error-message {
   margin: 0 0 16px;
   padding: 10px 14px;
@@ -709,12 +700,7 @@ async function saveLaboratory() {
     grid-template-columns: 1fr 1fr;
   }
 
-  .panel {
-    padding: 18px;
-  }
-
   .field-grid,
-  .sensor-grid,
   .notification-grid {
     grid-template-columns: 1fr;
   }
