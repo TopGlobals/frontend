@@ -115,7 +115,6 @@ const router = useRouter();
 const goToLaboratories = () => {
   router.push({ name: 'laboratories' });
 };
-
 const goToReports = () => {
   router.push({ name: 'reports' });
 };

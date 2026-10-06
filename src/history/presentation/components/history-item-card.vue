@@ -112,7 +112,6 @@ const formattedTime = computed(() => {
   background: #e0f2fe;
   color: #0284c7;
 }
-
 .location-row {
   font-size: 0.85rem;
   color: #6b7280;

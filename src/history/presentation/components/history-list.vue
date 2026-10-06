@@ -44,7 +44,6 @@ const groupedEvents = computed(() => {
     return groups;
   }, {});
 });
-
 const translateDateLabel = (label) => {
   if (label === 'TODAY') return t('history.todayLabel');
   if (label === 'YESTERDAY') return t('history.yesterdayLabel');

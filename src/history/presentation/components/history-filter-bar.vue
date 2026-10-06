@@ -44,7 +44,6 @@ const clearFilters = () => {
   emitFilters();
 };
 </script>
-
 <style scoped>
 .filter-bar {
   display: flex;
