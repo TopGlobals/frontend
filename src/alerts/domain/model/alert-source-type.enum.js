@@ -9,4 +9,5 @@ export const AlertSourceType = Object.freeze({
   PREVENTIVE_TREND: 'preventive-trend',
   THERMAL_STATUS_NORMALIZED: 'thermal-status-normalized',
   CALIBRATION_DUE: 'calibration-due',
+  MANUAL_REPORT: 'manual-report',
 });
