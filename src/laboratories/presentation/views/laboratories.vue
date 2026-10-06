@@ -178,7 +178,7 @@ function confirmDelete(laboratory) {
           </button>
         </div>
         <router-link
-          class="add-button"
+          class="cryo-button cryo-button-primary cryo-button-compact add-button"
           to="/laboratories/new"
         >
           <i
@@ -273,7 +273,7 @@ function confirmDelete(laboratory) {
               <p><strong>{{ t('laboratories.panel.unknownDetections') }}:</strong> {{ lab.unknown ?? t('laboratories.panel.noData') }}</p>
             </details>
             <router-link
-              class="edit-button"
+              class="cryo-button cryo-button-link cryo-button-small edit-button"
               :to="`/laboratories/${encodeURIComponent(lab.id)}/edit`"
               :aria-label="t('laboratories.panel.editAriaLabel', { name: lab.name })"
             >
@@ -284,7 +284,7 @@ function confirmDelete(laboratory) {
               {{ t('laboratories.panel.edit') }}
             </router-link>
             <button
-              class="delete-button"
+              class="cryo-button cryo-button-link cryo-button-danger cryo-button-small delete-button"
               type="button"
               :aria-label="t('laboratories.panel.deleteAriaLabel', { name: lab.name })"
               @click="confirmDelete(lab)"
@@ -311,7 +311,7 @@ function confirmDelete(laboratory) {
       <p>{{ laboratories.length ? t('laboratories.panel.empty') : t('laboratories.panel.emptyDescription') }}</p>
       <router-link
         v-if="!laboratories.length"
-        class="add-button"
+        class="cryo-button cryo-button-primary cryo-button-compact add-button"
         to="/laboratories/new"
       >
         <i
@@ -435,24 +435,7 @@ function confirmDelete(laboratory) {
 }
 
 .add-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 36px;
-  padding: 0 16px;
-  color: white;
-  background: #079d75;
-  border-radius: 11px;
-  box-shadow: 0 3px 7px #079d7524;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
   white-space: nowrap;
-}
-
-.add-button:hover {
-  color: white;
-  background: #078665;
 }
 
 .laboratory-grid {
@@ -694,31 +677,8 @@ function confirmDelete(laboratory) {
   gap: 14px;
 }
 
-.delete-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 0;
-  color: #e23b56;
-  background: transparent;
-  border: 0;
-  font: inherit;
-  font-size: 11px;
-  cursor: pointer;
-}
-
 .edit-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #008f6b;
-  font-size: 11px;
-  font-weight: 600;
   white-space: nowrap;
-}
-
-.delete-button:hover {
-  color: #b91c38;
 }
 
 .details-disclosure {
