@@ -64,7 +64,7 @@
     "yesterdayLabel": "AYER",
     "sensorDataTitle": "Datos del Sensor de Temperatura",
     "viewLaboratoryBtn": "Ver Laboratorio",
-    "generateReportBtn": "Generar Reporte",
+   "generateReportBtn": "Generar Reporte",
     "events": {
       "event1": {
         "title": "Temperatura normalizada",

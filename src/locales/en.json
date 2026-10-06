@@ -63,8 +63,8 @@
     "todayLabel": "TODAY",
     "yesterdayLabel": "YESTERDAY",
     "sensorDataTitle": "Temperature Sensor Data",
-    "viewLaboratoryBtn": "View Laboratory",
     "generateReportBtn": "Generate Report",
+    "viewLaboratoryBtn": "View Laboratory",
     "events": {
       "event1": {
         "title": "Temperature returned to normal",
