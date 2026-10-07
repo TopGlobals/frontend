@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useConfirm } from 'primevue';
@@ -14,6 +14,7 @@ const pageSize = 9;
 const statusFilter = ref('all');
 const locationFilter = ref('all');
 const viewMode = ref('grid');
+const requestError = ref('');
 
 const statusOptions = ['all', 'pending', 'ok', 'warning', 'critical'];
 const statusLabel = (status) => t(`laboratories.panel.${status}`);
@@ -41,6 +42,13 @@ const searchTerm = computed(() => {
 });
 
 const laboratories = computed(() => laboratoriesStore.laboratories);
+onMounted(async () => {
+  try {
+    await laboratoriesStore.loadLaboratories();
+  } catch {
+    requestError.value = t('laboratories.panel.loadError');
+  }
+});
 const locations = computed(() => {
   const uniqueLocations = new Map();
   laboratories.value.forEach((lab) => {
@@ -86,7 +94,14 @@ function confirmDelete(laboratory) {
     acceptLabel: t('laboratories.panel.delete'),
     rejectLabel: t('laboratories.panel.cancel'),
     acceptClass: 'p-button-danger',
-    accept: () => laboratoriesStore.removeLaboratory(laboratory.id),
+    accept: async () => {
+      requestError.value = '';
+      try {
+        await laboratoriesStore.removeLaboratory(laboratory.id);
+      } catch {
+        requestError.value = t('laboratories.panel.deleteError');
+      }
+    },
   });
 }
 </script>
@@ -96,6 +111,13 @@ function confirmDelete(laboratory) {
     class="laboratories-page"
     :aria-label="t('laboratories.panel.title')"
   >
+    <p
+      v-if="requestError"
+      class="error-message"
+      role="alert"
+    >
+      {{ requestError }}
+    </p>
     <div class="toolbar">
       <strong class="lab-count">{{ t('laboratories.panel.count', { count: filteredLaboratories.length }) }}</strong>
       <div class="toolbar-controls">
@@ -156,7 +178,7 @@ function confirmDelete(laboratory) {
           </button>
         </div>
         <router-link
-          class="add-button"
+          class="cryo-button cryo-button-primary cryo-button-compact add-button"
           to="/laboratories/new"
         >
           <i
@@ -241,7 +263,7 @@ function confirmDelete(laboratory) {
           <span :class="{ 'critical-message': lab.status === 'critical' }">{{ labUpdated(lab) }}</span>
           <div class="card-actions">
             <details class="details-disclosure">
-              <summary>{{ t('laboratories.panel.viewDetails') }} <span aria-hidden="true">→</span></summary>
+              <summary>{{ t('laboratories.panel.viewDetails') }}</summary>
               <p><strong>{{ t('laboratories.panel.laboratoryId') }}:</strong> {{ lab.code }}</p>
               <p>
                 <strong>{{ t('laboratories.panel.airQualityDetails') }}:</strong> {{ lab.airQuality ?? t('laboratories.panel.noData') }}<template v-if="lab.airQuality !== null">
@@ -250,8 +272,19 @@ function confirmDelete(laboratory) {
               </p>
               <p><strong>{{ t('laboratories.panel.unknownDetections') }}:</strong> {{ lab.unknown ?? t('laboratories.panel.noData') }}</p>
             </details>
+            <router-link
+              class="cryo-button cryo-button-link cryo-button-small edit-button"
+              :to="`/laboratories/${encodeURIComponent(lab.id)}/edit`"
+              :aria-label="t('laboratories.panel.editAriaLabel', { name: lab.name })"
+            >
+              <i
+                class="pi pi-pencil"
+                aria-hidden="true"
+              />
+              {{ t('laboratories.panel.edit') }}
+            </router-link>
             <button
-              class="delete-button"
+              class="cryo-button cryo-button-link cryo-button-danger cryo-button-small delete-button"
               type="button"
               :aria-label="t('laboratories.panel.deleteAriaLabel', { name: lab.name })"
               @click="confirmDelete(lab)"
@@ -278,7 +311,7 @@ function confirmDelete(laboratory) {
       <p>{{ laboratories.length ? t('laboratories.panel.empty') : t('laboratories.panel.emptyDescription') }}</p>
       <router-link
         v-if="!laboratories.length"
-        class="add-button"
+        class="cryo-button cryo-button-primary cryo-button-compact add-button"
         to="/laboratories/new"
       >
         <i
@@ -326,6 +359,15 @@ function confirmDelete(laboratory) {
 </template>
 
 <style scoped>
+.error-message {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  color: #a12d35;
+  background: #fff1f1;
+  border: 1px solid #f3c3c6;
+  border-radius: 10px;
+}
+
 .laboratories-page {
   max-width: 1440px;
   margin: 0 auto;
@@ -393,24 +435,7 @@ function confirmDelete(laboratory) {
 }
 
 .add-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 36px;
-  padding: 0 16px;
-  color: white;
-  background: #079d75;
-  border-radius: 11px;
-  box-shadow: 0 3px 7px #079d7524;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
   white-space: nowrap;
-}
-
-.add-button:hover {
-  color: white;
-  background: #078665;
 }
 
 .laboratory-grid {
@@ -652,21 +677,8 @@ function confirmDelete(laboratory) {
   gap: 14px;
 }
 
-.delete-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 0;
-  color: #e23b56;
-  background: transparent;
-  border: 0;
-  font: inherit;
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.delete-button:hover {
-  color: #b91c38;
+.edit-button {
+  white-space: nowrap;
 }
 
 .details-disclosure {

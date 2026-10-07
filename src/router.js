@@ -37,7 +37,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-  console.log(`Navigating from ${from.name} to ${to.name}`);
   let baseTitle = 'CryoVigil';
   document.title = `${baseTitle} - ${to.meta['title']}`;
 
