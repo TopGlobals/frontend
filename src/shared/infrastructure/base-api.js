@@ -13,7 +13,6 @@ export class BaseApi {
       baseURL: platformApi,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       },
     });
     // this.#http.interceptors.request.use(iamInterceptor);

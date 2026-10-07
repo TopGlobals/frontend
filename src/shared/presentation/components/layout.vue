@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n';
 import useSettingsStore from '../../../settings/application/settings.store.js';
 import LanguageSwitcher from './language-switcher.vue';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const settingsStore = useSettingsStore();
@@ -45,6 +45,15 @@ watch(search, (value) => {
   const query = { ...route.query, search: value || undefined };
   router.replace({ query });
 });
+
+watch(
+  [() => route.fullPath, locale, pageTitle],
+  () => {
+    const baseTitle = 'CryoVigil';
+    document.title = pageTitle.value ? `${baseTitle} - ${pageTitle.value}` : baseTitle;
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -145,7 +154,7 @@ watch(search, (value) => {
           <button
             class="cryo-button cryo-button-link cryo-button-danger cryo-button-icon logout-button"
             type="button"
-            aria-label="Log out"
+            :aria-label="t('layout.profile.logout')"
           >
             <i
               class="pi pi-sign-out"

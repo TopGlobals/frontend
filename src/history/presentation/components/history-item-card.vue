@@ -6,7 +6,7 @@
         <div class="title-row">
           <span class="event-title">{{ $t(event.titleKey) }}</span>
           <span class="badge" :class="event.type.toLowerCase().replace(' ', '-')">{{
-            event.type
+            typeLabel(event.type)
           }}</span>
         </div>
         <div class="location-row">
@@ -32,10 +32,19 @@ const props = defineProps({
   isActive: { type: Boolean, default: false },
 });
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+
+const typeKeys = {
+  Resolved: 'history.types.resolved',
+  Alert: 'history.types.alert',
+  Automation: 'history.types.automation',
+  'User Action': 'history.types.userAction',
+};
+
+const typeLabel = (type) => (typeKeys[type] ? t(typeKeys[type]) : type);
 
 const formattedTime = computed(() => {
-  return props.event.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  return props.event.timestamp.toLocaleTimeString(locale.value, { hour: '2-digit', minute: '2-digit' });
 });
 </script>
 

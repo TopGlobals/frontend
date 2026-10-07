@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import i18n from './i18n.js';
 import alertsRoutes from './alerts/presentation/alerts-routes.js';
 import analyticsRoutes from './analytics/presentation/analytics-routes.js';
 import { historyRoutes } from './history/presentation/history-routes.js';
@@ -27,7 +28,7 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: pageNotFound,
-    meta: { title: 'Page Not Found' },
+    meta: { titleKey: 'pageNotFound', title: 'Page Not Found' },
   },
 ];
 
@@ -36,11 +37,15 @@ const router = createRouter({
   routes: routes,
 });
 
-router.beforeEach((to, from) => {
-  let baseTitle = 'CryoVigil';
-  document.title = `${baseTitle} - ${to.meta['title']}`;
-
-  return true;
+router.afterEach((to) => {
+  const baseTitle = 'CryoVigil';
+  let title = '';
+  if (to.meta?.titleKey) {
+    title = i18n.global.t(to.meta.titleKey);
+  } else if (to.meta?.title) {
+    title = to.meta.title;
+  }
+  document.title = title ? `${baseTitle} - ${title}` : baseTitle;
 });
 
 export default router;

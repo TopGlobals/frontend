@@ -15,7 +15,7 @@
         "history": "History",
         "alerts": "Alerts",
         "reports": "Reports",
-        "profiles": "Settings"
+        "settings": "Settings"
       },
       "openCritical": "Open critical alerts: {count}"
     },
@@ -282,6 +282,20 @@
     "sensorDataTitle": "Temperature Sensor Data",
     "generateReportBtn": "Generate Report",
     "viewLaboratoryBtn": "View Laboratory",
+    "peak": "Peak:",
+    "threshold": "{temp} Threshold",
+    "types": {
+      "resolved": "Resolved",
+      "alert": "Alert",
+      "automation": "Automation",
+      "userAction": "User Action"
+    },
+    "severities": {
+      "critical": "Critical",
+      "warning": "Warning",
+      "success": "Resolved",
+      "info": "Info"
+    },
     "events": {
       "event1": {
         "title": "Temperature returned to normal",
@@ -452,8 +466,6 @@
         "vibrationDescription": "Seismic and mechanical vibration sensor",
         "lighting": "Lighting",
         "lightingDescription": "Automated smart lighting control system"
-        "airConditioning": "Air Conditioning",
-        "airConditioningDescription": "Climate control and cooling management"
       },
       "active": "Active",
       "inactive": "Inactive",
@@ -640,5 +652,6 @@
       "verifiedResearcher": "Verified Lab Researcher (Tier 1)"
     }
   },
-  "reports": {}
+  "reports": {},
+  "pageNotFound": "Page Not Found"
 }

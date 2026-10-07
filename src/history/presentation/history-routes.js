@@ -5,7 +5,8 @@ export const historyRoutes = [
     name: 'history-view',
     component: HistoryView,
     meta: {
-      title: 'History Log',
+      titleKey: 'history.title',
+      subtitleKey: 'history.subtitle',
     },
   },
 ];

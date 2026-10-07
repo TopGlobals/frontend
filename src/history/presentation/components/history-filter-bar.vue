@@ -11,10 +11,10 @@
     <div class="dropdown-filters">
       <select v-model="localFilters.severity" @change="emitFilters">
         <option value="">{{ $t('history.severity') }}</option>
-        <option value="critical">Critical</option>
-        <option value="warning">Warning</option>
-        <option value="success">Resolved</option>
-        <option value="info">Info</option>
+        <option value="critical">{{ $t('history.severities.critical') }}</option>
+        <option value="warning">{{ $t('history.severities.warning') }}</option>
+        <option value="success">{{ $t('history.severities.success') }}</option>
+        <option value="info">{{ $t('history.severities.info') }}</option>
       </select>
       <button class="clear-btn" @click="clearFilters">
         {{ $t('history.clearFilters') }}

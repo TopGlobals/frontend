@@ -8,9 +8,11 @@
     <div class="panel-scroll-content">
       <div class="detail-badge-section">
         <span class="type-tag" :class="event.type.toLowerCase().replace(' ', '-')">{{
-          event.type
+          typeLabel(event.type)
         }}</span>
-        <span class="severity-tag" :class="event.severity.toLowerCase()">{{ event.severity }}</span>
+        <span class="severity-tag" :class="event.severity.toLowerCase()">{{
+          severityLabel(event.severity)
+        }}</span>
       </div>
 
       <div class="meta-info-block">
@@ -35,10 +37,10 @@
       <div class="chart-block" v-if="event.severity === 'Critical' || event.severity === 'Warning'">
         <div class="chart-header">
           <h3>{{ $t('history.sensorDataTitle') }}</h3>
-          <span class="peak-label">Peak: <strong class="red-text">31.2 °C</strong></span>
+          <span class="peak-label">{{ $t('history.peak') }} <strong class="red-text">31.2 °C</strong></span>
         </div>
         <div class="graphic-container">
-          <div class="y-axis-label">28°C Threshold</div>
+          <div class="y-axis-label">{{ $t('history.threshold', { temp: '28°C' }) }}</div>
           <svg class="svg-graph" viewBox="0 0 300 100" preserveAspectRatio="none">
             <line
               x1="0"
@@ -111,6 +113,23 @@ defineEmits(['close']);
 
 const { t } = useI18n();
 const router = useRouter();
+
+const typeKeys = {
+  Resolved: 'history.types.resolved',
+  Alert: 'history.types.alert',
+  Automation: 'history.types.automation',
+  'User Action': 'history.types.userAction',
+};
+
+const severityKeys = {
+  Critical: 'history.severities.critical',
+  Warning: 'history.severities.warning',
+  Success: 'history.severities.success',
+  Info: 'history.severities.info',
+};
+
+const typeLabel = (type) => (typeKeys[type] ? t(typeKeys[type]) : type);
+const severityLabel = (severity) => (severityKeys[severity] ? t(severityKeys[severity]) : severity);
 
 const goToLaboratories = () => {
   router.push({ name: 'laboratories' });

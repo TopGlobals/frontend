@@ -12,8 +12,8 @@
       "storageUnitName": "Vaccine refrigerator R-02",
       "sensorCode": "TS-204",
       "readingCelsius": 9.6,
-      "safeMinCelsius": 2.0,
-      "safeMaxCelsius": 8.0,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
       "raisedAt": "2026-10-05T17:38:00Z",
       "acknowledgedAt": null,
       "acknowledgedBy": null,
@@ -43,7 +43,7 @@
         },
         {
           "takenAt": "2026-10-05T17:39:00Z",
-          "valueCelsius": 9.0
+          "valueCelsius": 9
         },
         {
           "takenAt": "2026-10-05T17:44:00Z",
@@ -63,8 +63,8 @@
       "storageUnitName": "Ultra-low freezer F-01",
       "sensorCode": "TS-118",
       "readingCelsius": -64.2,
-      "safeMinCelsius": -86.0,
-      "safeMaxCelsius": -70.0,
+      "safeMinCelsius": -86,
+      "safeMaxCelsius": -70,
       "raisedAt": "2026-10-05T17:22:00Z",
       "acknowledgedAt": null,
       "acknowledgedBy": null,
@@ -114,8 +114,8 @@
       "storageUnitName": "Reagent refrigerator R-07",
       "sensorCode": "TS-311",
       "readingCelsius": 0.8,
-      "safeMinCelsius": 2.0,
-      "safeMaxCelsius": 8.0,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
       "raisedAt": "2026-10-05T16:56:00Z",
       "acknowledgedAt": "2026-10-05T17:03:00Z",
       "acknowledgedBy": "Lucía Ramos",
@@ -143,7 +143,7 @@
         },
         {
           "takenAt": "2026-10-05T17:29:00Z",
-          "valueCelsius": 1.0
+          "valueCelsius": 1
         },
         {
           "takenAt": "2026-10-05T17:34:00Z",
@@ -171,8 +171,8 @@
       "storageUnitName": "Blood bank refrigerator R-03",
       "sensorCode": "TS-207",
       "readingCelsius": 5.4,
-      "safeMinCelsius": 2.0,
-      "safeMaxCelsius": 6.0,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 6,
       "raisedAt": "2026-10-05T15:54:00Z",
       "acknowledgedAt": null,
       "acknowledgedBy": null,
@@ -222,8 +222,8 @@
       "storageUnitName": "Freezer F-04",
       "sensorCode": "TS-412",
       "readingCelsius": -16.2,
-      "safeMinCelsius": -25.0,
-      "safeMaxCelsius": -15.0,
+      "safeMinCelsius": -25,
+      "safeMaxCelsius": -15,
       "raisedAt": "2026-10-05T14:29:00Z",
       "acknowledgedAt": "2026-10-05T14:54:00Z",
       "acknowledgedBy": "Diego Salas",
@@ -295,8 +295,8 @@
       "storageUnitName": "Vaccine refrigerator R-01",
       "sensorCode": "TS-201",
       "readingCelsius": 4.9,
-      "safeMinCelsius": 2.0,
-      "safeMaxCelsius": 8.0,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
       "raisedAt": "2026-10-05T14:44:00Z",
       "acknowledgedAt": "2026-10-05T15:44:00Z",
       "acknowledgedBy": "Ana Torres",
@@ -310,7 +310,7 @@
         },
         {
           "takenAt": "2026-10-05T14:19:00Z",
-          "valueCelsius": 7.0
+          "valueCelsius": 7
         },
         {
           "takenAt": "2026-10-05T14:24:00Z",
@@ -346,8 +346,8 @@
       "storageUnitName": "Cold room CR-1",
       "sensorCode": "TS-220",
       "readingCelsius": 10.4,
-      "safeMinCelsius": 2.0,
-      "safeMaxCelsius": 8.0,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
       "raisedAt": "2026-10-05T12:44:00Z",
       "acknowledgedAt": "2026-10-05T12:52:00Z",
       "acknowledgedBy": "Lucía Ramos",
@@ -403,8 +403,8 @@
       "storageUnitName": "Plasma freezer F-02",
       "sensorCode": "TS-131",
       "readingCelsius": -27.1,
-      "safeMinCelsius": -40.0,
-      "safeMaxCelsius": -25.0,
+      "safeMinCelsius": -40,
+      "safeMaxCelsius": -25,
       "raisedAt": "2026-10-04T14:44:00Z",
       "acknowledgedAt": "2026-10-04T15:04:00Z",
       "acknowledgedBy": "Diego Salas",
@@ -444,7 +444,7 @@
         },
         {
           "takenAt": "2026-10-04T16:44:00Z",
-          "valueCelsius": -32.0
+          "valueCelsius": -32
         }
       ]
     },
