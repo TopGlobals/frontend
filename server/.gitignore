@@ -1,0 +1,5 @@
+node_modules
+public
+.firebaserc
+firebase.json
+generate-public.cjs
