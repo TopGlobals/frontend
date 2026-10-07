@@ -36,7 +36,61 @@
     }
   },
   "alerts": {},
-  "analytics": {},
+  "analytics": {
+    "dashboard": {
+      "title": "Resumen del panel",
+      "subtitle": "Resumen de todos los entornos de laboratorio.",
+      "viewAll": "Ver todo",
+      "checkReadings": "Ver lecturas",
+      "kpis": {
+        "totalLaboratories": "Total de laboratorios",
+        "activeAlerts": "Alertas activas",
+        "systemsHealth": "Salud del sistema",
+        "upcomingMaintenance": "Próximo mantenimiento"
+      },
+      "charts": {
+        "temperatureTrends": "Tendencias de temperatura",
+        "averageAcrossZones": "Promedio de todas las zonas"
+      },
+      "chartRanges": {
+        "24h": "24h",
+        "7d": "7d",
+        "30d": "30d"
+      },
+      "alerts": {
+        "title": "Alertas recientes",
+        "severities": {
+          "critical": "CRÍTICA",
+          "warning": "ADVERTENCIA",
+          "resolved": "RESUELTA"
+        }
+      },
+      "labs": {
+        "title": "Laboratorios",
+        "subtitle": "Resumen del estado ambiental en vivo",
+        "statuses": {
+          "normal": "NORMAL",
+          "warning": "ADVERTENCIA",
+          "alert": "ALERTA"
+        }
+      }
+    },
+    "readings": {
+      "title": "Lecturas históricas",
+      "subtitle": "Consulte y gestione las lecturas de temperatura.",
+      "tableTitle": "Lecturas de temperatura",
+      "new": "Nueva lectura",
+      "edit": "Editar lectura",
+      "id": "ID",
+      "timestamp": "Fecha y hora",
+      "value": "Temperatura",
+      "actions": "Acciones",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "deleteTitle": "Eliminar lectura",
+      "confirmDelete": "¿Seguro que desea eliminar esta lectura?"
+    }
+  },
   "history": {},
   "laboratories": {
     "panel": {
