@@ -5,6 +5,7 @@ import historyRoutes from './history/presentation/history-routes.js';
 import laboratoriesRoutes from './laboratories/presentation/laboratories-routes.js';
 import profilesRoutes from './profiles/presentation/profiles-routes.js';
 import reportsRoutes from './reports/presentation/reports-routes.js';
+import settingsRoutes from './settings/presentation/settings-routes.js';
 
 /*
 import iamRoutes from "./iam/presentation/iam-routes.js";
@@ -20,6 +21,7 @@ const routes = [
   { path: '/laboratories', name: 'laboratories', children: laboratoriesRoutes },
   { path: '/profiles', name: 'profiles', children: profilesRoutes },
   { path: '/reports', name: 'reports', children: reportsRoutes },
+  { path: '/settings', name: 'settings', children: settingsRoutes },
   /*{ path: '/iam',             name: 'iam',        children: iamRoutes },*/
   { path: '/', redirect: '/analytics' },
   {
@@ -36,12 +38,9 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-  console.log(`Navigating from ${from.name} to ${to.name}`);
   let baseTitle = 'CryoVigil';
   document.title = `${baseTitle} - ${to.meta['title']}`;
-  // When IAM is implemented, use:
-  // return authenticationGuard(to, from);
-  // if not, use:
+
   return true;
 });
 

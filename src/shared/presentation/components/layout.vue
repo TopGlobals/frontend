@@ -1,19 +1,15 @@
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import useSettingsStore from '../../../settings/application/settings.store.js';
 import LanguageSwitcher from './language-switcher.vue';
-import useAlertsStore from '../../../alerts/application/alerts.store.js';
 
 const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
+const settingsStore = useSettingsStore();
 const search = ref(typeof route.query.search === 'string' ? route.query.search : '');
-const alertsStore = useAlertsStore();
-
-onMounted(() => {
-  if (!alertsStore.alertsLoaded) alertsStore.fetchAlerts();
-});
 
 const mainMenuItems = [
   { label: 'layout.menu.items.analytics', to: '/analytics', icon: 'pi pi-th-large' },
@@ -23,7 +19,9 @@ const mainMenuItems = [
   { label: 'layout.menu.items.reports', to: '/reports', icon: 'pi pi-chart-bar' },
 ];
 
-const systemMenuItems = [{ label: 'layout.menu.items.profiles', to: '/profiles', icon: 'pi pi-cog' }];
+const systemMenuItems = [
+  { label: 'layout.menu.items.settings', to: '/settings', icon: 'pi pi-cog' },
+];
 
 const pageTitle = computed(() => {
   if (route.meta.titleKey) return t(route.meta.titleKey);
@@ -33,14 +31,14 @@ const pageTitle = computed(() => {
 });
 
 const pageSubtitle = computed(() =>
-  route.meta.subtitleKey ? t(route.meta.subtitleKey) : (route.meta.subtitle ?? ''),
+  route.meta.subtitleKey ? t(route.meta.subtitleKey) : (route.meta.subtitle ?? '')
 );
 
 watch(
   () => route.query.search,
   (value) => {
     search.value = typeof value === 'string' ? value : '';
-  },
+  }
 );
 
 watch(search, (value) => {
@@ -102,13 +100,6 @@ watch(search, (value) => {
                   aria-hidden="true"
                 />
                 <span>{{ t(item.label) }}</span>
-                <span
-                  v-if="item.to === '/alerts' && alertsStore.openCriticalCount"
-                  class="alert-count"
-                >
-                  <span aria-hidden="true">{{ alertsStore.openCriticalCount }}</span>
-                  <span class="sr-only">{{ t('layout.menu.openCritical', { count: alertsStore.openCriticalCount }) }}</span>
-                </span>
               </router-link>
             </li>
           </ul>
@@ -147,16 +138,12 @@ watch(search, (value) => {
           <a href="mailto:support@topglobals.com">{{ t('layout.help.documentation') }}</a>
         </section>
         <div class="user-profile">
-          <span
-            class="avatar"
-            aria-hidden="true"
-          >AV</span>
           <span class="user-copy">
-            <strong>Dr. Alex Vance</strong>
+            <strong>{{ settingsStore.profile.name }}</strong>
             <small>{{ t('layout.profile.role') }}</small>
           </span>
           <button
-            class="logout-button"
+            class="cryo-button cryo-button-link cryo-button-danger cryo-button-icon logout-button"
             type="button"
             aria-label="Log out"
           >
@@ -312,12 +299,6 @@ nav {
 }
 
 .nav-item:hover,
-.nav-item-active {
-  color: #008b68;
-  background: #eafbf4;
-  border-color: #c5f4df;
-}
-
 .nav-item-active > i,
 .nav-item:hover > i {
   color: #008b68;
@@ -326,27 +307,6 @@ nav {
 .nav-item-active .laboratory-icon,
 .nav-item:hover .laboratory-icon {
   color: #008b68;
-}
-
-.alert-count {
-  min-width: 24px;
-  margin-left: auto;
-  color: #f43f5e;
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
-  border-radius: 999px;
-  font-size: 11px;
-  text-align: center;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 .sidebar-footer {
@@ -393,20 +353,6 @@ nav {
   border-top: 1px solid #edf0f5;
 }
 
-.avatar {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  color: #087e64;
-  background: #d8f4e8;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px #b5ead3;
-  font-size: 11px;
-  font-weight: 700;
-}
-
 .user-copy strong {
   font-size: 11px;
 }
@@ -418,10 +364,6 @@ nav {
 
 .logout-button {
   margin-left: auto;
-  padding: 7px;
-  color: #f43f5e;
-  background: transparent;
-  border: 0;
 }
 
 .main-wrapper {

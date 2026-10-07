@@ -423,6 +423,117 @@ input:-webkit-autofill:active {
   border-radius: var(--cryo-radius-sm) !important;
 }
 
+.cryo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--cryo-radius-md);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cryo-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cryo-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--cryo-primary) 25%, transparent);
+  outline-offset: 2px;
+}
+
+.cryo-button-primary {
+  color: var(--cryo-text-inverse);
+  background: var(--cryo-primary);
+  border-color: var(--cryo-primary);
+}
+
+.cryo-button-primary:hover:not(:disabled) {
+  color: var(--cryo-text-inverse);
+  background: var(--cryo-primary-hover);
+  border-color: var(--cryo-primary-hover);
+}
+
+.cryo-button-secondary {
+  color: var(--cryo-text-secondary);
+  background: var(--cryo-surface);
+  border-color: var(--cryo-border);
+}
+
+.cryo-button-secondary:hover:not(:disabled) {
+  color: var(--cryo-text);
+  background: var(--cryo-surface-hover);
+}
+
+.cryo-button-danger {
+  color: var(--cryo-status-critical-text);
+  background: var(--cryo-status-critical-bg);
+  border-color: var(--cryo-status-critical-border);
+}
+
+.cryo-button-danger:hover:not(:disabled) {
+  color: var(--cryo-status-critical-text);
+  background: var(--cryo-status-critical-bg);
+  border-color: var(--cryo-status-critical);
+}
+
+.cryo-button-compact {
+  min-height: 36px;
+}
+
+.cryo-button-small {
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: var(--cryo-radius-sm);
+  font-size: 0.6875rem;
+}
+
+.cryo-button-icon {
+  width: 36px;
+  min-height: 36px;
+  padding: 0;
+}
+
+.cryo-button-block {
+  width: 100%;
+}
+
+.cryo-button-link {
+  min-height: 0;
+  padding: 0;
+  color: var(--cryo-primary);
+  background: transparent;
+  border-color: transparent;
+}
+
+.cryo-button-link:hover:not(:disabled) {
+  color: var(--cryo-primary-hover);
+  background: transparent;
+}
+
+.cryo-button-link.cryo-button-danger {
+  color: var(--cryo-status-critical);
+  background: transparent;
+}
+
+.cryo-button-link.cryo-button-danger:hover:not(:disabled) {
+  color: var(--cryo-status-critical-text);
+  background: transparent;
+}
+
 /* Form Inputs (<pv-input-text>, <pv-textarea>, <pv-select>, <pv-password>) */
 .p-inputtext,
 .p-textarea,

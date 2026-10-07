@@ -199,7 +199,61 @@
       "daysHours": "{days} d {hours} h"
     }
   },
-  "analytics": {},
+  "analytics": {
+    "dashboard": {
+      "title": "Dashboard Overview",
+      "subtitle": "Summary of all laboratory environments.",
+      "viewAll": "View All",
+      "checkReadings": "Check Readings",
+      "kpis": {
+        "totalLaboratories": "Total Laboratories",
+        "activeAlerts": "Active Alerts",
+        "systemsHealth": "Systems Health",
+        "upcomingMaintenance": "Upcoming Maintenance"
+      },
+      "charts": {
+        "temperatureTrends": "Temperature Trends",
+        "averageAcrossZones": "Average across all zones"
+      },
+      "chartRanges": {
+        "24h": "24h",
+        "7d": "7d",
+        "30d": "30d"
+      },
+      "alerts": {
+        "title": "Recent Alerts",
+        "severities": {
+          "critical": "CRITICAL",
+          "warning": "WARNING",
+          "resolved": "RESOLVED"
+        }
+      },
+      "labs": {
+        "title": "Laboratories",
+        "subtitle": "Live environmental status overview",
+        "statuses": {
+          "normal": "NORMAL",
+          "warning": "WARNING",
+          "alert": "ALERT"
+        }
+      }
+    },
+    "readings": {
+      "title": "Historical Readings",
+      "subtitle": "Review and manage temperature readings.",
+      "tableTitle": "Temperature readings",
+      "new": "New Reading",
+      "edit": "Edit Reading",
+      "id": "ID",
+      "timestamp": "Timestamp",
+      "value": "Temperature",
+      "actions": "Actions",
+      "save": "Save",
+      "cancel": "Cancel",
+      "deleteTitle": "Delete reading",
+      "confirmDelete": "Are you sure you want to delete this reading?"
+    }
+  },
   "history": {},
   "laboratories": {
     "panel": {
@@ -228,12 +282,16 @@
       "updatedNow": "Updated just now",
       "actionRequired": "Action Required immediately",
       "viewDetails": "View details",
+      "edit": "Edit",
+      "editAriaLabel": "Edit {name}",
       "delete": "Delete",
       "cancel": "Cancel",
       "deleteHeader": "Delete laboratory",
       "deleteConfirmation": "Are you sure you want to delete {name}? This action cannot be undone.",
       "deleteAriaLabel": "Delete {name}",
       "laboratoryId": "Laboratory ID",
+      "loadError": "Unable to load laboratories. Make sure the mock server is running.",
+      "deleteError": "Unable to delete this laboratory. Please try again.",
       "airQualityDetails": "Air quality",
       "unknownDetections": "Unknown detections",
       "empty": "No laboratories match these filters.",
@@ -272,7 +330,12 @@
       "breadcrumbCurrent": "Bio-Safety Lab 01",
       "cancel": "Cancel",
       "save": "Save Laboratory",
-      "saveSuccess": "Laboratory details are ready to save.",
+      "update": "Update Laboratory",
+      "editTitle": "Edit Laboratory",
+      "editSubtitle": "Update laboratory details and monitoring settings.",
+      "editBreadcrumbCurrent": "Edit Laboratory",
+      "loadError": "Unable to load this laboratory. It may have been deleted.",
+      "saveError": "Unable to save this laboratory. Make sure the mock server is running and try again.",
       "basicTitle": "Basic Information",
       "basicDescription": "General details about the laboratory",
       "laboratoryName": "Laboratory Name",
@@ -330,6 +393,8 @@
         "vibrationDescription": "Seismic and mechanical vibration sensor",
         "lighting": "Lighting",
         "lightingDescription": "Automated smart lighting control system"
+        "airConditioning": "Air Conditioning",
+        "airConditioningDescription": "Climate control and cooling management"
       },
       "active": "Active",
       "inactive": "Inactive",
@@ -369,5 +434,152 @@
     }
   },
   "profiles": {},
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure your Safelab workspace and personal preferences.",
+    "back": "Back to Settings",
+    "confirm": {
+      "title": "Are you sure?",
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "confirm": "Confirm"
+    },
+    "general": {
+      "title": "General Settings",
+      "scope": "System-wide",
+      "description": "Manage your global laboratory environment settings, including regional formatting, time zones, and default units of measurement for all experiments.",
+      "viewDetails": "View Details",
+      "region": "Time zone",
+      "temperatureUnit": "Temperature unit",
+      "done": "Done",
+      "close": "Close settings"
+    },
+    "profile": {
+      "role": "Head Researcher",
+      "description": "Manage your personal identity, contact information, and professional credentials.",
+      "edit": "Edit Profile",
+      "name": "Full name",
+      "email": "Email address",
+      "save": "Save Profile"
+    },
+    "sections": {
+      "sensors": {
+        "title": "Sensor Configuration",
+        "description": "Calibrate and manage lab sensors for temperature, humidity, and atmospheric pressure monitoring.",
+        "action": "Configure"
+      },
+      "notifications": {
+        "title": "Alerts & Notifications",
+        "description": "Define critical thresholds for automated alerts via SMS, email, or in-app notifications for specimen safety.",
+        "action": "Set Preferences"
+      },
+      "security": {
+        "title": "Security & Access",
+        "description": "Control user permissions, API keys, and audit logs to ensure compliance with laboratory safety protocols.",
+        "action": "Manage"
+      }
+    },
+    "sensors": {
+      "subtitle": "Manage connected telemetry, recalibrate parameters, and verify compliance.",
+      "add": "Add New Sensor",
+      "filterBy": "Filter by:",
+      "sensorType": "Sensor type",
+      "location": "Lab location",
+      "allTypes": "All Sensor Types",
+      "allLocations": "All Lab Locations",
+      "types": {
+        "temperature": "Temperature",
+        "pressure": "Pressure",
+        "humidity": "Humidity",
+        "co2": "CO2"
+      },
+      "total": "Total: {count} Sensors",
+      "name": "Sensor name",
+      "selectType": "Select sensor type",
+      "statusLabel": "Status",
+      "model": "Model:",
+      "serial": "S/N:",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "calibration": "Needs Calibration"
+      },
+      "calibrate": "Calibrate",
+      "edit": "Edit",
+      "delete": "Delete",
+      "noSensors": "No sensors match these filters.",
+      "calibrationScheduled": "Calibration scheduled for {name}.",
+      "editing": "Editing {name}.",
+      "newSensorName": "New Temperature Sensor {number}",
+      "sensorAdded": "A new sensor has been added.",
+      "sensorUpdated": "Sensor details updated.",
+      "confirmAdd": "Are you sure you want to add this sensor?",
+      "confirmEdit": "Are you sure you want to save these sensor changes?",
+      "confirmCalibrate": "Are you sure you want to calibrate this sensor?",
+      "confirmDelete": "Are you sure you want to delete this sensor? This action cannot be undone.",
+      "sensorDeleted": "{name} was deleted.",
+      "complianceTitle": "Calibration Compliance",
+      "nextAudit": "Next Audit: Dec 15",
+      "calibrated": "Calibrated",
+      "pending": "Pending",
+      "overdue": "Overdue",
+      "complianceNote": "Laboratory automated monitors undergo calibration inspection every 90 days according to GLP guidelines.",
+      "safetyTitle": "Safety First",
+      "safetyDescription": "Regular sensor calibration ensures ISO 17025 compliance and lab safety standards across all monitored biological specimens.",
+      "auditReport": "Download Audit Report",
+      "auditReady": "Audit report is ready."
+    },
+    "notifications": {
+      "subtitle": "Configure how and when you receive laboratory safety and status updates.",
+      "channels": "Notifications Channel",
+      "email": "Email Notifications",
+      "emailDescription": "Daily digests and critical alerts via email",
+      "inApp": "In-App Notifications",
+      "inAppDescription": "Real-time alerts within the dashboard",
+      "thresholds": "Alert Thresholds",
+      "temperatureAlerts": "Temperature Alerts",
+      "warningLevel": "Warning Level",
+      "criticalLevel": "Critical Level",
+      "deviation": "Deviation",
+      "warningNote": "Visual indication active for watchful zone",
+      "criticalNote": "Immediate technician activation required",
+      "activitySummary": "Lab Activity Summary",
+      "daily": "Daily Summary",
+      "dailyDescription": "A concise snapshot of all lab readings and events over the past 24 hours.",
+      "weekly": "Weekly Report",
+      "weeklyDescription": "Comprehensive trends and compliance documentation for the previous week.",
+      "instant": "Instant Sensor Alerts",
+      "instantDescription": "Immediate notification for any sensor hardware malfunctions or connectivity loss.",
+      "save": "Save Changes",
+      "saved": "Notification preferences saved.",
+      "confirmSave": "Are you sure you want to save these notification preferences?"
+    },
+    "security": {
+      "subtitle": "Manage your account credentials and security preferences.",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "passwordRequirement": "Password must be 8+ characters",
+      "passwordTooShort": "Password must be at least 8 characters.",
+      "passwordMismatch": "The new passwords do not match.",
+      "passwordSaved": "Password update simulated; authentication is not connected in this frontend.",
+      "updatePassword": "Update Password",
+      "twoFactorTitle": "Two-Factor Authentication (2FA)",
+      "twoFactorDescription": "Add an extra layer of security to your account by requiring more than just a password to log in.",
+      "enableTwoFactor": "Enable 2FA",
+      "disableTwoFactor": "Disable 2FA",
+      "twoFactorEnabled": "Two-factor authentication enabled.",
+      "twoFactorDisabled": "Two-factor authentication disabled.",
+      "confirmPasswordChange": "Are you sure you want to update your password?",
+      "confirmTwoFactor": "Are you sure you want to {action}?",
+      "loginActivity": "Login Activity",
+      "lastLogin": "Last login: 2 hours ago from Zurich, CH",
+      "activeSessions": "Active Sessions",
+      "connectedDevices": "2 devices currently connected",
+      "accountStatus": "Account Status",
+      "verifiedResearcher": "Verified Lab Researcher (Tier 1)"
+    }
+  },
   "reports": {}
 }
