@@ -5,7 +5,7 @@ export const historyRoutes = [
     name: 'history-view',
     component: HistoryView,
     meta: {
-      title: 'CryoVigil - History Log',
+      title: 'History Log',
     },
   },
 ];
