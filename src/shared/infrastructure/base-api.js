@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // import {iamInterceptor} from "../../iam/infrastructure/iam.interceptor.js";
 
-const platformApi = import.meta.env.VITE_CRYOVIGIL_PLATFORM_API_URL;
+const platformApi =
+  import.meta.env.VITE_CRYOVIGIL_PLATFORM_API_URL || 'http://localhost:3000';
 
 export class BaseApi {
   #http;
@@ -12,12 +13,10 @@ export class BaseApi {
       baseURL: platformApi,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       },
     });
     // this.#http.interceptors.request.use(iamInterceptor);
   }
-
   get http() {
     return this.#http;
   }

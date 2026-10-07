@@ -1,5 +1,6 @@
 interface ImportMetaEnv {
   readonly VITE_CRYOVIGIL_PLATFORM_API_URL: string;
+  readonly VITE_ANALYTICS_ENDPOINT_PATH: string;
   readonly VITE_LABORATORIES_ENDPOINT_PATH: string;
   readonly VITE_HISTORY_ENDPOINT_PATH: string;
   readonly VITE_ALERTS_ENDPOINT_PATH: string;

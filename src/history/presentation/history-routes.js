@@ -1,9 +1,12 @@
-const historyRoutes = [
+import HistoryView from './views/history-view.vue';
+export const historyRoutes = [
   {
     path: '/history',
-    name: 'History',
-    /*component: () => import('./views/history.vue'),*/
+    name: 'history-view',
+    component: HistoryView,
+    meta: {
+      titleKey: 'history.title',
+      subtitleKey: 'history.subtitle',
+    },
   },
 ];
-
-export default historyRoutes;

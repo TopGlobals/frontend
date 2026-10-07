@@ -1,6 +1,2164 @@
 {
-  "alerts": [],
-  "analytics": [],
+  "alerts": [
+    {
+      "id": "6e8c1618-0a00-53ec-ac76-cdb71c5a1979",
+      "code": "ALT-20261005-001",
+      "title": "Temperature above safe range",
+      "message": "Vaccine refrigerator R-02 is reading 9.6 °C, 1.6 °C above its 8.0 °C limit. The compressor has not restarted after the last defrost cycle.",
+      "severity": "critical",
+      "status": "raised",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Vaccine Storage Room",
+      "storageUnitName": "Vaccine refrigerator R-02",
+      "sensorCode": "TS-204",
+      "readingCelsius": 9.6,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
+      "raisedAt": "2026-10-05T17:38:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": 6.8
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": 7.1
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": 7.5
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": 7.9
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": 8.4
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": 9
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": 9.6
+        }
+      ]
+    },
+    {
+      "id": "45ffdab0-fc01-57e8-b447-e2383f0d4619",
+      "code": "ALT-20261005-002",
+      "title": "Ultra-low freezer warming",
+      "message": "Freezer F-01 is at -64.2 °C, above its -70.0 °C limit. It stores plasma and DNA samples from the biobank collection.",
+      "severity": "critical",
+      "status": "raised",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Biobank B2",
+      "storageUnitName": "Ultra-low freezer F-01",
+      "sensorCode": "TS-118",
+      "readingCelsius": -64.2,
+      "safeMinCelsius": -86,
+      "safeMaxCelsius": -70,
+      "raisedAt": "2026-10-05T17:22:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": -72.4
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": -71.1
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": -69.6
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": -68.3
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": -66.9
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": -65.5
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": -64.2
+        }
+      ]
+    },
+    {
+      "id": "06a55f99-a06b-5252-a13a-44e34458e137",
+      "code": "ALT-20261005-003",
+      "title": "Temperature below safe range",
+      "message": "Reagent refrigerator R-07 dropped to 0.8 °C. Enzyme kits stored at 2 to 8 °C can lose activity if they freeze.",
+      "severity": "critical",
+      "status": "acknowledged",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Clinical Biochemistry Lab",
+      "storageUnitName": "Reagent refrigerator R-07",
+      "sensorCode": "TS-311",
+      "readingCelsius": 0.8,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
+      "raisedAt": "2026-10-05T16:56:00Z",
+      "acknowledgedAt": "2026-10-05T17:03:00Z",
+      "acknowledgedBy": "Lucía Ramos",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [
+        {
+          "description": "Raised the thermostat set point from 2 °C to 5 °C and moved the enzyme kits to the upper shelf.",
+          "technicianName": "Lucía Ramos",
+          "takenAt": "2026-10-05T17:09:00Z"
+        }
+      ],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": 1.2
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": 0.9
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": 0.8
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": 1
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": 1.3
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": 1.7
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": 2.1
+        }
+      ]
+    },
+    {
+      "id": "35a04632-0538-5a97-bcdf-607b6fff95ad",
+      "code": "ALT-20261005-004",
+      "title": "Temperature rising toward limit",
+      "message": "Blood bank refrigerator R-03 has risen 0.5 °C per hour and is projected to exceed 6.0 °C in less than 2 hours. Check the cooling system.",
+      "severity": "warning",
+      "status": "raised",
+      "sourceType": "preventive-trend",
+      "laboratoryName": "Clinical Biochemistry Lab",
+      "storageUnitName": "Blood bank refrigerator R-03",
+      "sensorCode": "TS-207",
+      "readingCelsius": 5.4,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 6,
+      "raisedAt": "2026-10-05T15:54:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": 5.15
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": 5.2
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": 5.24
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": 5.28
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": 5.32
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": 5.36
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": 5.4
+        }
+      ]
+    },
+    {
+      "id": "92bb4edd-7659-5f08-9e42-1a0e60ed215b",
+      "code": "ALT-20261005-005",
+      "title": "Freezer temperature drifting",
+      "message": "Freezer F-04 has warmed steadily for 3 hours and is 1.2 °C from its -15.0 °C limit. The door seal may be worn.",
+      "severity": "warning",
+      "status": "acknowledged",
+      "sourceType": "preventive-trend",
+      "laboratoryName": "Microbiology Lab",
+      "storageUnitName": "Freezer F-04",
+      "sensorCode": "TS-412",
+      "readingCelsius": -16.2,
+      "safeMinCelsius": -25,
+      "safeMaxCelsius": -15,
+      "raisedAt": "2026-10-05T14:29:00Z",
+      "acknowledgedAt": "2026-10-05T14:54:00Z",
+      "acknowledgedBy": "Diego Salas",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T17:14:00Z",
+          "valueCelsius": -16.8
+        },
+        {
+          "takenAt": "2026-10-05T17:19:00Z",
+          "valueCelsius": -16.7
+        },
+        {
+          "takenAt": "2026-10-05T17:24:00Z",
+          "valueCelsius": -16.6
+        },
+        {
+          "takenAt": "2026-10-05T17:29:00Z",
+          "valueCelsius": -16.5
+        },
+        {
+          "takenAt": "2026-10-05T17:34:00Z",
+          "valueCelsius": -16.4
+        },
+        {
+          "takenAt": "2026-10-05T17:39:00Z",
+          "valueCelsius": -16.3
+        },
+        {
+          "takenAt": "2026-10-05T17:44:00Z",
+          "valueCelsius": -16.2
+        }
+      ]
+    },
+    {
+      "id": "8381fd28-cec5-5357-88c5-77562759116e",
+      "code": "ALT-20261005-006",
+      "title": "Sensor calibration due",
+      "message": "The calibration certificate of sensor TS-305 expires in 3 days. Schedule a calibration to keep its readings valid for audits.",
+      "severity": "info",
+      "status": "raised",
+      "sourceType": "calibration-due",
+      "laboratoryName": "Clinical Biochemistry Lab",
+      "storageUnitName": "Sample refrigerator R-09",
+      "sensorCode": "TS-305",
+      "readingCelsius": null,
+      "safeMinCelsius": null,
+      "safeMaxCelsius": null,
+      "raisedAt": "2026-10-05T13:44:00Z",
+      "acknowledgedAt": null,
+      "acknowledgedBy": null,
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "correctiveActions": [],
+      "readings": []
+    },
+    {
+      "id": "30adfe2b-f5bc-5aa4-bcdc-6d4e0acbf489",
+      "code": "ALT-20261005-007",
+      "title": "Temperature back within range",
+      "message": "Vaccine refrigerator R-01 returned to 4.9 °C after the scheduled defrost cycle and has been stable for 30 minutes.",
+      "severity": "info",
+      "status": "closed",
+      "sourceType": "thermal-status-normalized",
+      "laboratoryName": "Vaccine Storage Room",
+      "storageUnitName": "Vaccine refrigerator R-01",
+      "sensorCode": "TS-201",
+      "readingCelsius": 4.9,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
+      "raisedAt": "2026-10-05T14:44:00Z",
+      "acknowledgedAt": "2026-10-05T15:44:00Z",
+      "acknowledgedBy": "Ana Torres",
+      "resolvedAt": "2026-10-05T15:44:00Z",
+      "resolvedBy": "Ana Torres",
+      "correctiveActions": [],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T14:14:00Z",
+          "valueCelsius": 7.6
+        },
+        {
+          "takenAt": "2026-10-05T14:19:00Z",
+          "valueCelsius": 7
+        },
+        {
+          "takenAt": "2026-10-05T14:24:00Z",
+          "valueCelsius": 6.3
+        },
+        {
+          "takenAt": "2026-10-05T14:29:00Z",
+          "valueCelsius": 5.8
+        },
+        {
+          "takenAt": "2026-10-05T14:34:00Z",
+          "valueCelsius": 5.4
+        },
+        {
+          "takenAt": "2026-10-05T14:39:00Z",
+          "valueCelsius": 5.1
+        },
+        {
+          "takenAt": "2026-10-05T14:44:00Z",
+          "valueCelsius": 4.9
+        }
+      ]
+    },
+    {
+      "id": "8614afe8-004d-5565-8688-5af3bdb53aed",
+      "code": "ALT-20261005-008",
+      "title": "Cold room temperature excursion",
+      "message": "Cold room CR-1 reached 10.4 °C, above its 8.0 °C limit, while the door was held open during a vaccine delivery.",
+      "severity": "critical",
+      "status": "closed",
+      "sourceType": "thermal-excursion",
+      "laboratoryName": "Vaccine Storage Room",
+      "storageUnitName": "Cold room CR-1",
+      "sensorCode": "TS-220",
+      "readingCelsius": 10.4,
+      "safeMinCelsius": 2,
+      "safeMaxCelsius": 8,
+      "raisedAt": "2026-10-05T12:44:00Z",
+      "acknowledgedAt": "2026-10-05T12:52:00Z",
+      "acknowledgedBy": "Lucía Ramos",
+      "resolvedAt": "2026-10-05T13:34:00Z",
+      "resolvedBy": "Lucía Ramos",
+      "correctiveActions": [
+        {
+          "description": "Moved vaccine lots 2291 and 2292 to backup refrigerator R-05 and replaced the door gasket of CR-1.",
+          "technicianName": "Lucía Ramos",
+          "takenAt": "2026-10-05T13:32:00Z"
+        }
+      ],
+      "readings": [
+        {
+          "takenAt": "2026-10-05T13:04:00Z",
+          "valueCelsius": 10.4
+        },
+        {
+          "takenAt": "2026-10-05T13:09:00Z",
+          "valueCelsius": 9.8
+        },
+        {
+          "takenAt": "2026-10-05T13:14:00Z",
+          "valueCelsius": 9.1
+        },
+        {
+          "takenAt": "2026-10-05T13:19:00Z",
+          "valueCelsius": 8.5
+        },
+        {
+          "takenAt": "2026-10-05T13:24:00Z",
+          "valueCelsius": 7.9
+        },
+        {
+          "takenAt": "2026-10-05T13:29:00Z",
+          "valueCelsius": 7.2
+        },
+        {
+          "takenAt": "2026-10-05T13:34:00Z",
+          "valueCelsius": 6.6
+        }
+      ]
+    },
+    {
+      "id": "e02cce52-7ec3-5079-bd4a-dbe57dc5302f",
+      "code": "ALT-20261005-009",
+      "title": "Temperature rising toward limit",
+      "message": "Plasma freezer F-02 was projected to exceed -25.0 °C within 2 hours.",
+      "severity": "warning",
+      "status": "closed",
+      "sourceType": "preventive-trend",
+      "laboratoryName": "Biobank B2",
+      "storageUnitName": "Plasma freezer F-02",
+      "sensorCode": "TS-131",
+      "readingCelsius": -27.1,
+      "safeMinCelsius": -40,
+      "safeMaxCelsius": -25,
+      "raisedAt": "2026-10-04T14:44:00Z",
+      "acknowledgedAt": "2026-10-04T15:04:00Z",
+      "acknowledgedBy": "Diego Salas",
+      "resolvedAt": "2026-10-04T16:44:00Z",
+      "resolvedBy": "Diego Salas",
+      "correctiveActions": [
+        {
+          "description": "Defrosted the evaporator coil. Temperature stable at -32 °C.",
+          "technicianName": "Diego Salas",
+          "takenAt": "2026-10-04T16:39:00Z"
+        }
+      ],
+      "readings": [
+        {
+          "takenAt": "2026-10-04T16:14:00Z",
+          "valueCelsius": -27.1
+        },
+        {
+          "takenAt": "2026-10-04T16:19:00Z",
+          "valueCelsius": -28.3
+        },
+        {
+          "takenAt": "2026-10-04T16:24:00Z",
+          "valueCelsius": -29.5
+        },
+        {
+          "takenAt": "2026-10-04T16:29:00Z",
+          "valueCelsius": -30.6
+        },
+        {
+          "takenAt": "2026-10-04T16:34:00Z",
+          "valueCelsius": -31.4
+        },
+        {
+          "takenAt": "2026-10-04T16:39:00Z",
+          "valueCelsius": -31.9
+        },
+        {
+          "takenAt": "2026-10-04T16:44:00Z",
+          "valueCelsius": -32
+        }
+      ]
+    },
+    {
+      "id": "e92f7ee9-9b92-59f9-ad23-f4eb7282ab3b",
+      "code": "ALT-20261005-010",
+      "title": "Sensor calibration due",
+      "message": "The calibration certificate of sensor TS-118 was about to expire.",
+      "severity": "info",
+      "status": "closed",
+      "sourceType": "calibration-due",
+      "laboratoryName": "Biobank B2",
+      "storageUnitName": "Ultra-low freezer F-01",
+      "sensorCode": "TS-118",
+      "readingCelsius": null,
+      "safeMinCelsius": null,
+      "safeMaxCelsius": null,
+      "raisedAt": "2026-09-29T17:44:00Z",
+      "acknowledgedAt": "2026-09-30T17:44:00Z",
+      "acknowledgedBy": "Ana Torres",
+      "resolvedAt": "2026-09-30T17:44:00Z",
+      "resolvedBy": "Ana Torres",
+      "correctiveActions": [
+        {
+          "description": "Sensor recalibrated by the vendor. Certificate valid until next October.",
+          "technicianName": "Ana Torres",
+          "takenAt": "2026-09-30T17:44:00Z"
+        }
+      ],
+      "readings": []
+    }
+  ],
+  "analytics": [
+    {
+      "id": 1,
+      "timestamp": "2026-10-01T00:00:00.000Z",
+      "value": 15.4
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-10-01T01:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-10-01T02:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 4,
+      "timestamp": "2026-10-01T03:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 5,
+      "timestamp": "2026-10-01T04:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 6,
+      "timestamp": "2026-10-01T05:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 7,
+      "timestamp": "2026-10-01T06:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 8,
+      "timestamp": "2026-10-01T07:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 9,
+      "timestamp": "2026-10-01T08:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 10,
+      "timestamp": "2026-10-01T09:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 11,
+      "timestamp": "2026-10-01T10:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 12,
+      "timestamp": "2026-10-01T11:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 13,
+      "timestamp": "2026-10-01T12:00:00.000Z",
+      "value": 15.6
+    },
+    {
+      "id": 14,
+      "timestamp": "2026-10-01T13:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 15,
+      "timestamp": "2026-10-01T14:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 16,
+      "timestamp": "2026-10-01T15:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 17,
+      "timestamp": "2026-10-01T16:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 18,
+      "timestamp": "2026-10-01T17:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 19,
+      "timestamp": "2026-10-01T18:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 20,
+      "timestamp": "2026-10-01T19:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 21,
+      "timestamp": "2026-10-01T20:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 22,
+      "timestamp": "2026-10-01T21:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 23,
+      "timestamp": "2026-10-01T22:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 24,
+      "timestamp": "2026-10-01T23:00:00.000Z",
+      "value": 18.1
+    },
+    {
+      "id": 25,
+      "timestamp": "2026-10-02T00:00:00.000Z",
+      "value": 15.8
+    },
+    {
+      "id": 26,
+      "timestamp": "2026-10-02T01:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 27,
+      "timestamp": "2026-10-02T02:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 28,
+      "timestamp": "2026-10-02T03:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 29,
+      "timestamp": "2026-10-02T04:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 30,
+      "timestamp": "2026-10-02T05:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 31,
+      "timestamp": "2026-10-02T06:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 32,
+      "timestamp": "2026-10-02T07:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 33,
+      "timestamp": "2026-10-02T08:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 34,
+      "timestamp": "2026-10-02T09:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 35,
+      "timestamp": "2026-10-02T10:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 36,
+      "timestamp": "2026-10-02T11:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 37,
+      "timestamp": "2026-10-02T12:00:00.000Z",
+      "value": 15.5
+    },
+    {
+      "id": 38,
+      "timestamp": "2026-10-02T13:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 39,
+      "timestamp": "2026-10-02T14:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 40,
+      "timestamp": "2026-10-02T15:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 41,
+      "timestamp": "2026-10-02T16:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 42,
+      "timestamp": "2026-10-02T17:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 43,
+      "timestamp": "2026-10-02T18:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 44,
+      "timestamp": "2026-10-02T19:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 45,
+      "timestamp": "2026-10-02T20:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 46,
+      "timestamp": "2026-10-02T21:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 47,
+      "timestamp": "2026-10-02T22:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 48,
+      "timestamp": "2026-10-02T23:00:00.000Z",
+      "value": 18
+    },
+    {
+      "id": 49,
+      "timestamp": "2026-10-03T00:00:00.000Z",
+      "value": 15.7
+    },
+    {
+      "id": 50,
+      "timestamp": "2026-10-03T01:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 51,
+      "timestamp": "2026-10-03T02:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 52,
+      "timestamp": "2026-10-03T03:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 53,
+      "timestamp": "2026-10-03T04:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 54,
+      "timestamp": "2026-10-03T05:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 55,
+      "timestamp": "2026-10-03T06:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 56,
+      "timestamp": "2026-10-03T07:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 57,
+      "timestamp": "2026-10-03T08:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 58,
+      "timestamp": "2026-10-03T09:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 59,
+      "timestamp": "2026-10-03T10:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 60,
+      "timestamp": "2026-10-03T11:00:00.000Z",
+      "value": 18.2
+    },
+    {
+      "id": 61,
+      "timestamp": "2026-10-03T12:00:00.000Z",
+      "value": 15.4
+    },
+    {
+      "id": 62,
+      "timestamp": "2026-10-03T13:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 63,
+      "timestamp": "2026-10-03T14:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 64,
+      "timestamp": "2026-10-03T15:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 65,
+      "timestamp": "2026-10-03T16:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 66,
+      "timestamp": "2026-10-03T17:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 67,
+      "timestamp": "2026-10-03T18:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 68,
+      "timestamp": "2026-10-03T19:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 69,
+      "timestamp": "2026-10-03T20:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 70,
+      "timestamp": "2026-10-03T21:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 71,
+      "timestamp": "2026-10-03T22:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 72,
+      "timestamp": "2026-10-03T23:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 73,
+      "timestamp": "2026-10-04T00:00:00.000Z",
+      "value": 15.6
+    },
+    {
+      "id": 74,
+      "timestamp": "2026-10-04T01:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 75,
+      "timestamp": "2026-10-04T02:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 76,
+      "timestamp": "2026-10-04T03:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 77,
+      "timestamp": "2026-10-04T04:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 78,
+      "timestamp": "2026-10-04T05:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 79,
+      "timestamp": "2026-10-04T06:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 80,
+      "timestamp": "2026-10-04T07:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 81,
+      "timestamp": "2026-10-04T08:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 82,
+      "timestamp": "2026-10-04T09:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 83,
+      "timestamp": "2026-10-04T10:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 84,
+      "timestamp": "2026-10-04T11:00:00.000Z",
+      "value": 18.1
+    },
+    {
+      "id": 85,
+      "timestamp": "2026-10-04T12:00:00.000Z",
+      "value": 15.8
+    },
+    {
+      "id": 86,
+      "timestamp": "2026-10-04T13:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 87,
+      "timestamp": "2026-10-04T14:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 88,
+      "timestamp": "2026-10-04T15:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 89,
+      "timestamp": "2026-10-04T16:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 90,
+      "timestamp": "2026-10-04T17:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 91,
+      "timestamp": "2026-10-04T18:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 92,
+      "timestamp": "2026-10-04T19:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 93,
+      "timestamp": "2026-10-04T20:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 94,
+      "timestamp": "2026-10-04T21:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 95,
+      "timestamp": "2026-10-04T22:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 96,
+      "timestamp": "2026-10-04T23:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 97,
+      "timestamp": "2026-10-05T00:00:00.000Z",
+      "value": 15.5
+    },
+    {
+      "id": 98,
+      "timestamp": "2026-10-05T01:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 99,
+      "timestamp": "2026-10-05T02:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 100,
+      "timestamp": "2026-10-05T03:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 101,
+      "timestamp": "2026-10-05T04:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 102,
+      "timestamp": "2026-10-05T05:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 103,
+      "timestamp": "2026-10-05T06:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 104,
+      "timestamp": "2026-10-05T07:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 105,
+      "timestamp": "2026-10-05T08:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 106,
+      "timestamp": "2026-10-05T09:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 107,
+      "timestamp": "2026-10-05T10:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 108,
+      "timestamp": "2026-10-05T11:00:00.000Z",
+      "value": 18
+    },
+    {
+      "id": 109,
+      "timestamp": "2026-10-05T12:00:00.000Z",
+      "value": 15.7
+    },
+    {
+      "id": 110,
+      "timestamp": "2026-10-05T13:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 111,
+      "timestamp": "2026-10-05T14:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 112,
+      "timestamp": "2026-10-05T15:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 113,
+      "timestamp": "2026-10-05T16:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 114,
+      "timestamp": "2026-10-05T17:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 115,
+      "timestamp": "2026-10-05T18:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 116,
+      "timestamp": "2026-10-05T19:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 117,
+      "timestamp": "2026-10-05T20:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 118,
+      "timestamp": "2026-10-05T21:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 119,
+      "timestamp": "2026-10-05T22:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 120,
+      "timestamp": "2026-10-05T23:00:00.000Z",
+      "value": 18.2
+    },
+    {
+      "id": 121,
+      "timestamp": "2026-10-06T00:00:00.000Z",
+      "value": 15.4
+    },
+    {
+      "id": 122,
+      "timestamp": "2026-10-06T01:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 123,
+      "timestamp": "2026-10-06T02:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 124,
+      "timestamp": "2026-10-06T03:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 125,
+      "timestamp": "2026-10-06T04:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 126,
+      "timestamp": "2026-10-06T05:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 127,
+      "timestamp": "2026-10-06T06:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 128,
+      "timestamp": "2026-10-06T07:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 129,
+      "timestamp": "2026-10-06T08:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 130,
+      "timestamp": "2026-10-06T09:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 131,
+      "timestamp": "2026-10-06T10:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 132,
+      "timestamp": "2026-10-06T11:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 133,
+      "timestamp": "2026-10-06T12:00:00.000Z",
+      "value": 15.6
+    },
+    {
+      "id": 134,
+      "timestamp": "2026-10-06T13:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 135,
+      "timestamp": "2026-10-06T14:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 136,
+      "timestamp": "2026-10-06T15:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 137,
+      "timestamp": "2026-10-06T16:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 138,
+      "timestamp": "2026-10-06T17:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 139,
+      "timestamp": "2026-10-06T18:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 140,
+      "timestamp": "2026-10-06T19:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 141,
+      "timestamp": "2026-10-06T20:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 142,
+      "timestamp": "2026-10-06T21:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 143,
+      "timestamp": "2026-10-06T22:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 144,
+      "timestamp": "2026-10-06T23:00:00.000Z",
+      "value": 18.1
+    },
+    {
+      "id": 145,
+      "timestamp": "2026-10-07T00:00:00.000Z",
+      "value": 15.8
+    },
+    {
+      "id": 146,
+      "timestamp": "2026-10-07T01:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 147,
+      "timestamp": "2026-10-07T02:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 148,
+      "timestamp": "2026-10-07T03:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 149,
+      "timestamp": "2026-10-07T04:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 150,
+      "timestamp": "2026-10-07T05:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 151,
+      "timestamp": "2026-10-07T06:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 152,
+      "timestamp": "2026-10-07T07:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 153,
+      "timestamp": "2026-10-07T08:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 154,
+      "timestamp": "2026-10-07T09:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 155,
+      "timestamp": "2026-10-07T10:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 156,
+      "timestamp": "2026-10-07T11:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 157,
+      "timestamp": "2026-10-07T12:00:00.000Z",
+      "value": 15.5
+    },
+    {
+      "id": 158,
+      "timestamp": "2026-10-07T13:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 159,
+      "timestamp": "2026-10-07T14:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 160,
+      "timestamp": "2026-10-07T15:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 161,
+      "timestamp": "2026-10-07T16:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 162,
+      "timestamp": "2026-10-07T17:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 163,
+      "timestamp": "2026-10-07T18:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 164,
+      "timestamp": "2026-10-07T19:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 165,
+      "timestamp": "2026-10-07T20:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 166,
+      "timestamp": "2026-10-07T21:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 167,
+      "timestamp": "2026-10-07T22:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 168,
+      "timestamp": "2026-10-07T23:00:00.000Z",
+      "value": 18
+    },
+    {
+      "id": 169,
+      "timestamp": "2026-10-08T00:00:00.000Z",
+      "value": 15.7
+    },
+    {
+      "id": 170,
+      "timestamp": "2026-10-08T01:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 171,
+      "timestamp": "2026-10-08T02:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 172,
+      "timestamp": "2026-10-08T03:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 173,
+      "timestamp": "2026-10-08T04:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 174,
+      "timestamp": "2026-10-08T05:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 175,
+      "timestamp": "2026-10-08T06:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 176,
+      "timestamp": "2026-10-08T07:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 177,
+      "timestamp": "2026-10-08T08:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 178,
+      "timestamp": "2026-10-08T09:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 179,
+      "timestamp": "2026-10-08T10:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 180,
+      "timestamp": "2026-10-08T11:00:00.000Z",
+      "value": 18.2
+    },
+    {
+      "id": 181,
+      "timestamp": "2026-10-08T12:00:00.000Z",
+      "value": 15.4
+    },
+    {
+      "id": 182,
+      "timestamp": "2026-10-08T13:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 183,
+      "timestamp": "2026-10-08T14:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 184,
+      "timestamp": "2026-10-08T15:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 185,
+      "timestamp": "2026-10-08T16:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 186,
+      "timestamp": "2026-10-08T17:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 187,
+      "timestamp": "2026-10-08T18:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 188,
+      "timestamp": "2026-10-08T19:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 189,
+      "timestamp": "2026-10-08T20:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 190,
+      "timestamp": "2026-10-08T21:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 191,
+      "timestamp": "2026-10-08T22:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 192,
+      "timestamp": "2026-10-08T23:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 193,
+      "timestamp": "2026-10-09T00:00:00.000Z",
+      "value": 15.6
+    },
+    {
+      "id": 194,
+      "timestamp": "2026-10-09T01:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 195,
+      "timestamp": "2026-10-09T02:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 196,
+      "timestamp": "2026-10-09T03:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 197,
+      "timestamp": "2026-10-09T04:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 198,
+      "timestamp": "2026-10-09T05:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 199,
+      "timestamp": "2026-10-09T06:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 200,
+      "timestamp": "2026-10-09T07:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 201,
+      "timestamp": "2026-10-09T08:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 202,
+      "timestamp": "2026-10-09T09:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 203,
+      "timestamp": "2026-10-09T10:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 204,
+      "timestamp": "2026-10-09T11:00:00.000Z",
+      "value": 18.1
+    },
+    {
+      "id": 205,
+      "timestamp": "2026-10-09T12:00:00.000Z",
+      "value": 15.8
+    },
+    {
+      "id": 206,
+      "timestamp": "2026-10-09T13:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 207,
+      "timestamp": "2026-10-09T14:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 208,
+      "timestamp": "2026-10-09T15:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 209,
+      "timestamp": "2026-10-09T16:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 210,
+      "timestamp": "2026-10-09T17:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 211,
+      "timestamp": "2026-10-09T18:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 212,
+      "timestamp": "2026-10-09T19:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 213,
+      "timestamp": "2026-10-09T20:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 214,
+      "timestamp": "2026-10-09T21:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 215,
+      "timestamp": "2026-10-09T22:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 216,
+      "timestamp": "2026-10-09T23:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 217,
+      "timestamp": "2026-10-10T00:00:00.000Z",
+      "value": 15.5
+    },
+    {
+      "id": 218,
+      "timestamp": "2026-10-10T01:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 219,
+      "timestamp": "2026-10-10T02:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 220,
+      "timestamp": "2026-10-10T03:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 221,
+      "timestamp": "2026-10-10T04:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 222,
+      "timestamp": "2026-10-10T05:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 223,
+      "timestamp": "2026-10-10T06:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 224,
+      "timestamp": "2026-10-10T07:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 225,
+      "timestamp": "2026-10-10T08:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 226,
+      "timestamp": "2026-10-10T09:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 227,
+      "timestamp": "2026-10-10T10:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 228,
+      "timestamp": "2026-10-10T11:00:00.000Z",
+      "value": 18
+    },
+    {
+      "id": 229,
+      "timestamp": "2026-10-10T12:00:00.000Z",
+      "value": 15.7
+    },
+    {
+      "id": 230,
+      "timestamp": "2026-10-10T13:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 231,
+      "timestamp": "2026-10-10T14:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 232,
+      "timestamp": "2026-10-10T15:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 233,
+      "timestamp": "2026-10-10T16:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 234,
+      "timestamp": "2026-10-10T17:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 235,
+      "timestamp": "2026-10-10T18:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 236,
+      "timestamp": "2026-10-10T19:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 237,
+      "timestamp": "2026-10-10T20:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 238,
+      "timestamp": "2026-10-10T21:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 239,
+      "timestamp": "2026-10-10T22:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 240,
+      "timestamp": "2026-10-10T23:00:00.000Z",
+      "value": 18.2
+    },
+    {
+      "id": 241,
+      "timestamp": "2026-10-11T00:00:00.000Z",
+      "value": 15.4
+    },
+    {
+      "id": 242,
+      "timestamp": "2026-10-11T01:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 243,
+      "timestamp": "2026-10-11T02:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 244,
+      "timestamp": "2026-10-11T03:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 245,
+      "timestamp": "2026-10-11T04:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 246,
+      "timestamp": "2026-10-11T05:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 247,
+      "timestamp": "2026-10-11T06:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 248,
+      "timestamp": "2026-10-11T07:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 249,
+      "timestamp": "2026-10-11T08:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 250,
+      "timestamp": "2026-10-11T09:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 251,
+      "timestamp": "2026-10-11T10:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 252,
+      "timestamp": "2026-10-11T11:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 253,
+      "timestamp": "2026-10-11T12:00:00.000Z",
+      "value": 15.6
+    },
+    {
+      "id": 254,
+      "timestamp": "2026-10-11T13:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 255,
+      "timestamp": "2026-10-11T14:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 256,
+      "timestamp": "2026-10-11T15:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 257,
+      "timestamp": "2026-10-11T16:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 258,
+      "timestamp": "2026-10-11T17:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 259,
+      "timestamp": "2026-10-11T18:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 260,
+      "timestamp": "2026-10-11T19:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 261,
+      "timestamp": "2026-10-11T20:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 262,
+      "timestamp": "2026-10-11T21:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 263,
+      "timestamp": "2026-10-11T22:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 264,
+      "timestamp": "2026-10-11T23:00:00.000Z",
+      "value": 18.1
+    },
+    {
+      "id": 265,
+      "timestamp": "2026-10-12T00:00:00.000Z",
+      "value": 15.8
+    },
+    {
+      "id": 266,
+      "timestamp": "2026-10-12T01:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 267,
+      "timestamp": "2026-10-12T02:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 268,
+      "timestamp": "2026-10-12T03:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 269,
+      "timestamp": "2026-10-12T04:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 270,
+      "timestamp": "2026-10-12T05:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 271,
+      "timestamp": "2026-10-12T06:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 272,
+      "timestamp": "2026-10-12T07:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 273,
+      "timestamp": "2026-10-12T08:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 274,
+      "timestamp": "2026-10-12T09:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 275,
+      "timestamp": "2026-10-12T10:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 276,
+      "timestamp": "2026-10-12T11:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 277,
+      "timestamp": "2026-10-12T12:00:00.000Z",
+      "value": 15.5
+    },
+    {
+      "id": 278,
+      "timestamp": "2026-10-12T13:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 279,
+      "timestamp": "2026-10-12T14:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 280,
+      "timestamp": "2026-10-12T15:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 281,
+      "timestamp": "2026-10-12T16:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 282,
+      "timestamp": "2026-10-12T17:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 283,
+      "timestamp": "2026-10-12T18:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 284,
+      "timestamp": "2026-10-12T19:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 285,
+      "timestamp": "2026-10-12T20:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 286,
+      "timestamp": "2026-10-12T21:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 287,
+      "timestamp": "2026-10-12T22:00:00.000Z",
+      "value": 17
+    },
+    {
+      "id": 288,
+      "timestamp": "2026-10-12T23:00:00.000Z",
+      "value": 18
+    },
+    {
+      "id": 289,
+      "timestamp": "2026-10-13T00:00:00.000Z",
+      "value": 15.7
+    },
+    {
+      "id": 290,
+      "timestamp": "2026-10-13T01:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 291,
+      "timestamp": "2026-10-13T02:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 292,
+      "timestamp": "2026-10-13T03:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 293,
+      "timestamp": "2026-10-13T04:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 294,
+      "timestamp": "2026-10-13T05:00:00.000Z",
+      "value": 17.8
+    },
+    {
+      "id": 295,
+      "timestamp": "2026-10-13T06:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 296,
+      "timestamp": "2026-10-13T07:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 297,
+      "timestamp": "2026-10-13T08:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 298,
+      "timestamp": "2026-10-13T09:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 299,
+      "timestamp": "2026-10-13T10:00:00.000Z",
+      "value": 17.2
+    },
+    {
+      "id": 300,
+      "timestamp": "2026-10-13T11:00:00.000Z",
+      "value": 18.2
+    },
+    {
+      "id": 301,
+      "timestamp": "2026-10-13T12:00:00.000Z",
+      "value": 15.4
+    },
+    {
+      "id": 302,
+      "timestamp": "2026-10-13T13:00:00.000Z",
+      "value": 16.2
+    },
+    {
+      "id": 303,
+      "timestamp": "2026-10-13T14:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 304,
+      "timestamp": "2026-10-13T15:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 305,
+      "timestamp": "2026-10-13T16:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 306,
+      "timestamp": "2026-10-13T17:00:00.000Z",
+      "value": 17.5
+    },
+    {
+      "id": 307,
+      "timestamp": "2026-10-13T18:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 308,
+      "timestamp": "2026-10-13T19:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 309,
+      "timestamp": "2026-10-13T20:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 310,
+      "timestamp": "2026-10-13T21:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 311,
+      "timestamp": "2026-10-13T22:00:00.000Z",
+      "value": 16.9
+    },
+    {
+      "id": 312,
+      "timestamp": "2026-10-13T23:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 313,
+      "timestamp": "2026-10-14T00:00:00.000Z",
+      "value": 15.6
+    },
+    {
+      "id": 314,
+      "timestamp": "2026-10-14T01:00:00.000Z",
+      "value": 16.4
+    },
+    {
+      "id": 315,
+      "timestamp": "2026-10-14T02:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 316,
+      "timestamp": "2026-10-14T03:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 317,
+      "timestamp": "2026-10-14T04:00:00.000Z",
+      "value": 16.5
+    },
+    {
+      "id": 318,
+      "timestamp": "2026-10-14T05:00:00.000Z",
+      "value": 17.7
+    },
+    {
+      "id": 319,
+      "timestamp": "2026-10-14T06:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 320,
+      "timestamp": "2026-10-14T07:00:00.000Z",
+      "value": 16.6
+    },
+    {
+      "id": 321,
+      "timestamp": "2026-10-14T08:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 322,
+      "timestamp": "2026-10-14T09:00:00.000Z",
+      "value": 17.4
+    },
+    {
+      "id": 323,
+      "timestamp": "2026-10-14T10:00:00.000Z",
+      "value": 17.1
+    },
+    {
+      "id": 324,
+      "timestamp": "2026-10-14T11:00:00.000Z",
+      "value": 18.1
+    },
+    {
+      "id": 325,
+      "timestamp": "2026-10-14T12:00:00.000Z",
+      "value": 15.8
+    },
+    {
+      "id": 326,
+      "timestamp": "2026-10-14T13:00:00.000Z",
+      "value": 16.1
+    },
+    {
+      "id": 327,
+      "timestamp": "2026-10-14T14:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 328,
+      "timestamp": "2026-10-14T15:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 329,
+      "timestamp": "2026-10-14T16:00:00.000Z",
+      "value": 16.7
+    },
+    {
+      "id": 330,
+      "timestamp": "2026-10-14T17:00:00.000Z",
+      "value": 17.9
+    },
+    {
+      "id": 331,
+      "timestamp": "2026-10-14T18:00:00.000Z",
+      "value": 16.8
+    },
+    {
+      "id": 332,
+      "timestamp": "2026-10-14T19:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 333,
+      "timestamp": "2026-10-14T20:00:00.000Z",
+      "value": 16.3
+    },
+    {
+      "id": 334,
+      "timestamp": "2026-10-14T21:00:00.000Z",
+      "value": 17.6
+    },
+    {
+      "id": 335,
+      "timestamp": "2026-10-14T22:00:00.000Z",
+      "value": 17.3
+    },
+    {
+      "id": 336,
+      "timestamp": "2026-10-14T23:00:00.000Z",
+      "value": 17.8
+    }
+  ],
   "history": [],
   "laboratories": [],
   "profiles": [],

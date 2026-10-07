@@ -15,18 +15,643 @@
         "history": "Historial",
         "alerts": "Alertas",
         "reports": "Informes",
-        "profiles": "Configuración"
-      }
+        "settings": "Configuración"
+      },
+      "openCritical": "Alertas críticas abiertas: {count}"
     },
     "profile": {
       "role": "Investigador Principal",
       "logout": "Cerrar sesión"
+    },
+    "help": {
+      "title": "¿Necesita ayuda?",
+      "description": "Consulte nuestra documentación o contacte con soporte.",
+      "documentation": "Documentación"
+    },
+    "search": {
+      "placeholder": "Buscar laboratorios o alertas...",
+      "label": "Buscar laboratorios o alertas"
+    },
+    "language": {
+      "label": "Seleccionar idioma"
     }
   },
-  "alerts": {},
-  "analytics": {},
-  "history": {},
-  "laboratories": {},
+  "alerts": {
+    "page": {
+      "title": "Alertas y notificaciones",
+      "subtitle": "Monitoree y gestione todas las alertas de los laboratorios en tiempo real"
+    },
+    "summary": {
+      "label": "Resumen de alertas",
+      "critical": "Alertas críticas",
+      "warning": "Alertas de advertencia",
+      "info": "Informativas",
+      "resolvedToday": "Resueltas hoy",
+      "newLast24h": "+{count} en 24 h",
+      "stillOpen": "{count} aún abiertas",
+      "filterBy": "{label}: {count}. Mostrar estas alertas"
+    },
+    "filters": {
+      "label": "Filtros de alertas",
+      "severity": "Severidad",
+      "laboratory": "Laboratorio",
+      "status": "Estado",
+      "period": "Fecha",
+      "all": "Todas",
+      "open": "Abiertas",
+      "clear": "Limpiar filtros",
+      "periods": {
+        "all": "Cualquier fecha",
+        "today": "Hoy",
+        "7d": "Últimos 7 días",
+        "30d": "Últimos 30 días"
+      }
+    },
+    "severity": {
+      "critical": "Crítica",
+      "warning": "Advertencia",
+      "info": "Informativa"
+    },
+    "status": {
+      "raised": "Activa",
+      "acknowledged": "Atendida",
+      "closed": "Resuelta"
+    },
+    "source": {
+      "thermal-excursion": "Excursión térmica",
+      "preventive-trend": "Tendencia preventiva",
+      "thermal-status-normalized": "Temperatura de vuelta en rango",
+      "calibration-due": "Calibración pendiente",
+      "manual-report": "Reportada por el personal"
+    },
+    "actions": {
+      "viewDetails": "Ver detalles",
+      "acknowledge": "Atender",
+      "resolve": "Resolver",
+      "markResolved": "Marcar como resuelta",
+      "addAlert": "Agregar alerta"
+    },
+    "list": {
+      "heading": "Lista de alertas",
+      "showing": "Mostrando {shown} de {total} alerta | Mostrando {shown} de {total} alertas",
+      "searchingFor": "Búsqueda: \"{term}\"",
+      "updatedAt": "Actualizado a las {time}",
+      "refreshFailed": "No se pudo actualizar. Mostrando datos de las {time}",
+      "refresh": "Actualizar alertas",
+      "loading": "Cargando alertas",
+      "errorTitle": "No se pudieron cargar las alertas",
+      "errorDescription": "El servicio de alertas no respondió. Revise su conexión e intente de nuevo.",
+      "retry": "Intentar de nuevo",
+      "noMatchesTitle": "Ninguna alerta coincide con estos filtros",
+      "noMatchesDescription": "Cambie o limpie los filtros para ver más alertas.",
+      "emptyTitle": "No hay alertas",
+      "emptyDescription": "Todas las unidades de almacenamiento están dentro de su rango seguro. Las nuevas alertas aparecerán aquí.",
+      "pendingEscalation": "Escalamiento pendiente",
+      "resolvedBy": "Resuelta por {name}"
+    },
+    "details": {
+      "title": "Detalles de la alerta",
+      "code": "ID: {code}",
+      "close": "Cerrar detalles de la alerta",
+      "escalationWarning": "Nadie ha atendido esta alerta crítica en {minutes} min. Atiéndala para detener el escalamiento.",
+      "status": "Estado",
+      "openFor": "Abierta hace",
+      "resolvedIn": "Resuelta en",
+      "reading": "Lectura de la alerta",
+      "safeRange": "Rango seguro",
+      "range": "{min} a {max}",
+      "rangeMax": "Hasta {max}",
+      "rangeMin": "Desde {min}",
+      "description": "Descripción",
+      "raisedAt": "Generada: {date}",
+      "trend": "Tendencia de temperatura (últimos 30 min)",
+      "activity": "Actividad",
+      "acknowledgedBy": "Atendida por {name}",
+      "actionBy": "Acción correctiva de {name}",
+      "resolvedBy": "Resuelta por {name}",
+      "noActivity": "Nadie ha actuado sobre esta alerta todavía.",
+      "source": "Origen: {source}"
+    },
+    "chart": {
+      "summary": "Rango seguro: {range}. La temperatura pasó de {from} ({start}) a {to} ({end}).",
+      "tableCaption": "Lecturas de temperatura",
+      "time": "Hora",
+      "temperature": "Temperatura"
+    },
+    "resolveDialog": {
+      "title": "Resolver alerta",
+      "label": "Acción correctiva",
+      "required": "Obligatoria",
+      "optional": "Opcional",
+      "placeholder": "Ejemplo: Se trasladaron las vacunas a la unidad de respaldo R-05 y se llamó a mantenimiento.",
+      "hintRequired": "Describa qué se hizo para recuperar el rango seguro (mínimo {min} caracteres).",
+      "hintOptional": "Agregue una nota si se tomó alguna acción.",
+      "counter": "{count}/{max}",
+      "error": "Ingrese al menos {min} caracteres que describan la acción correctiva.",
+      "auditNote": "Este registro se guarda en el historial de auditoría con su nombre y la hora.",
+      "cancel": "Cancelar",
+      "confirm": "Confirmar resolución"
+    },
+    "createDialog": {
+      "title": "Agregar alerta",
+      "titleLabel": "Título",
+      "titlePlaceholder": "Ejemplo: Puerta del congelador F-03 abierta",
+      "titleError": "Ingrese un título para la alerta.",
+      "severityLabel": "Severidad",
+      "severityPlaceholder": "Seleccione la severidad",
+      "severityError": "Seleccione qué tan urgente es la alerta.",
+      "severityHint": {
+        "critical": "Requiere acción inmediata. Se escala si nadie la atiende en {minutes} min.",
+        "warning": "Requiere atención pronto, antes de que se vuelva crítica.",
+        "info": "Solo informativa. No requiere ninguna acción."
+      },
+      "laboratoryLabel": "Laboratorio",
+      "laboratoryPlaceholder": "Seleccione o escriba un laboratorio",
+      "laboratoryError": "Seleccione el laboratorio donde ocurrió.",
+      "messageLabel": "Detalles",
+      "messagePlaceholder": "Describa qué ocurrió, dónde y lo que el equipo debe saber.",
+      "messageError": "Ingrese al menos {min} caracteres que describan la alerta.",
+      "counter": "{count}/{max}",
+      "ongoingLabel": "¿Sigue en curso?",
+      "resolvedHint": "Se guardará como resuelta por usted, con estos detalles como nota de resolución.",
+      "cancel": "Cancelar",
+      "confirm": "Agregar alerta"
+    },
+    "toast": {
+      "acknowledgedTitle": "Alerta atendida",
+      "acknowledgedDetail": "Ahora usted atiende \"{title}\". Se detuvo el escalamiento.",
+      "resolvedTitle": "Alerta resuelta",
+      "resolvedDetail": "\"{title}\" se resolvió y quedó registrada en el historial de auditoría.",
+      "notUpdatedTitle": "Alerta no actualizada",
+      "already-acknowledged": "{name} ya está atendiendo esta alerta.",
+      "already-closed": "{name} ya resolvió esta alerta.",
+      "corrective-action-required": "Describa la acción correctiva antes de resolver una alerta crítica.",
+      "networkError": "No se pudo guardar el cambio. Revise su conexión e intente de nuevo.",
+      "createdTitle": "Alerta agregada",
+      "createdDetail": "\"{title}\" se agregó al listado de alertas.",
+      "notCreatedTitle": "Alerta no agregada"
+    },
+    "time": {
+      "justNow": "justo ahora",
+      "lessThanMinute": "< 1 min",
+      "minutes": "{minutes} min",
+      "hoursMinutes": "{hours} h {minutes} min",
+      "daysHours": "{days} d {hours} h"
+    }
+  },
+  "analytics": {
+    "dashboard": {
+      "title": "Resumen del panel",
+      "subtitle": "Resumen de todos los entornos de laboratorio.",
+      "viewAll": "Ver todo",
+      "checkReadings": "Ver lecturas",
+      "kpis": {
+        "totalLaboratories": "Total de laboratorios",
+        "activeAlerts": "Alertas activas",
+        "systemsHealth": "Salud del sistema",
+        "upcomingMaintenance": "Próximo mantenimiento"
+      },
+      "charts": {
+        "temperatureTrends": "Tendencias de temperatura",
+        "averageAcrossZones": "Promedio de todas las zonas"
+      },
+      "chartRanges": {
+        "24h": "24h",
+        "7d": "7d",
+        "30d": "30d"
+      },
+      "alerts": {
+        "title": "Alertas recientes",
+        "severities": {
+          "critical": "CRÍTICA",
+          "warning": "ADVERTENCIA",
+          "resolved": "RESUELTA"
+        }
+      },
+      "labs": {
+        "title": "Laboratorios",
+        "subtitle": "Resumen del estado ambiental en vivo",
+        "statuses": {
+          "normal": "NORMAL",
+          "warning": "ADVERTENCIA",
+          "alert": "ALERTA"
+        }
+      }
+    },
+    "readings": {
+      "title": "Lecturas históricas",
+      "subtitle": "Consulte y gestione las lecturas de temperatura.",
+      "tableTitle": "Lecturas de temperatura",
+      "new": "Nueva lectura",
+      "edit": "Editar lectura",
+      "id": "ID",
+      "timestamp": "Fecha y hora",
+      "value": "Temperatura",
+      "actions": "Acciones",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "deleteTitle": "Eliminar lectura",
+      "confirmDelete": "¿Seguro que desea eliminar esta lectura?"
+    }
+  },
+  "history": {
+    "title": "Historial",
+    "subtitle": "Seguimiento de todos los eventos de laboratorio y actividad del sistema",
+    "totalEvents": "TOTAL DE EVENTOS",
+    "allTime": "Registrados en total",
+    "alertsResolved": "ALERTAS RESUELTAS",
+    "thisWeek": "+12 esta semana",
+    "systemUptime": "TIEMPO DE ACTIVIDAD",
+    "lastDays": "Últimos 30 días",
+    "userActions": "ACCIONES DE USUARIO",
+    "today": "Hoy",
+    "searchPlaceholder": "Buscar eventos...",
+    "severity": "Severidad",
+    "clearFilters": "Limpiar filtros",
+    "eventDetails": "Detalles del Evento",
+    "dateTime": "Fecha y Hora",
+    "laboratory": "Laboratorio",
+    "sensor": "Sensor",
+    "description": "Descripción",
+    "sensorData": "Datos del Sensor de Temperatura",
+    "actionsTaken": "Acciones Tomadas",
+    "noActions": "No se han registrado acciones todavía.",
+    "loading": "Cargando eventos del historial...",
+    "todayLabel": "HOY",
+    "yesterdayLabel": "AYER",
+    "sensorDataTitle": "Datos del Sensor de Temperatura",
+    "viewLaboratoryBtn": "Ver Laboratorio",
+    "generateReportBtn": "Generar Reporte",
+    "peak": "Pico:",
+    "threshold": "Umbral {temp}",
+    "types": {
+      "resolved": "Resuelto",
+      "alert": "Alerta",
+      "automation": "Automatización",
+      "userAction": "Acción de usuario"
+    },
+    "severities": {
+      "critical": "Crítico",
+      "warning": "Advertencia",
+      "success": "Resuelto",
+      "info": "Informativo"
+    },
+    "events": {
+      "event1": {
+        "title": "Temperatura normalizada",
+        "message": "El sensor TH-04 reportó temperatura estable a 22.4°C después del pico crítico. La ventilación regresó a modo de espera.",
+        "action1": "Sistema de ventilación activado a máxima velocidad",
+        "action2": "Notificación de alerta enviada a 3 administradores",
+        "action3": "Incidente registrado en el diario de seguridad",
+        "action4": "Temperatura normalizada en el sistema"
+      },
+      "event2": {
+        "title": "Alta temperatura detectada",
+        "message": "La temperatura excedió el límite seguro de 28°C. El sensor TH-04 registró 31.2°C en el gabinete C3.",
+        "action1": "Sistema de ventilación activado a máxima velocidad",
+        "action2": "Notificación de alerta enviada a 3 administradores"
+      },
+      "event3": {
+        "title": "Ventilación activada automáticamente",
+        "message": "La regla de automatización AUT-12 activó el sistema de extracción a máxima velocidad en respuesta a la alerta térmica.",
+        "action1": ""
+      },
+      "event4": {
+        "title": "Usuario actualizó ajustes de laboratorio",
+        "message": "La Dra. Sarah Lin modificó los umbrales de alerta para los sensores de CO2. Nuevo umbral: 800 ppm.",
+        "action1": ""
+      },
+      "event5": {
+        "title": "Purga rutinaria del filtro HVAC completada",
+        "message": "Ciclo programado de purga de filtración HEPA ejecutado por 45 minutos con cero residuos de partículas.",
+        "action1": ""
+      }
+    }
+  },
+  "laboratories": {
+    "panel": {
+      "title": "Panel de laboratorios",
+      "subtitle": "Gestione y supervise todos los laboratorios en tiempo real.",
+      "count": "{count} laboratorios",
+      "statusFilter": "Estado: {status}",
+      "locationFilter": "Ubicación: {location}",
+      "filterStatus": "Filtrar por estado",
+      "filterLocation": "Filtrar por ubicación",
+      "all": "Todos",
+      "pending": "Pendiente",
+      "ok": "Correcto",
+      "warning": "Advertencia",
+      "critical": "Crítico",
+      "gridView": "Vista de cuadrícula",
+      "listView": "Vista de lista",
+      "display": "Visualización de laboratorios",
+      "add": "Añadir laboratorio",
+      "temp": "TEMP",
+      "airQuality": "CAL. AIRE",
+      "unknown": "DESCONOCIDO",
+      "aqi": "ICA",
+      "trend": "Tendencia de calidad del aire",
+      "updatedMinutes": "Actualizado hace {count} min",
+      "updatedNow": "Actualizado ahora",
+      "actionRequired": "Acción inmediata requerida",
+      "viewDetails": "Ver detalles",
+      "edit": "Editar",
+      "editAriaLabel": "Editar {name}",
+      "delete": "Eliminar",
+      "cancel": "Cancelar",
+      "deleteHeader": "Eliminar laboratorio",
+      "deleteConfirmation": "¿Seguro que desea eliminar {name}? Esta acción no se puede deshacer.",
+      "deleteAriaLabel": "Eliminar {name}",
+      "laboratoryId": "ID del laboratorio",
+      "loadError": "No se pudieron cargar los laboratorios. Compruebe que el servidor simulado esté en ejecución.",
+      "deleteError": "No se pudo eliminar este laboratorio. Inténtelo de nuevo.",
+      "airQualityDetails": "Calidad del aire",
+      "unknownDetections": "Detecciones desconocidas",
+      "empty": "Ningún laboratorio coincide con estos filtros.",
+      "emptyTitle": "Aún no hay laboratorios",
+      "emptyDescription": "Añada su primer laboratorio para empezar a supervisar sus sensores y umbrales de seguridad.",
+      "noMatchesTitle": "No hay laboratorios coincidentes",
+      "addFirst": "Añadir el primer laboratorio",
+      "noData": "Sin datos",
+      "awaitingData": "Esperando datos de sensores",
+      "unspecifiedLocation": "Ubicación sin especificar",
+      "showing": "Mostrando {first} a {last} de {count} laboratorios",
+      "pages": "Páginas de laboratorios",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "locations": {
+        "buildingA3": "Edificio A, planta 3",
+        "buildingBBasement": "Edificio B, sótano",
+        "buildingC1": "Edificio C, nivel 1",
+        "buildingA2": "Edificio A, planta 2",
+        "buildingB1": "Edificio B, planta 1",
+        "buildingC2": "Edificio C, nivel 2"
+      },
+      "labs": {
+        "biosafety": "Laboratorio de Bioseguridad 04",
+        "chemSynthesis": "Síntesis química B",
+        "cryoStorage": "Almacenamiento criogénico 01",
+        "molecularBiology": "Laboratorio de Biología Molecular",
+        "cellCulture": "Sala de cultivo celular",
+        "sampleArchive": "Archivo de muestras 02"
+      }
+    },
+    "create": {
+      "title": "Añadir laboratorio",
+      "subtitle": "Configure y conecte un laboratorio al sistema de monitorización.",
+      "breadcrumb": "Laboratorios",
+      "breadcrumbCurrent": "Laboratorio de Bioseguridad 01",
+      "cancel": "Cancelar",
+      "save": "Guardar laboratorio",
+      "update": "Actualizar laboratorio",
+      "editTitle": "Editar laboratorio",
+      "editSubtitle": "Actualice los datos y la configuración de supervisión del laboratorio.",
+      "editBreadcrumbCurrent": "Editar laboratorio",
+      "loadError": "No se pudo cargar este laboratorio. Es posible que se haya eliminado.",
+      "saveError": "No se pudo guardar este laboratorio. Compruebe que el servidor simulado esté en ejecución e inténtelo de nuevo.",
+      "basicTitle": "Información básica",
+      "basicDescription": "Datos generales del laboratorio",
+      "laboratoryName": "Nombre del laboratorio",
+      "labCode": "ID / Código del laboratorio",
+      "required": "*",
+      "namePlaceholder": "p. ej., Laboratorio de Química A",
+      "codePlaceholder": "p. ej., LAB-CHM-001",
+      "building": "Edificio",
+      "selectBuilding": "Seleccionar edificio",
+      "researchBuilding": "Edificio de Investigación",
+      "clinicalSciences": "Ciencias Clínicas",
+      "northCampus": "Campus Norte",
+      "buildingNames": {
+        "research": "Edificio de Investigación",
+        "clinical": "Ciencias Clínicas",
+        "north": "Campus Norte"
+      },
+      "floorNames": {
+        "ground": "Planta baja",
+        "1": "1.ª planta",
+        "2": "2.ª planta",
+        "3": "3.ª planta"
+      },
+      "roomShort": "Sala",
+      "floor": "Planta",
+      "selectFloor": "Seleccionar planta",
+      "groundFloor": "Planta baja",
+      "firstFloor": "1.ª planta",
+      "secondFloor": "2.ª planta",
+      "thirdFloor": "3.ª planta",
+      "room": "Número de sala",
+      "roomPlaceholder": "p. ej., 204",
+      "type": "Tipo de laboratorio",
+      "selectType": "Seleccionar tipo",
+      "bioSafety": "Bioseguridad",
+      "chemistry": "Química",
+      "clinical": "Clínico",
+      "research": "Investigación",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Breve descripción del propósito del laboratorio y de cualquier requisito especial de seguridad...",
+      "sensorsTitle": "Sensores y sistemas",
+      "sensorsDescription": "Active o desactive módulos de monitorización para este laboratorio",
+      "sensors": {
+        "temperature": "Temperatura",
+        "temperatureDescription": "Seguimiento de la temperatura ambiente en tiempo real",
+        "airQuality": "Calidad del aire (CO₂)",
+        "airQualityDescription": "Supervisa el CO₂ y la composición del aire",
+        "aiDetection": "Detección con IA",
+        "aiDetectionDescription": "Detecta elementos desconocidos mediante modelos de IA",
+        "ventilation": "Ventilación",
+        "ventilationDescription": "Control automatizado del sistema de ventilación",
+        "airConditioning": "Aire acondicionado",
+        "airConditioningDescription": "Control climático y gestión de refrigeración",
+        "vibration": "Vibración",
+        "vibrationDescription": "Sensor de vibración mecánica y sísmica",
+        "lighting": "Iluminación",
+        "lightingDescription": "Sistema automatizado de control de iluminación inteligente"
+      },
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "thresholdsTitle": "Umbrales de seguridad",
+      "thresholdsDescription": "Defina límites críticos que activen alertas y respuestas automatizadas",
+      "temperature": "Temperatura",
+      "celsius": "Celsius (°C)",
+      "minimum": "Mínimo (°C)",
+      "maximum": "Máximo (°C)",
+      "outsideRange": "La alerta se activa fuera de este rango",
+      "airQualityTitle": "Calidad del aire",
+      "gasLevels": "CO₂ y niveles de gas",
+      "maxCo2": "CO₂ máximo (ppm)",
+      "gasSensitivity": "Sensibilidad al gas",
+      "lowGeneral": "Baja – Laboratorios generales",
+      "mediumEnhanced": "Media – Supervisión reforzada",
+      "highHazardous": "Alta – Materiales peligrosos",
+      "exceeded": "La alerta se activa al superar el límite",
+      "vibrations": "Vibraciones",
+      "mechanicalSeismic": "Mecánicas y sísmicas",
+      "maxLevel": "Nivel máximo (mm/s)",
+      "escalation": "Escalado de alertas",
+      "stopActivity": "Inmediato – Detener toda actividad",
+      "notifySupervisor": "Notificar al supervisor",
+      "logReview": "Registrar para revisión",
+      "notificationsTitle": "Preferencias de notificación",
+      "notificationsDescription": "Elija cómo y cuándo recibir alertas del laboratorio",
+      "email": "Correo electrónico",
+      "emailDescription": "Recibir alertas por correo",
+      "sms": "SMS",
+      "smsDescription": "Alertas de texto en su teléfono",
+      "push": "Notificaciones push",
+      "pushDescription": "Alertas push en la aplicación",
+      "criticalOnly": "Solo alertas críticas",
+      "criticalOnlyDescription": "Suprimir notificaciones no críticas",
+      "enableSensor": "Activar {name}"
+    }
+  },
   "profiles": {},
-  "reports": {}
+  "settings": {
+    "title": "Configuración",
+    "subtitle": "Configure su espacio de trabajo Safelab y sus preferencias personales.",
+    "back": "Volver a configuración",
+    "confirm": {
+      "title": "¿Está seguro?",
+      "cancel": "Cancelar",
+      "continue": "Continuar",
+      "confirm": "Confirmar"
+    },
+    "general": {
+      "title": "Configuración general",
+      "scope": "Todo el sistema",
+      "description": "Gestione la configuración global del entorno del laboratorio, incluidos el formato regional, las zonas horarias y las unidades de medida predeterminadas para todos los experimentos.",
+      "viewDetails": "Ver detalles",
+      "region": "Zona horaria",
+      "temperatureUnit": "Unidad de temperatura",
+      "done": "Listo",
+      "close": "Cerrar configuración"
+    },
+    "profile": {
+      "role": "Investigador principal",
+      "description": "Gestione su identidad personal, información de contacto y credenciales profesionales.",
+      "edit": "Editar perfil",
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "save": "Guardar perfil"
+    },
+    "sections": {
+      "sensors": {
+        "title": "Configuración de sensores",
+        "description": "Calibre y gestione los sensores del laboratorio para supervisar la temperatura, la humedad y la presión atmosférica.",
+        "action": "Configurar"
+      },
+      "notifications": {
+        "title": "Alertas y notificaciones",
+        "description": "Defina umbrales críticos para alertas automáticas por SMS, correo electrónico o notificaciones en la aplicación.",
+        "action": "Definir preferencias"
+      },
+      "security": {
+        "title": "Seguridad y acceso",
+        "description": "Controle permisos de usuario, claves API y registros de auditoría para cumplir los protocolos de seguridad del laboratorio.",
+        "action": "Gestionar"
+      }
+    },
+    "sensors": {
+      "subtitle": "Gestione la telemetría conectada, recalibre parámetros y verifique el cumplimiento.",
+      "add": "Añadir sensor",
+      "filterBy": "Filtrar por:",
+      "sensorType": "Tipo de sensor",
+      "location": "Ubicación del laboratorio",
+      "allTypes": "Todos los tipos de sensor",
+      "allLocations": "Todas las ubicaciones",
+      "types": {
+        "temperature": "Temperatura",
+        "pressure": "Presión",
+        "humidity": "Humedad",
+        "co2": "CO2"
+      },
+      "total": "Total: {count} sensores",
+      "name": "Nombre del sensor",
+      "selectType": "Seleccionar tipo de sensor",
+      "statusLabel": "Estado",
+      "model": "Modelo:",
+      "serial": "N.º de serie:",
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo",
+        "calibration": "Necesita calibración"
+      },
+      "calibrate": "Calibrar",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "noSensors": "Ningún sensor coincide con estos filtros.",
+      "calibrationScheduled": "Se programó la calibración de {name}.",
+      "editing": "Editando {name}.",
+      "newSensorName": "Nuevo sensor de temperatura {number}",
+      "sensorAdded": "Se añadió un sensor nuevo.",
+      "sensorUpdated": "Se actualizaron los datos del sensor.",
+      "confirmAdd": "¿Está seguro de que desea añadir este sensor?",
+      "confirmEdit": "¿Está seguro de que desea guardar estos cambios del sensor?",
+      "confirmCalibrate": "¿Está seguro de que desea calibrar este sensor?",
+      "confirmDelete": "¿Está seguro de que desea eliminar este sensor? Esta acción no se puede deshacer.",
+      "sensorDeleted": "Se eliminó {name}.",
+      "complianceTitle": "Cumplimiento de calibración",
+      "nextAudit": "Próxima auditoría: 15 dic",
+      "calibrated": "Calibrado",
+      "pending": "Pendiente",
+      "overdue": "Atrasado",
+      "complianceNote": "Los monitores automatizados del laboratorio se inspeccionan cada 90 días según las directrices GLP.",
+      "safetyTitle": "La seguridad es lo primero",
+      "safetyDescription": "La calibración periódica garantiza el cumplimiento de ISO 17025 y las normas de seguridad para las muestras biológicas supervisadas.",
+      "auditReport": "Descargar informe de auditoría",
+      "auditReady": "El informe de auditoría está listo."
+    },
+    "notifications": {
+      "subtitle": "Configure cómo y cuándo recibir actualizaciones de seguridad y estado del laboratorio.",
+      "channels": "Canales de notificación",
+      "email": "Notificaciones por correo",
+      "emailDescription": "Resúmenes diarios y alertas críticas por correo",
+      "inApp": "Notificaciones en la aplicación",
+      "inAppDescription": "Alertas en tiempo real en el panel",
+      "thresholds": "Umbrales de alerta",
+      "temperatureAlerts": "Alertas de temperatura",
+      "warningLevel": "Nivel de advertencia",
+      "criticalLevel": "Nivel crítico",
+      "deviation": "de desviación",
+      "warningNote": "Indicación visual activa para la zona de vigilancia",
+      "criticalNote": "Se requiere la activación inmediata de un técnico",
+      "activitySummary": "Resumen de actividad del laboratorio",
+      "daily": "Resumen diario",
+      "dailyDescription": "Resumen conciso de las lecturas y eventos del laboratorio de las últimas 24 horas.",
+      "weekly": "Informe semanal",
+      "weeklyDescription": "Tendencias y documentación de cumplimiento de la semana anterior.",
+      "instant": "Alertas instantáneas de sensores",
+      "instantDescription": "Aviso inmediato ante fallos de hardware o pérdida de conectividad.",
+      "save": "Guardar cambios",
+      "saved": "Se guardaron las preferencias de notificación.",
+      "confirmSave": "¿Está seguro de que desea guardar estas preferencias de notificación?"
+    },
+    "security": {
+      "subtitle": "Gestione las credenciales de su cuenta y sus preferencias de seguridad.",
+      "changePassword": "Cambiar contraseña",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar nueva contraseña",
+      "passwordRequirement": "La contraseña debe tener al menos 8 caracteres",
+      "passwordTooShort": "La contraseña debe tener al menos 8 caracteres.",
+      "passwordMismatch": "Las nuevas contraseñas no coinciden.",
+      "passwordSaved": "Cambio de contraseña simulado; la autenticación no está conectada en esta interfaz.",
+      "updatePassword": "Actualizar contraseña",
+      "twoFactorTitle": "Autenticación de dos factores (2FA)",
+      "twoFactorDescription": "Añada una capa adicional de seguridad al requerir algo más que una contraseña para iniciar sesión.",
+      "enableTwoFactor": "Activar 2FA",
+      "disableTwoFactor": "Desactivar 2FA",
+      "twoFactorEnabled": "Se activó la autenticación de dos factores.",
+      "twoFactorDisabled": "Se desactivó la autenticación de dos factores.",
+      "confirmPasswordChange": "¿Está seguro de que desea actualizar su contraseña?",
+      "confirmTwoFactor": "¿Está seguro de que desea {action}?",
+      "loginActivity": "Actividad de inicio de sesión",
+      "lastLogin": "Último acceso: hace 2 horas desde Zúrich, CH",
+      "activeSessions": "Sesiones activas",
+      "connectedDevices": "2 dispositivos conectados",
+      "accountStatus": "Estado de la cuenta",
+      "verifiedResearcher": "Investigador de laboratorio verificado (Nivel 1)"
+    }
+  },
+  "reports": {},
+  "pageNotFound": "Página no encontrada"
 }
