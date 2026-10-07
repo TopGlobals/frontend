@@ -15,8 +15,9 @@
         "history": "History",
         "alerts": "Alerts",
         "reports": "Reports",
-        "settings": "Settings"
-      }
+        "profiles": "Settings"
+      },
+      "openCritical": "Open critical alerts: {count}"
     },
     "profile": {
       "role": "Head Researcher",
@@ -35,7 +36,169 @@
       "label": "Select language"
     }
   },
-  "alerts": {},
+  "alerts": {
+    "page": {
+      "title": "Alerts & Notifications",
+      "subtitle": "Monitor and manage all laboratory alerts in real time"
+    },
+    "summary": {
+      "label": "Alert summary",
+      "critical": "Critical alerts",
+      "warning": "Warning alerts",
+      "info": "Informational",
+      "resolvedToday": "Resolved today",
+      "newLast24h": "+{count} in 24 h",
+      "stillOpen": "{count} still open",
+      "filterBy": "{label}: {count}. Show these alerts"
+    },
+    "filters": {
+      "label": "Alert filters",
+      "severity": "Severity",
+      "laboratory": "Laboratory",
+      "status": "Status",
+      "period": "Date",
+      "all": "All",
+      "open": "Open",
+      "clear": "Clear filters",
+      "periods": {
+        "all": "Any date",
+        "today": "Today",
+        "7d": "Last 7 days",
+        "30d": "Last 30 days"
+      }
+    },
+    "severity": {
+      "critical": "Critical",
+      "warning": "Warning",
+      "info": "Info"
+    },
+    "status": {
+      "raised": "Active",
+      "acknowledged": "Acknowledged",
+      "closed": "Resolved"
+    },
+    "source": {
+      "thermal-excursion": "Thermal excursion",
+      "preventive-trend": "Preventive trend",
+      "thermal-status-normalized": "Temperature back in range",
+      "calibration-due": "Calibration due",
+      "manual-report": "Reported by staff"
+    },
+    "actions": {
+      "viewDetails": "View details",
+      "acknowledge": "Acknowledge",
+      "resolve": "Resolve",
+      "markResolved": "Mark as resolved",
+      "addAlert": "Add alert"
+    },
+    "list": {
+      "heading": "Alert list",
+      "showing": "Showing {shown} of {total} alert | Showing {shown} of {total} alerts",
+      "searchingFor": "Search: \"{term}\"",
+      "updatedAt": "Updated {time}",
+      "refreshFailed": "Could not refresh. Showing data from {time}",
+      "refresh": "Refresh alerts",
+      "loading": "Loading alerts",
+      "errorTitle": "Alerts could not be loaded",
+      "errorDescription": "The alert service did not respond. Check your connection and try again.",
+      "retry": "Try again",
+      "noMatchesTitle": "No alerts match these filters",
+      "noMatchesDescription": "Change or clear the filters to see more alerts.",
+      "emptyTitle": "No alerts",
+      "emptyDescription": "All storage units are within their safe range. New alerts will appear here.",
+      "pendingEscalation": "Pending escalation",
+      "resolvedBy": "Resolved by {name}"
+    },
+    "details": {
+      "title": "Alert details",
+      "code": "ID: {code}",
+      "close": "Close alert details",
+      "escalationWarning": "No one has acknowledged this critical alert for {minutes} min. Acknowledge it to stop the escalation.",
+      "status": "Status",
+      "openFor": "Open for",
+      "resolvedIn": "Resolved in",
+      "reading": "Alert reading",
+      "safeRange": "Safe range",
+      "range": "{min} to {max}",
+      "rangeMax": "Up to {max}",
+      "rangeMin": "From {min}",
+      "description": "Description",
+      "raisedAt": "Raised: {date}",
+      "trend": "Temperature trend (last 30 min)",
+      "activity": "Activity",
+      "acknowledgedBy": "Acknowledged by {name}",
+      "actionBy": "Corrective action by {name}",
+      "resolvedBy": "Resolved by {name}",
+      "noActivity": "No one has acted on this alert yet.",
+      "source": "Source: {source}"
+    },
+    "chart": {
+      "summary": "Safe range: {range}. Temperature went from {from} ({start}) to {to} ({end}).",
+      "tableCaption": "Temperature readings",
+      "time": "Time",
+      "temperature": "Temperature"
+    },
+    "resolveDialog": {
+      "title": "Resolve alert",
+      "label": "Corrective action",
+      "required": "Required",
+      "optional": "Optional",
+      "placeholder": "Example: Moved the vaccines to backup unit R-05 and called maintenance.",
+      "hintRequired": "Describe what was done to restore the safe range (at least {min} characters).",
+      "hintOptional": "Add a note if any action was taken.",
+      "counter": "{count}/{max}",
+      "error": "Enter at least {min} characters describing the corrective action.",
+      "auditNote": "This entry is saved to the audit trail with your name and the time.",
+      "cancel": "Cancel",
+      "confirm": "Confirm resolution"
+    },
+    "createDialog": {
+      "title": "Add alert",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Example: Freezer F-03 door left open",
+      "titleError": "Enter a title for the alert.",
+      "severityLabel": "Severity",
+      "severityPlaceholder": "Select the severity",
+      "severityError": "Select how urgent the alert is.",
+      "severityHint": {
+        "critical": "Needs immediate action. It escalates if no one acknowledges it within {minutes} min.",
+        "warning": "Needs attention soon, before it becomes critical.",
+        "info": "For awareness only. No action is needed."
+      },
+      "laboratoryLabel": "Laboratory",
+      "laboratoryPlaceholder": "Select or type a laboratory",
+      "laboratoryError": "Select the laboratory where it happened.",
+      "messageLabel": "Details",
+      "messagePlaceholder": "Describe what happened, where, and anything the team should know.",
+      "messageError": "Enter at least {min} characters describing the alert.",
+      "counter": "{count}/{max}",
+      "ongoingLabel": "Is it still ongoing?",
+      "resolvedHint": "It will be saved as resolved by you, with these details as the resolution note.",
+      "cancel": "Cancel",
+      "confirm": "Add alert"
+    },
+    "toast": {
+      "acknowledgedTitle": "Alert acknowledged",
+      "acknowledgedDetail": "You are now handling \"{title}\". Escalation stopped.",
+      "resolvedTitle": "Alert resolved",
+      "resolvedDetail": "\"{title}\" was resolved and recorded in the audit trail.",
+      "notUpdatedTitle": "Alert not updated",
+      "already-acknowledged": "{name} is already handling this alert.",
+      "already-closed": "{name} already resolved this alert.",
+      "corrective-action-required": "Describe the corrective action before resolving a critical alert.",
+      "networkError": "The change could not be saved. Check your connection and try again.",
+      "createdTitle": "Alert added",
+      "createdDetail": "\"{title}\" was added to the alert feed.",
+      "notCreatedTitle": "Alert not added"
+    },
+    "time": {
+      "justNow": "just now",
+      "lessThanMinute": "< 1 min",
+      "minutes": "{minutes} min",
+      "hoursMinutes": "{hours} h {minutes} min",
+      "daysHours": "{days} d {hours} h"
+    }
+  },
   "analytics": {
     "dashboard": {
       "title": "Dashboard Overview",
@@ -222,6 +385,14 @@
         "airQualityDescription": "Monitors CO₂ and air composition levels",
         "aiDetection": "AI Detection",
         "aiDetectionDescription": "Detects unknown elements using AI models",
+        "ventilation": "Ventilation",
+        "ventilationDescription": "Automated ventilation system control",
+        "airConditioning": "Air Conditioning",
+        "airConditioningDescription": "Climate control and cooling management",
+        "vibration": "Vibration",
+        "vibrationDescription": "Seismic and mechanical vibration sensor",
+        "lighting": "Lighting",
+        "lightingDescription": "Automated smart lighting control system"
         "airConditioning": "Air Conditioning",
         "airConditioningDescription": "Climate control and cooling management"
       },

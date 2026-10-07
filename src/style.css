@@ -385,7 +385,7 @@ input:-webkit-autofill:active {
 .p-button.p-button-primary,
 .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-secondary):not(
     .p-button-danger
-  ):not(.p-button-success):not(.p-button-warning):not(.p-button-info) {
+  ):not(.p-button-success):not(.p-button-warn):not(.p-button-info) {
   background-color: var(--cryo-primary) !important;
   border-color: var(--cryo-primary) !important;
   color: #ffffff !important;
@@ -394,7 +394,7 @@ input:-webkit-autofill:active {
 .p-button.p-button-primary:hover,
 .p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-secondary):not(
     .p-button-danger
-  ):not(.p-button-success):not(.p-button-warning):not(.p-button-info):hover {
+  ):not(.p-button-success):not(.p-button-warn):not(.p-button-info):hover {
   background-color: var(--cryo-primary-hover) !important;
   border-color: var(--cryo-primary-hover) !important;
   box-shadow: 0 4px 10px rgba(0, 137, 123, 0.25) !important;
