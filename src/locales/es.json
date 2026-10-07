@@ -254,7 +254,66 @@
       "confirmDelete": "¿Seguro que desea eliminar esta lectura?"
     }
   },
-  "history": {},
+  "history": {
+    "title": "Historial",
+    "subtitle": "Seguimiento de todos los eventos de laboratorio y actividad del sistema",
+    "totalEvents": "TOTAL DE EVENTOS",
+    "allTime": "Registrados en total",
+    "alertsResolved": "ALERTAS RESUELTAS",
+    "thisWeek": "+12 esta semana",
+    "systemUptime": "TIEMPO DE ACTIVIDAD",
+    "lastDays": "Últimos 30 días",
+    "userActions": "ACCIONES DE USUARIO",
+    "today": "Hoy",
+    "searchPlaceholder": "Buscar eventos...",
+    "severity": "Severidad",
+    "clearFilters": "Limpiar filtros",
+    "eventDetails": "Detalles del Evento",
+    "dateTime": "Fecha y Hora",
+    "laboratory": "Laboratorio",
+    "sensor": "Sensor",
+    "description": "Descripción",
+    "sensorData": "Datos del Sensor de Temperatura",
+    "actionsTaken": "Acciones Tomadas",
+    "noActions": "No se han registrado acciones todavía.",
+    "loading": "Cargando eventos del historial...",
+    "todayLabel": "HOY",
+    "yesterdayLabel": "AYER",
+    "sensorDataTitle": "Datos del Sensor de Temperatura",
+    "viewLaboratoryBtn": "Ver Laboratorio",
+   "generateReportBtn": "Generar Reporte",
+    "events": {
+      "event1": {
+        "title": "Temperatura normalizada",
+        "message": "El sensor TH-04 reportó temperatura estable a 22.4°C después del pico crítico. La ventilación regresó a modo de espera.",
+        "action1": "Sistema de ventilación activado a máxima velocidad",
+        "action2": "Notificación de alerta enviada a 3 administradores",
+        "action3": "Incidente registrado en el diario de seguridad",
+        "action4": "Temperatura normalizada en el sistema"
+      },
+      "event2": {
+        "title": "Alta temperatura detectada",
+        "message": "La temperatura excedió el límite seguro de 28°C. El sensor TH-04 registró 31.2°C en el gabinete C3.",
+        "action1": "Sistema de ventilación activado a máxima velocidad",
+        "action2": "Notificación de alerta enviada a 3 administradores"
+      },
+      "event3": {
+        "title": "Ventilación activada automáticamente",
+        "message": "La regla de automatización AUT-12 activó el sistema de extracción a máxima velocidad en respuesta a la alerta térmica.",
+        "action1": ""
+      },
+      "event4": {
+        "title": "Usuario actualizó ajustes de laboratorio",
+        "message": "La Dra. Sarah Lin modificó los umbrales de alerta para los sensores de CO2. Nuevo umbral: 800 ppm.",
+        "action1": ""
+      },
+      "event5": {
+        "title": "Purga rutinaria del filtro HVAC completada",
+        "message": "Ciclo programado de purga de filtración HEPA ejecutado por 45 minutos con cero residuos de partículas.",
+        "action1": ""
+      }
+    }
+  },
   "laboratories": {
     "panel": {
       "title": "Panel de laboratorios",

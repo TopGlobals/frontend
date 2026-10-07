@@ -254,7 +254,66 @@
       "confirmDelete": "Are you sure you want to delete this reading?"
     }
   },
-  "history": {},
+  "history": {
+    "title": "History",
+    "subtitle": "Track all laboratory events and system activity",
+    "totalEvents": "TOTAL EVENTS",
+    "allTime": "All time logged",
+    "alertsResolved": "ALERTS RESOLVED",
+    "thisWeek": "+12 this week",
+    "systemUptime": "SYSTEM UPTIME",
+    "lastDays": "Last 30 days",
+    "userActions": "USER ACTIONS",
+    "today": "Today",
+    "searchPlaceholder": "Search events...",
+    "severity": "Severity",
+    "clearFilters": "Clear filters",
+    "eventDetails": "Event Details",
+    "dateTime": "Date & Time",
+    "laboratory": "Laboratory",
+    "sensor": "Sensor",
+    "description": "Description",
+    "sensorData": "Temperature Sensor Data",
+    "actionsTaken": "Actions Taken",
+    "noActions": "No actions have been logged yet.",
+    "loading": "Loading history events...",
+    "todayLabel": "TODAY",
+    "yesterdayLabel": "YESTERDAY",
+    "sensorDataTitle": "Temperature Sensor Data",
+    "generateReportBtn": "Generate Report",
+    "viewLaboratoryBtn": "View Laboratory",
+    "events": {
+      "event1": {
+        "title": "Temperature returned to normal",
+        "message": "Sensor TH-04 reported stable temperature at 22.4°C after critical spike. Ventilation returned to standby.",
+        "action1": "Ventilation system activated at max speed",
+        "action2": "Alert notification sent to 3 administrators",
+        "action3": "Incident logged to safety registry",
+        "action4": "Temperature normalized"
+      },
+      "event2": {
+        "title": "High temperature detected",
+        "message": "Temperature exceeded threshold of 28°C. Sensor TH-04 recorded 31.2°C at cabinet C3.",
+        "action1": "Ventilation system activated at max speed",
+        "action2": "Alert notification sent to 3 administrators"
+      },
+      "event3": {
+        "title": "Ventilation activated automatically",
+        "message": "Automation rule AUT-12 triggered ventilation system to max speed in response to temp alert.",
+        "action1": ""
+      },
+      "event4": {
+        "title": "User updated laboratory settings",
+        "message": "Dr. Sarah Lin modified alert thresholds for CO2 sensors. New threshold: 800 ppm.",
+        "action1": ""
+      },
+      "event5": {
+        "title": "Routine HVAC filter purge completed",
+        "message": "Scheduled HEPA filtration cycle purge executed for 45 minutes with zero particle residue.",
+        "action1": ""
+      }
+    }
+  },
   "laboratories": {
     "panel": {
       "title": "Laboratories Panel",

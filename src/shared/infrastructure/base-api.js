@@ -18,7 +18,6 @@ export class BaseApi {
     });
     // this.#http.interceptors.request.use(iamInterceptor);
   }
-
   get http() {
     return this.#http;
   }

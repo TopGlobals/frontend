@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import alertsRoutes from './alerts/presentation/alerts-routes.js';
 import analyticsRoutes from './analytics/presentation/analytics-routes.js';
-import historyRoutes from './history/presentation/history-routes.js';
+import { historyRoutes } from './history/presentation/history-routes.js';
 import laboratoriesRoutes from './laboratories/presentation/laboratories-routes.js';
 import profilesRoutes from './profiles/presentation/profiles-routes.js';
 import reportsRoutes from './reports/presentation/reports-routes.js';
@@ -11,7 +11,6 @@ import settingsRoutes from './settings/presentation/settings-routes.js';
 import iamRoutes from "./iam/presentation/iam-routes.js";
 import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 */
-
 const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');
 
 const routes = [
