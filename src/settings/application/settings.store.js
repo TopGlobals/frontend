@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { ref, watch } from 'vue';
 import { MonitoringSensor } from '../domain/model/monitoring-sensor.js';
 import { UserProfile } from '../domain/model/user-profile.js';
+import settingsApi from '../infrastructure/settings-api.js';
 import settingsStorage from '../infrastructure/settings-storage.js';
 
 const initialSettings = settingsStorage.load();
@@ -12,17 +13,30 @@ const useSettingsStore = defineStore('settings', () => {
   const notifications = ref(initialSettings.notifications);
   const security = ref(initialSettings.security);
   const sensors = ref(initialSettings.sensors);
+  const persistenceError = ref(null);
 
   watch(
     [profile, general, notifications, security, sensors],
-    () =>
-      settingsStorage.save({
-        profile: profile.value,
-        general: general.value,
-        notifications: notifications.value,
-        security: security.value,
-        sensors: sensors.value,
-      }),
+    () => {
+      const settings = JSON.parse(
+        JSON.stringify({
+          profile: profile.value,
+          general: general.value,
+          notifications: notifications.value,
+          security: security.value,
+          sensors: sensors.value,
+        })
+      );
+      settingsStorage.save(settings);
+      settingsApi
+        .save(settings)
+        .then(() => {
+          persistenceError.value = null;
+        })
+        .catch((error) => {
+          persistenceError.value = error;
+        });
+    },
     { deep: true }
   );
 
@@ -60,6 +74,7 @@ const useSettingsStore = defineStore('settings', () => {
     notifications,
     security,
     sensors,
+    persistenceError,
     updateProfile,
     addSensor,
     updateSensor,
