@@ -2162,5 +2162,33 @@
   "history": [],
   "laboratories": [],
   "profiles": [],
-  "reports": []
+  "reports": [],
+  "settings": [
+    {
+      "profile": {
+        "name": "Dr. Alex Vance",
+        "email": "alex.vance@topglobals.com",
+        "role": "Head Researcher"
+      },
+      "general": {
+        "region": "Asia/Tokyo",
+        "temperatureUnit": "Celsius"
+      },
+      "notifications": {
+        "email": true,
+        "inApp": false,
+        "dailySummary": false,
+        "weeklyReport": false,
+        "instantAlerts": true,
+        "warningThreshold": "2",
+        "criticalThreshold": "5"
+      },
+      "security": {
+        "twoFactorEnabled": false
+      },
+      "sensors": [],
+      "key": "global",
+      "id": 1
+    }
+  ]
 }
