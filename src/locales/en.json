@@ -314,7 +314,7 @@
     "events": {
       "event1": {
         "title": "Temperature returned to normal",
-        "message": "Sensor TH-04 reported stable temperature at 22.4°C after critical spike. Ventilation returned to standby.",
+        "message": "Sensor  TH-04 reported stable temperature at 22.4°C after critical spike. Ventilation returned to standby.",
         "action1": "Ventilation system activated at max speed",
         "action2": "Alert notification sent to 3 administrators",
         "action3": "Incident logged to safety registry",
