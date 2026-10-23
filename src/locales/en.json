@@ -284,6 +284,21 @@
     "viewLaboratoryBtn": "View Laboratory",
     "peak": "Peak:",
     "threshold": "{temp} Threshold",
+    "add_event": "Add Event",
+    "create_dialog_title": "Add New Event",
+    "delete_event": "Delete from History",
+    "fields": {
+      "title_key": "Title / Key",
+      "type": "Event Type",
+      "severity": "Severity",
+      "location": "Location / Laboratory",
+      "sensor": "Sensor",
+      "message_key": "Detail / Message"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
     "types": {
       "resolved": "Resolved",
       "alert": "Alert",
